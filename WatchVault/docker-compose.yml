@@ -1,0 +1,12 @@
+services:
+  watchvault.api:
+    image: ${DOCKER_REGISTRY-}watchvaultapi
+    build:
+      context: .
+      dockerfile: src/WatchVault.API/Dockerfile
+
+  watchvaultdb:
+    image: postgres
+
+volumes:
+  postgres_watchvaultdb:

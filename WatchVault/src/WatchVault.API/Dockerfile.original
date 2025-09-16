@@ -13,10 +13,6 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["src/WatchVault.API/WatchVault.API.csproj", "src/WatchVault.API/"]
-COPY ["src/WatchVault.Application/WatchVault.Application.csproj", "src/WatchVault.Application/"]
-COPY ["src/WatchVault.Domain/WatchVault.Domain.csproj", "src/WatchVault.Domain/"]
-COPY ["src/WatchVault.Shared/WatchVault.Shared.csproj", "src/WatchVault.Shared/"]
-COPY ["src/WatchVault.Infrastructure/WatchVault.Infrastructure.csproj", "src/WatchVault.Infrastructure/"]
 RUN dotnet restore "./src/WatchVault.API/WatchVault.API.csproj"
 COPY . .
 WORKDIR "/src/src/WatchVault.API"

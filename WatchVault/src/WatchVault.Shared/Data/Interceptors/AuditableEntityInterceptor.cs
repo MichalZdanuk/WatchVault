@@ -45,7 +45,7 @@ public class AuditableEntityInterceptor
     }
 }
 
-public static class Extensions
+public static class InterceptorsExtensions
 {
     public static bool HasChangedOwnedEntities(this EntityEntry entry) =>
         entry.References.Any(r =>

@@ -1,13 +1,20 @@
-using WatchVault.API.Handlers;
+using WatchVault.Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
-builder.Services.AddProblemDetails();
+builder.Services
+    .AddApiServices(builder.Configuration)
+    .AddApplication(builder.Configuration)
+    .AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 
-app.UseExceptionHandler();
+if (app.Environment.IsDevelopment())
+{
+    app.Services.InitialiseDatabase();
+}
+
+app.UseApiServices();
 
 app.UseHttpsRedirection();
 
