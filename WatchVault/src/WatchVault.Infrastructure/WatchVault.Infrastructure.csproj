@@ -6,4 +6,15 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\WatchVault.Application\WatchVault.Application.csproj" />
+    <ProjectReference Include="..\WatchVault.Domain\WatchVault.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\Configurations\" />
+    <Folder Include="Data\Repositories\" />
+    <Folder Include="Exceptions\" />
+  </ItemGroup>
+
 </Project>

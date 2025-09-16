@@ -7,9 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Entities\" />
-    <Folder Include="Enums\" />
-    <Folder Include="ValueObjects\" />
+    <Folder Include="CQRS\" />
+    <Folder Include="Behaviors\" />
+    <Folder Include="DDD\" />
   </ItemGroup>
 
 </Project>
