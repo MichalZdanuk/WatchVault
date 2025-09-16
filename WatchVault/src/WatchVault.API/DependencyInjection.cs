@@ -16,6 +16,7 @@ public static class DependencyInjection
     {
         app.UseExceptionHandler(options => { });
         app.MapAuthEndpoints();
+        app.MapMovieEndpoints();
 
         return app;
     }

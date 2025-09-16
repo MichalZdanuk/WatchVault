@@ -17,6 +17,7 @@ services:
       - ASPNETCORE_HTTP_PORTS=8080
       - ASPNETCORE_HTTPS_PORTS=8081
       - ConnectionStrings__Database=Server=watchvaultdb;Port=5432;Database=WatchVaultDb;User Id=postgres;Password=postgres;Include Error Detail=true
+      - Omdb__ApiKey=apiKey
     depends_on:
       - watchvaultdb
     ports:
