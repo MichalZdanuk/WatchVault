@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WatchVault.Domain\WatchVault.Domain.csproj" />
+    <ProjectReference Include="..\WatchVault.Shared\WatchVault.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>

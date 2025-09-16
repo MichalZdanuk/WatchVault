@@ -16,6 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\WatchVault.Application\WatchVault.Application.csproj" />
     <ProjectReference Include="..\WatchVault.Infrastructure\WatchVault.Infrastructure.csproj" />
+    <ProjectReference Include="..\WatchVault.Shared\WatchVault.Shared.csproj" />
   </ItemGroup>
 
 </Project>
