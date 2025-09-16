@@ -12,7 +12,7 @@ public static class AuthEndpoints
     {
         var auth = app.MapGroup("/api/auth");
 
-        auth.MapPost("/register", async (RegisterCommand command, IMediator mediator) =>
+        auth.MapPost("/register", async ([FromBody] RegisterCommand command, IMediator mediator) =>
         {
             await mediator.Send(command);
             return Results.Ok();
