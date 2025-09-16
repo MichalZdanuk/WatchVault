@@ -1,5 +1,4 @@
-﻿using WatchVault.API.Endpoints;
-using WatchVault.API.Handlers;
+﻿using WatchVault.API.Handlers;
 
 namespace WatchVault.API;
 
@@ -15,8 +14,6 @@ public static class DependencyInjection
     public static WebApplication UseApiServices(this WebApplication app)
     {
         app.UseExceptionHandler(options => { });
-        app.MapAuthEndpoints();
-        app.MapMovieEndpoints();
 
         return app;
     }

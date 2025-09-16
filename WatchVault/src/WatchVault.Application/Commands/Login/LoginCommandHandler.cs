@@ -1,7 +1,7 @@
 ﻿namespace WatchVault.Application.Commands.Login;
-public sealed class LoginCommandHandler : ICommandHandler<LoginCommand, string>
+public sealed class LoginCommandHandler : ICommandHandler<LoginCommand, LoginDto>
 {
-    public Task<string> Handle(LoginCommand command, CancellationToken cancellationToken)
+    public Task<LoginDto> Handle(LoginCommand command, CancellationToken cancellationToken)
     {
         throw new NotImplementedException();
     }
