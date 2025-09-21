@@ -17,9 +17,9 @@ public class UserRepository : IUserRepository
         await _context.Users.AddAsync(user);
     }
 
-    public async Task<User?> GetByExternalIdAsync(Guid externalId)
+    public async Task<User?> GetByIdAsync(Guid id)
     {
         return await _context.Users
-            .SingleOrDefaultAsync(u => u.ExternalId == externalId);
+            .SingleOrDefaultAsync(u => u.Id == id);
     }
 }

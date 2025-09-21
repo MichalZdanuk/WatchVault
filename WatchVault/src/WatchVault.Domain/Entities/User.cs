@@ -3,8 +3,6 @@
 namespace WatchVault.Domain.Entities;
 public class User : Entity
 {
-    public Guid ExternalId { get; private set; }
-
     public string FirstName { get; private set; } = default!;
     public string LastName { get; private set; } = default!;
     public string UserName { get; private set; } = default!;
@@ -18,7 +16,6 @@ public class User : Entity
         return new User()
         {
             Id = id,
-            ExternalId = id,
             FirstName = firstName,
             LastName = lastName,
             UserName = userName,

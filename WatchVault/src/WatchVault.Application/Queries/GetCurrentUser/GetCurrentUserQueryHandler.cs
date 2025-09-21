@@ -8,18 +8,17 @@ public sealed class GetCurrentUserQueryHandler(IUserContext userContext,
 {
     public async Task<UserDto> Handle(GetCurrentUserQuery query, CancellationToken cancellationToken)
     {
-        var externalId = userContext.UserId;
+        var userId = userContext.UserId;
 
-        var user = await unitOfWork.UserRepository.GetByExternalIdAsync(externalId);
+        var user = await unitOfWork.UserRepository.GetByIdAsync(userId);
 
         if (user is null)
         {
-            throw new UnauthorizedAccessException($"User {externalId} not found.");
+            throw new UnauthorizedAccessException($"User {userId} not found.");
         }
 
         return new UserDto(
             user.Id,
-            user.ExternalId,
             user.FirstName,
             user.LastName,
             user.UserName,
