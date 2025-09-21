@@ -4,4 +4,4 @@ public record RegisterCommand(
     string LastName,
     string Username,
     string Email,
-    string Password) : ICommand<Unit>;
+    string Password) : ICommand<Guid>;
