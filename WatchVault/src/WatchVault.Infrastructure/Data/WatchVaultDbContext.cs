@@ -1,21 +1,21 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using WatchVault.Domain.Entities;
 
 namespace WatchVault.Infrastructure.Data;
 public class WatchVaultDbContext
     : DbContext
 {
-    private const string DbSchema = "watchVault";
-
     public WatchVaultDbContext(DbContextOptions<WatchVaultDbContext> options)
         : base(options)
     {
     }
 
+    public DbSet<User> Users { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-        modelBuilder.HasDefaultSchema(DbSchema);
 
         base.OnModelCreating(modelBuilder);
     }

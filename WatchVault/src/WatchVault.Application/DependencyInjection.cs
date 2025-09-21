@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
+using WatchVault.Application.Options;
 using WatchVault.Application.Services;
 using WatchVault.Shared.Behaviors;
 
@@ -13,14 +14,17 @@ public static class DependencyInjection
         var applicationAssembly = Assembly.GetExecutingAssembly();
 
         services.AddMediatRWithBehaviors(applicationAssembly);
-        services.AddServices();
+        services.AddServices(configuration);
 
         return services;
     }
 
-    private static IServiceCollection AddServices(this IServiceCollection services)
+    private static IServiceCollection AddServices(this IServiceCollection services, IConfiguration configuration)
     {
+        services.Configure<KeycloakOptions>(configuration.GetSection("Keycloak"));
+
         services.AddHttpClient<IMovieApiService, OmdbMovieApiService>();
+        services.AddHttpClient<IUserRegistrationService, KeycloakService>();
 
         return services;
     }
