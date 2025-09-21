@@ -7,6 +7,7 @@ public static class MappingExtensions
         app.MapAuthEndpoints();
         app.MapMovieEndpoints();
         app.MapTestEndpoints();
+        app.MapSimklMovieEndpoints();
 
         return app;
     }

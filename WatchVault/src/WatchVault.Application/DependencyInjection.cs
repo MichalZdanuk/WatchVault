@@ -22,9 +22,11 @@ public static class DependencyInjection
     private static IServiceCollection AddServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.Configure<KeycloakOptions>(configuration.GetSection("Keycloak"));
+        services.Configure<SimklOptions>(configuration.GetSection("Simkl"));
 
         services.AddHttpClient<IMovieApiService, OmdbMovieApiService>();
         services.AddHttpClient<IUserRegistrationService, KeycloakService>();
+        services.AddHttpClient<ISimklApiConnector, SimklApiConnector>();
 
         return services;
     }
