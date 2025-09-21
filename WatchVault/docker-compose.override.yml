@@ -11,6 +11,21 @@ services:
     volumes:
       - postgres_watchvaultdb:/var/lib/postgresql/data/
 
+  identity:
+    container_name: identity
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+      - KC_DB=postgres
+      - KC_DB_URL=jdbc:postgresql://watchvaultdb/WatchVaultDb?currentSchema=identity
+      - KC_DB_USERNAME=postgres
+      - KC_DB_PASSWORD=postgres
+    restart: always
+    ports:
+      - "9090:8080"
+    command:
+      - start-dev
+
   watchvault.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
@@ -18,8 +33,18 @@ services:
       - ASPNETCORE_HTTPS_PORTS=8081
       - ConnectionStrings__Database=Server=watchvaultdb;Port=5432;Database=WatchVaultDb;User Id=postgres;Password=postgres;Include Error Detail=true
       - Omdb__ApiKey=apiKey
+      - Keycloak__AuthServerUrl=http://identity:9090/
+      - KeyCloak__Realm=myrealm
+      - KeyCloak__ClientId=my-api
+      - KeyCloak__ClientSecret=VdaZwdAXJE6nU2ptiKjQ6gclqyxVUfdR
+      - KeyCloak__ssl-required=none
+      - KeyCloak__resource=my-api
+      - KeyCloak__verify-token-audience=false
+      - KeyCloak__GrantType=password
+
     depends_on:
       - watchvaultdb
+      - identity
     ports:
       - "6000:8080"
       - "6060:8081"
