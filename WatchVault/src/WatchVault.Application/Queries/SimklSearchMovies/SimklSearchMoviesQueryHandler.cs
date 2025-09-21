@@ -12,7 +12,7 @@ public class SimklSearchMoviesQueryHandler(ISimklApiConnector simkl)
             m.SimklId,
             m.Title,
             m.Year,
-            $"https://simkl.in/posters/{m.Poster}_m.jpg"
+            m.Poster
         )).ToList();
     }
 }

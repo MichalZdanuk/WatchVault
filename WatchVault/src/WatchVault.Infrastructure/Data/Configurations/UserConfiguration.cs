@@ -6,8 +6,10 @@ using WatchVault.Shared.Data;
 namespace WatchVault.Infrastructure.Data.Configurations;
 public class UserConfiguration : BaseEntityConfiguration<User>, IEntityTypeConfiguration<User>
 {
-    public void Configure(EntityTypeBuilder<User> builder)
+    public override void Configure(EntityTypeBuilder<User> builder)
     {
+        base.Configure(builder);
+
         builder.Property(x => x.UserName)
             .IsRequired()
             .HasMaxLength(50);

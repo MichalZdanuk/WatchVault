@@ -12,6 +12,8 @@ public class WatchVaultDbContext
     }
 
     public DbSet<User> Users { get; set; }
+    public DbSet<WatchList> WatchLists { get; set; }
+    public DbSet<WatchListItem> WatchListItems { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -31,7 +31,7 @@ public class SimklApiConnector : ISimklApiConnector
             r.Title,
             r.Year,
             r.EndpointType,
-            r.Poster,
+            $"https://simkl.in/posters/{r.Poster}_m.jpg",
             r.Ids.SimklId
         )).ToList() ?? new();
 
@@ -50,8 +50,8 @@ public class SimklApiConnector : ISimklApiConnector
             raw.Year,
             raw.Type,
             raw.Ids.Simkl,
-            raw.Poster,
-            DateTime.Parse(raw.Released),
+            $"https://simkl.in/posters/{raw.Poster}_m.jpg",
+            DateTime.SpecifyKind(DateTime.Parse(raw.Released), DateTimeKind.Utc),
             raw.Runtime,
             raw.Ratings?.Imdb?.Rating,
             raw.Director,
@@ -68,7 +68,7 @@ public class SimklApiConnector : ISimklApiConnector
         var items = raw?.Select(r => new SimklTrendingMovie(
             r.Title,
             r.Url,
-            r.Poster,
+            $"https://simkl.in/posters/{r.Poster}_m.jpg",
             r.Ids.SimklId,
             r.ReleaseDate,
             r.Ratings?.Simkl?.Rating,

@@ -18,7 +18,7 @@ public class SimklGetMovieDetailsQueryHandler(ISimklApiConnector simkl)
             raw.Title,
             raw.Year,
             raw.Type,
-            $"https://simkl.in/posters/{raw.Poster}_m.jpg",
+            raw.Poster,
             raw.ReleaseDate,
             raw.RuntimeMinutes,
             raw.ImdbRating,

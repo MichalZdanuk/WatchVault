@@ -12,12 +12,13 @@ public class User : Entity
 
     private User() { }
 
-    public static User Create(Guid externalId,
+    public static User Create(Guid id,
         string firstName, string lastName, string userName, string email)
     {
         return new User()
         {
-            ExternalId = externalId,
+            Id = id,
+            ExternalId = id,
             FirstName = firstName,
             LastName = lastName,
             UserName = userName,

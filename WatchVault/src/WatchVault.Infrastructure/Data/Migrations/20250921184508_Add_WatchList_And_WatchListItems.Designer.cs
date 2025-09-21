@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using WatchVault.Infrastructure.Data;
@@ -12,9 +13,11 @@ using WatchVault.Infrastructure.Data;
 namespace WatchVault.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(WatchVaultDbContext))]
-    partial class WatchVaultDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250921184508_Add_WatchList_And_WatchListItems")]
+    partial class Add_WatchList_And_WatchListItems
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

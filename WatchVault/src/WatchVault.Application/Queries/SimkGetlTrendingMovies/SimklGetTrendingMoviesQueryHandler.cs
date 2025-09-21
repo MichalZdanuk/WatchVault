@@ -11,7 +11,7 @@ public class SimklTrendingMoviesQueryHandler(ISimklApiConnector simkl)
         return response.Items.Select(m => new SimklTrendingMovieDto(
             m.SimklId,
             m.Title,
-            $"https://simkl.in/posters/{m.Poster}_m.jpg",
+            m.Poster,
             m.ReleaseDate,
             m.ImdbRating,
             m.Runtime,

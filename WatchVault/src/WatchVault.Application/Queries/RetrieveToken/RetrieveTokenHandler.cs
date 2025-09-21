@@ -2,11 +2,11 @@
 
 namespace WatchVault.Application.Queries.RetrieveToken;
 public sealed class RetrieveTokenHandler(IUserRegistrationService userRegistrationService)
-    : ICommandHandler<RetrieveToken, RetrieveTokenDto>
+    : IQueryHandler<RetrieveToken, RetrieveTokenDto>
 {
-    public async Task<RetrieveTokenDto> Handle(RetrieveToken command, CancellationToken cancellationToken)
+    public async Task<RetrieveTokenDto> Handle(RetrieveToken query, CancellationToken cancellationToken)
     {
-        var token = await userRegistrationService.RetrieveTokenAsync(command.Username, command.Password);
+        var token = await userRegistrationService.RetrieveTokenAsync(query.Username, query.Password);
 
         return new RetrieveTokenDto(token);
     }
