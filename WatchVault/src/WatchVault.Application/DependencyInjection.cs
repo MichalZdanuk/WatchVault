@@ -43,13 +43,15 @@ public static class DependencyInjection
 
     private static IServiceCollection AddDistributedRedisCache(this IServiceCollection services, IConfiguration configuration)
     {
+        var redisConnection = configuration.GetConnectionString("Redis") ?? "localhost:6379";
+
         services.AddStackExchangeRedisCache(options =>
         {
-            options.Configuration = "localhost";
-            options.ConfigurationOptions = new StackExchange.Redis.ConfigurationOptions()
+            options.Configuration = redisConnection;
+            options.ConfigurationOptions = new StackExchange.Redis.ConfigurationOptions
             {
                 AbortOnConnectFail = true,
-                EndPoints = { options.Configuration }
+                EndPoints = { redisConnection }
             };
         });
 

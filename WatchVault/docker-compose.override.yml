@@ -26,12 +26,20 @@ services:
     command:
       - start-dev
 
+  redis:
+    container_name: redis
+    image: redis:7
+    restart: always
+    ports:
+      - "6379:6379"
+
   watchvault.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
       - ASPNETCORE_HTTPS_PORTS=8081
       - ConnectionStrings__Database=Server=watchvaultdb;Port=5432;Database=WatchVaultDb;User Id=postgres;Password=postgres;Include Error Detail=true
+      - ConnectionStrings__Redis=redis:6379
       - Omdb__ApiKey=apiKey
       - Keycloak__AuthServerUrl=http://identity:9090/
       - KeyCloak__Realm=myrealm
@@ -47,6 +55,7 @@ services:
     depends_on:
       - watchvaultdb
       - identity
+      - redis
     ports:
       - "6000:8080"
       - "6060:8081"

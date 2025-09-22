@@ -8,6 +8,9 @@ services:
   watchvaultdb:
     image: postgres
 
+  redis:
+    image: redis:7
+
   identity:
     image: quay.io/keycloak/keycloak:24.0.3
 
