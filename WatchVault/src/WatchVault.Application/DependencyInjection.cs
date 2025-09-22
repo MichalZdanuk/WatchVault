@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using WatchVault.Application.Options;
@@ -15,6 +16,7 @@ public static class DependencyInjection
 
         services.AddMediatRWithBehaviors(applicationAssembly);
         services.AddServices(configuration);
+        services.AddDistributedRedisCache(configuration);
 
         return services;
     }
@@ -26,7 +28,30 @@ public static class DependencyInjection
 
         services.AddHttpClient<IMovieApiService, OmdbMovieApiService>();
         services.AddHttpClient<IUserRegistrationService, KeycloakService>();
-        services.AddHttpClient<ISimklApiConnector, SimklApiConnector>();
+
+
+        services.AddHttpClient<SimklApiConnector>();
+        services.AddScoped<ISimklApiConnector>(sp =>
+        {
+            var inner = sp.GetRequiredService<SimklApiConnector>();
+            var cache = sp.GetRequiredService<IDistributedCache>();
+            return new SimklServiceCachingDecorator(inner, cache);
+        });
+
+        return services;
+    }
+
+    private static IServiceCollection AddDistributedRedisCache(this IServiceCollection services, IConfiguration configuration)
+    {
+        services.AddStackExchangeRedisCache(options =>
+        {
+            options.Configuration = "localhost";
+            options.ConfigurationOptions = new StackExchange.Redis.ConfigurationOptions()
+            {
+                AbortOnConnectFail = true,
+                EndPoints = { options.Configuration }
+            };
+        });
 
         return services;
     }
