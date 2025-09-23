@@ -37,20 +37,25 @@ public sealed class AddMovieCommandHandler(
         }
 
         WatchListItem item;
-        if (command.MarkAsWatched)
+
+        _ = command.WatchStatus switch
         {
-            watchList.AddWatched(movie);
-            item = watchList.Items.Last();
-        }
-        else
-        {
-            watchList.AddToWatch(movie);
-            item = watchList.Items.Last();
-        }
+            Enums.Status.Watched => Do(() => watchList.AddWatched(movie)),
+            Enums.Status.ToWatch => Do(() => watchList.AddToWatch(movie)),
+            _ => throw new ArgumentException("Invalid watch status")
+        };
+
+        item = watchList.Items.Last();
 
         await unitOfWork.WatchListRepository.UpdateAsync(watchList);
         await unitOfWork.SaveChangesAsync(cancellationToken);
 
         return item.Id;
+    }
+
+    private static object? Do(Action action)
+    {
+        action();
+        return null;
     }
 }
