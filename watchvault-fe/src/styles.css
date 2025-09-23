@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --color-bg-main: #181a1b;
+  --color-bg-navbar: #23272a;
+  --color-bg-hover: #31363b;
+  --color-bg-active: #3a3f44;
+  --color-text-main: #e0e0e0;
+  --color-accent: #7700ff;
+}
+
+html,
+body {
+  height: 100%;
+  background: var(--color-bg-main);
+  color: var(--color-text-main);
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}

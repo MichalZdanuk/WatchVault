@@ -1,0 +1,22 @@
+<mat-toolbar class="navbar-toolbar">
+  <span>🎥 WatchVault</span>
+</mat-toolbar>
+
+<mat-nav-list class="navbar-list">
+  <mat-list-item [routerLink]="'/movies/search'" routerLinkActive="active">
+    <mat-icon class="nav-icon">search</mat-icon>
+    <span>Search Movies</span>
+  </mat-list-item>
+  <mat-list-item [routerLink]="'/movies/trending'" routerLinkActive="active">
+    <mat-icon class="nav-icon">trending_up</mat-icon>
+    <span>Trending</span>
+  </mat-list-item>
+  <mat-list-item [routerLink]="'/watchlist'" routerLinkActive="active">
+    <mat-icon class="nav-icon">list</mat-icon>
+    <span>Watchlist</span>
+  </mat-list-item>
+  <mat-list-item [routerLink]="'/profile'" routerLinkActive="active">
+    <mat-icon class="nav-icon">account_circle</mat-icon>
+    <span>Profile</span>
+  </mat-list-item>
+</mat-nav-list>
