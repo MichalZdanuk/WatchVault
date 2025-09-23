@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using WatchVault.Application.Commands.AddMovie;
+using WatchVault.Application.Commands.RemoveMovie;
 using WatchVault.Application.DTO;
 using WatchVault.Application.Queries.GetWatchList;
 
@@ -28,6 +29,16 @@ public static class WatchListEndpoints
             return Results.Ok(watchList);
         })
         .Produces<WatchListDto>(StatusCodes.Status200OK)
+        .Produces(StatusCodes.Status500InternalServerError);
+
+        watchList.MapDelete("/items/{id:Guid}", async (Guid id, IMediator mediator) =>
+        {
+            await mediator.Send(new RemoveWatchListItemCommand(id));
+
+            return Results.NoContent();
+        })
+        .Produces(StatusCodes.Status204NoContent)
+        .Produces(StatusCodes.Status404NotFound)
         .Produces(StatusCodes.Status500InternalServerError);
     }
 }
