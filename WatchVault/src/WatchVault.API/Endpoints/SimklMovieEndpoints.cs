@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using WatchVault.Application.DTO;
+using WatchVault.Application.Enums;
 using WatchVault.Application.Queries.SimkGetlTrendingMovies;
 using WatchVault.Application.Queries.SimklGetMovieDetails;
 using WatchVault.Application.Queries.SimklSearchMovies;
@@ -28,9 +29,9 @@ public static class SimklMovieEndpoints
         .Produces<SimklMovieDetailsDto>(StatusCodes.Status200OK)
         .Produces(StatusCodes.Status404NotFound);
 
-        simkl.MapGet("/trending", async ([FromQuery] string period, IMediator mediator) =>
+        simkl.MapGet("/trending", async ([FromQuery] TrendingInterval trendingInterval, IMediator mediator) =>
         {
-            var trending = await mediator.Send(new SimklGetTrendingMoviesQuery(period));
+            var trending = await mediator.Send(new SimklGetTrendingMoviesQuery(trendingInterval.ToString()));
             return Results.Ok(trending);
         })
         .Produces<List<SimklTrendingMovieDto>>(StatusCodes.Status200OK);
