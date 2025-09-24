@@ -1,0 +1,26 @@
+<mat-card
+  class="trending-movie-card"
+  appearance="outlined"
+  [routerLink]="['/movies', trendingMovie.simklId]"
+>
+  <mat-card-header>
+    <mat-card-title>{{ trendingMovie.title }}</mat-card-title>
+    <mat-card-subtitle
+      >{{ trendingMovie.releaseDate.slice(-4) }} • {{ trendingMovie.runtime }}</mat-card-subtitle
+    >
+  </mat-card-header>
+  <img mat-card-image src="{{ trendingMovie.posterUrl }}" alt="No poster available" />
+  <mat-card-content>
+    <p class="overview">
+      {{ trendingMovie.overview | truncate : 100 }}
+    </p>
+    <div class="movie-meta">
+      <span class="rating" *ngIf="trendingMovie.imdbRating !== null">
+        ⭐ {{ trendingMovie.imdbRating }}/10
+      </span>
+      <span class="extra-meta" *ngIf="trendingMovie.metadata">
+        {{ trendingMovie.metadata }}
+      </span>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -1,1 +1,9 @@
-<p>trending-movies.component works!</p>
+<div class="container">
+  <h2>Trending movies</h2>
+
+  <div fxLayout="row wrap" fxLayoutGap="50px grid">
+    <div *ngFor="let movie of filteredTrendingMovies">
+      <app-trending-movie-card [trendingMovie]="movie"></app-trending-movie-card>
+    </div>
+  </div>
+</div>
