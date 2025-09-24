@@ -1,9 +1,11 @@
 using Keycloak.AuthServices.Authentication;
 using WatchVault.API.Endpoints;
+using WatchVault.API.Options;
 using WatchVault.Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddApiOptions(builder.Configuration);
 builder.Services.AddKeycloakWebApiAuthentication(builder.Configuration);
 builder.Services.AddAuthentication();
 builder.Services.AddAuthorization();
