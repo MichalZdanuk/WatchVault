@@ -74,10 +74,27 @@ public class SimklApiConnector : ISimklApiConnector
             r.Ratings?.Simkl?.Rating,
             r.Runtime,
             r.Overview,
-            r.Metadata
+            CleanMetadata(r.Metadata)
         )).ToList() ?? new();
 
         return new PagedResponse<SimklTrendingMovie>(1, items.Count, items);
+    }
+
+    private string CleanMetadata(string metadata)
+    {
+        if (string.IsNullOrWhiteSpace(metadata))
+        {
+            return string.Empty;
+        }
+
+        var parts = metadata.Split('•');
+
+        if (parts.Length > 1)
+        {
+            return string.Join(" • ", parts.Skip(1)).Trim();
+        }
+
+        return string.Empty;
     }
 
     private record SearchMovieResponse(string Title, int Year, string EndpointType, string Poster, SearchIds Ids);
