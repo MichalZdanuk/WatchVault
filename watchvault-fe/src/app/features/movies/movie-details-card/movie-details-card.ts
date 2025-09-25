@@ -3,11 +3,12 @@ import { MovieDetails } from '../../../shared/models/movie-details';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { MovieRecommendations } from '../movie-recommendations/movie-recommendations';
 
 @Component({
   selector: 'app-movie-details-card',
-  imports: [MatCardModule, MatIconModule, CommonModule],
+  imports: [MatCardModule, MatIconModule, CommonModule, RouterLink, MovieRecommendations],
   templateUrl: './movie-details-card.html',
   styleUrl: './movie-details-card.css',
 })

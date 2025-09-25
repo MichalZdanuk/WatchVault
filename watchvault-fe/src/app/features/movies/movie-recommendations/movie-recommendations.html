@@ -1,0 +1,16 @@
+<div *ngIf="recommendations?.length" class="recommendations-container">
+  <h3>Recommended for You</h3>
+  <div class="recommendations-list">
+    <mat-card
+      class="recommendation-card"
+      *ngFor="let rec of recommendations"
+      [routerLink]="['/movies', rec.simklId]"
+    >
+      <img mat-card-image [src]="rec.poster" [alt]="rec.title" />
+      <mat-card-content>
+        <p class="rec-title">{{ rec.title }}</p>
+        <p class="rec-year">{{ rec.year || 'N/A' }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

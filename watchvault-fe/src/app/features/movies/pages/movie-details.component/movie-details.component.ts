@@ -19,19 +19,15 @@ export class MovieDetailsComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private simklService: SimklService) {}
 
   ngOnInit(): void {
-    const id = this.activatedRoute.snapshot.paramMap.get('id');
-    if (id) {
-      this.simklService.getMovieDetails(+id).subscribe({
-        next: (movieDetails) => {
+    this.activatedRoute.paramMap.subscribe((params) => {
+      const id = params.get('id');
+      if (id) {
+        this.isLoading = true;
+        this.simklService.getMovieDetails(+id).subscribe((movieDetails) => {
           this.movieDetails = movieDetails;
           this.isLoading = false;
-        },
-        error: () => {
-          this.isLoading = false;
-        },
-      });
-    } else {
-      this.isLoading = false;
-    }
+        });
+      }
+    });
   }
 }
