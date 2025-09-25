@@ -19,11 +19,11 @@
     </mat-card-content>
 
     <mat-card-actions class="movie-actions">
-      <button class="action-btn primary-btn">
+      <button class="action-btn primary-btn" (click)="addToWatchlist(movieDetails.simklId)">
         <mat-icon>playlist_add</mat-icon>
         Add to Watchlist
       </button>
-      <button class="action-btn secondary-btn">
+      <button class="action-btn secondary-btn" (click)="markWatched(movieDetails.simklId)">
         <mat-icon>check_circle</mat-icon>
         Mark Watched
       </button>
