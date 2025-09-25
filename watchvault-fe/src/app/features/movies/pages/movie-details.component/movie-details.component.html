@@ -1,1 +1,12 @@
-<p>movie-details.component works!</p>
+<div class="container" *ngIf="!isLoading">
+  <app-movie-details-card
+    *ngIf="movieDetails; else movieNotFound"
+    [movieDetails]="movieDetails"
+  ></app-movie-details-card>
+</div>
+
+<ng-template #movieNotFound>
+  <div class="center">
+    <h1>Movie was not found</h1>
+  </div>
+</ng-template>
