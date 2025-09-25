@@ -5,10 +5,12 @@ public record SimklMovieDetails(
     string Type,
     int SimklId,
     string Poster,
+    string Fanart,
     DateTime ReleaseDate,
     int RuntimeMinutes,
     double? ImdbRating,
     string Director,
     string Overview,
-    IReadOnlyList<string> Genres
+    IReadOnlyList<string> Genres,
+    IReadOnlyList<UserRecommendation> UserRecommendations
 );

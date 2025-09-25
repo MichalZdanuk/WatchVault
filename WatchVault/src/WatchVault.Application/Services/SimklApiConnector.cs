@@ -51,13 +51,21 @@ public class SimklApiConnector : ISimklApiConnector
             raw.Type,
             raw.Ids.Simkl,
             $"https://simkl.in/posters/{raw.Poster}_m.jpg",
+            $"https://simkl.in/fanart/{raw.Fanart}_mobile.jpg",
             DateTime.SpecifyKind(DateTime.Parse(raw.Released), DateTimeKind.Utc),
             raw.Runtime,
             raw.Ratings?.Imdb?.Rating,
             raw.Director,
             raw.Overview,
-            raw.Genres ?? new List<string>()
-        );
+            raw.Genres ?? new List<string>(),
+            raw.UserRecommendations?.Select(u =>
+                new UserRecommendation(
+                    u.Title,
+                    u.Year,
+                    $"https://simkl.in/posters/{u.Poster}_w.jpg",
+                    u.Ids.Simkl
+                )).ToList() ?? new List<UserRecommendation>()
+                );
     }
 
     public async Task<PagedResponse<SimklTrendingMovie>> GetTrendingMoviesAsync(string period = "month")
@@ -111,11 +119,13 @@ public class SimklApiConnector : ISimklApiConnector
         MovieDetailsIds Ids,
         Ratings Ratings,
         string Poster,
+        string Fanart,
         string Released,
         int Runtime,
         string Director,
         string Overview,
-        List<string> Genres
+        List<string> Genres,
+        [property: JsonPropertyName("users_recommendations")] List<UserRecommendationResponse> UserRecommendations
     );
     private record MovieDetailsIds(
         [property: JsonPropertyName("simkl")] int Simkl,
@@ -123,6 +133,15 @@ public class SimklApiConnector : ISimklApiConnector
         [property: JsonPropertyName("tmdb")] string? Tmdb,
         [property: JsonPropertyName("imdb")] string? Imdb
     );
+
+    private record UserRecommendationResponse(
+        string Title,
+        int? Year,
+        string Poster,
+        UserRecommendationIds Ids
+    );
+
+    private record UserRecommendationIds([property: JsonPropertyName("simkl")] int Simkl);
 
     private record TrendingMovieResponse(
         string Title,

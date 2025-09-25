@@ -19,12 +19,14 @@ public class SimklGetMovieDetailsQueryHandler(ISimklApiConnector simkl)
             raw.Year,
             raw.Type,
             raw.Poster,
+            raw.Fanart,
             raw.ReleaseDate,
             raw.RuntimeMinutes,
             raw.ImdbRating,
             raw.Director,
             raw.Overview,
-            raw.Genres.ToList()
+            raw.Genres.ToList(),
+            raw.UserRecommendations.Select(x => new UserRecommendationDto(x.Title, x.Year, x.Poster, x.SimklId)).ToList()
         );
     }
 }
