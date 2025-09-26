@@ -1,5 +1,7 @@
 <div *ngIf="recommendations?.length" class="recommendations-container">
-  <h3>Recommended for You</h3>
+  <h3>
+    Recommended for You <app-info-icon tooltipText="Movies similar to this one."></app-info-icon>
+  </h3>
   <div class="recommendations-list">
     <mat-card
       class="recommendation-card"
