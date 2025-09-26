@@ -45,6 +45,12 @@ public class SimklApiConnector : ISimklApiConnector
 
         if (raw == null) return null;
 
+        DateTime? releasedDate = null;
+        if (!string.IsNullOrWhiteSpace(raw.Released) && DateTime.TryParse(raw.Released, out var parsed))
+        {
+            releasedDate = DateTime.SpecifyKind(parsed, DateTimeKind.Utc);
+        }
+
         return new SimklMovieDetails(
             raw.Title,
             raw.Year,
@@ -52,7 +58,7 @@ public class SimklApiConnector : ISimklApiConnector
             raw.Ids.Simkl,
             $"https://simkl.in/posters/{raw.Poster}_m.jpg",
             $"https://simkl.in/fanart/{raw.Fanart}_mobile.jpg",
-            DateTime.SpecifyKind(DateTime.Parse(raw.Released), DateTimeKind.Utc),
+            releasedDate,
             raw.Runtime,
             raw.Ratings?.Imdb?.Rating,
             raw.Director,

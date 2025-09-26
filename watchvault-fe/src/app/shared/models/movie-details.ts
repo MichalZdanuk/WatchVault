@@ -7,7 +7,7 @@ export interface MovieDetails {
   type: string;
   posterUrl: string;
   fanartUrl: string;
-  released: Date;
+  released: Date | null;
   runtime: number;
   imdbRating: number | null;
   director: string;
