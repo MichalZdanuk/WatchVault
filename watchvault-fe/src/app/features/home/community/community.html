@@ -1,0 +1,12 @@
+<div class="community">
+  <h2 class="section-title">What Our Users Say</h2>
+  <div class="carousel">
+    <div class="testimonial-card" *ngFor="let opinion of opinions">
+      <p class="opinion-text">"{{ opinion.text }}"</p>
+      <div class="opinion-user">
+        <img [src]="opinion.avatar" alt="{{ opinion.name }}" />
+        <span>{{ opinion.name }}</span>
+      </div>
+    </div>
+  </div>
+</div>

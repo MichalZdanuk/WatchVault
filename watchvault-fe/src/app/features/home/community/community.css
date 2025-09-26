@@ -1,0 +1,45 @@
+.community {
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.carousel {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding: 1rem 0;
+  scroll-snap-type: x mandatory;
+}
+
+.testimonial-card {
+  flex: 0 0 280px;
+  background-color: var(--color-bg-navbar);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  color: var(--color-text-main);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  scroll-snap-align: start;
+  border: 1px solid transparent;
+  transition: border 0.3s ease;
+}
+
+.testimonial-card:hover {
+  border: 1px solid var(--color-accent);
+}
+
+.opinion-text {
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.opinion-user {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.opinion-user img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}

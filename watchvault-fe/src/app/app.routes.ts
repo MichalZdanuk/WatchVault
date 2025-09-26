@@ -8,12 +8,14 @@ import { WatchlistComponent } from './features/watchlist/pages/watchlist.compone
 import { MovieDetailsComponent } from './features/movies/pages/movie-details.component/movie-details.component';
 import { ProfileComponent } from './features/profile/pages/profile.component/profile.component';
 import { TrendingMoviesComponent } from './features/movies/pages/trending-movies.component/trending-movies.component';
+import { HomeComponent } from './features/home/pages/home.component/home.component';
 
 export const routes: Routes = [
   {
     path: '',
     component: AuthLayoutComponent,
     children: [
+      { path: '', component: HomeComponent },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
     ],
@@ -31,5 +33,5 @@ export const routes: Routes = [
     ],
   },
 
-  { path: '**', redirectTo: 'movies/search' },
+  { path: '**', redirectTo: '' },
 ];
