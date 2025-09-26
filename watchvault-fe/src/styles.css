@@ -53,3 +53,8 @@ body {
   border-radius: 4px;
   border: 2px solid var(--color-bg-main);
 }
+
+.custom-snackbar {
+  background: var(--color-accent);
+  border-radius: 5px;
+}
