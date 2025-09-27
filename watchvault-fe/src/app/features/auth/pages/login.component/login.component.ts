@@ -4,16 +4,18 @@ import { AuthService } from '../../../../core/services/auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { Login } from '../../../../shared/models/login';
 import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-login.component',
-  imports: [ReactiveFormsModule, CommonModule, RouterLink],
+  imports: [ReactiveFormsModule, CommonModule, RouterLink, MatIconModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup = new FormGroup({});
   errorMessage: string = '';
+  hidePassword: boolean = true;
 
   constructor(
     private authService: AuthService,
@@ -41,5 +43,9 @@ export class LoginComponent implements OnInit {
         this.errorMessage = 'Invalid login credentials.';
       },
     });
+  }
+
+  togglePassword(): void {
+    this.hidePassword = !this.hidePassword;
   }
 }
