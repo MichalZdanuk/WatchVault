@@ -14,7 +14,7 @@
 }
 
 .trending-movie-card:hover {
-  transform: translateY(-8px) scale(1.02);
+  transform: translateY(-6px) scale(1.02);
   cursor: pointer;
   border-color: var(--color-accent);
   box-shadow: 8px 8px 21px -8px var(--color-accent-shadow-hover);

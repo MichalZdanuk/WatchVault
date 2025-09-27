@@ -1,10 +1,10 @@
-<div class="container">
-  <h1>
+<div class="trending-movies-container">
+  <h1 class="trending-movies-section-title">
     Trending movies
     <app-info-icon tooltipText="Explore movies trending in the community"></app-info-icon>
   </h1>
 
-  <div fxLayout="row wrap" fxLayoutGap="50px grid">
+  <div fxLayout="row wrap" fxLayoutGap="40px grid">
     <div *ngFor="let movie of filteredTrendingMovies">
       <app-trending-movie-card [trendingMovie]="movie"></app-trending-movie-card>
     </div>
