@@ -34,7 +34,7 @@
 .movie-details-card .movie-meta {
   font-size: 0.95rem;
   line-height: 1.4;
-  color: #ddd;
+  color: var(--color-text-main);
 }
 
 .movie-details-card mat-card-actions {
@@ -68,13 +68,13 @@
 
 .primary-btn {
   background-color: var(--color-accent);
-  color: #fff;
+  color: var(--color-text-main);
 }
 
 .primary-btn:hover {
-  background-color: #5c00c2;
+  background-color: var(--color-accent-hover);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(119, 0, 255, 0.6);
+  box-shadow: 0 4px 12px var(--color-accent-shadow-hover);
 }
 
 .secondary-btn {
@@ -85,5 +85,5 @@
 .secondary-btn:hover {
   background-color: rgba(119, 0, 255, 0.08);
   transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(119, 0, 255, 0.35);
+  box-shadow: 0 4px 10px var(--color-accent-shadow-hover);
 }

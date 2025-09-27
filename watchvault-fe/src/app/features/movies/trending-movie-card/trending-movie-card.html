@@ -1,8 +1,4 @@
-<mat-card
-  class="trending-movie-card"
-  appearance="outlined"
-  [routerLink]="['/movies', trendingMovie.simklId]"
->
+<mat-card class="trending-movie-card" [routerLink]="['/movies', trendingMovie.simklId]">
   <mat-card-header>
     <mat-card-title>{{ trendingMovie.title }}</mat-card-title>
     <mat-card-subtitle

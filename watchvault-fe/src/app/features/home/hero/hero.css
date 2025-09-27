@@ -6,8 +6,8 @@
   background: linear-gradient(135deg, var(--color-accent), #9a33ff);
   border-radius: 1rem;
   margin-bottom: 3rem;
-  margin-left: 2rem;
-  margin-right: 2rem;
+  margin-left: 4rem;
+  margin-right: 4rem;
 }
 
 .hero-text {
@@ -49,9 +49,9 @@
 }
 
 .btn.primary:hover {
-  background-color: #9a33ff;
+  background-color: var(--color-bg-hover);
   color: var(--color-text-main);
-  border-color: #9a33ff;
+  border-color: var(--color-bg-hover);
 }
 
 .btn.secondary {
@@ -72,7 +72,7 @@
   width: auto;
   height: auto;
   border-radius: 1rem;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
   object-fit: contain;
 }
 
