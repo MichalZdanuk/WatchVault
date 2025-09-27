@@ -5,6 +5,7 @@ import { AuthService } from '../../../../core/services/auth.service';
 import { CommonModule } from '@angular/common';
 import { Register } from '../../../../shared/models/register';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-register.component',
@@ -21,7 +22,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -45,7 +47,12 @@ export class RegisterComponent implements OnInit {
         this.router.navigate(['/login']);
       },
       error: () => {
-        this.errorMessage = 'Registration failed. Please try again later.';
+        this.snackBar.open('Registration failed. Please try again later.', '', {
+          panelClass: ['error-snackbar'],
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+        });
       },
     });
   }

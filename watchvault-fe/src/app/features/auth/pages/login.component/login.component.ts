@@ -5,6 +5,7 @@ import { Router, RouterLink } from '@angular/router';
 import { Login } from '../../../../shared/models/login';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login.component',
@@ -14,13 +15,13 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup = new FormGroup({});
-  errorMessage: string = '';
   hidePassword: boolean = true;
 
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -40,7 +41,12 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/movies/trending']);
       },
       error: () => {
-        this.errorMessage = 'Invalid login credentials.';
+        this.snackBar.open('Invalid login credentials', '', {
+          panelClass: ['error-snackbar'],
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+        });
       },
     });
   }

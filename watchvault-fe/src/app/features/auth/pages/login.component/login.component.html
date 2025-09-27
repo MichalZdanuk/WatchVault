@@ -1,10 +1,6 @@
 <div class="login-container">
   <div class="form-wrapper">
     <form [formGroup]="loginForm" class="form-side" (ngSubmit)="onSubmit()">
-      <div *ngIf="errorMessage" class="alert alert-danger mb-3">
-        {{ errorMessage }}
-      </div>
-
       <div class="row g-3">
         <div class="col-12">
           <label class="form-label">Username</label>
