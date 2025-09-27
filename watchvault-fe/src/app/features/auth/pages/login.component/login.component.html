@@ -1,1 +1,56 @@
-<p>login.component works!</p>
+<div class="login-container">
+  <div class="form-wrapper">
+    <form [formGroup]="loginForm" class="form-side" (ngSubmit)="onSubmit()">
+      <div *ngIf="errorMessage" class="alert alert-danger mb-3">
+        {{ errorMessage }}
+      </div>
+
+      <div class="row g-3">
+        <div class="col-12">
+          <label class="form-label">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="username"
+            placeholder="Username"
+          />
+          <small
+            class="text-danger"
+            *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched"
+          >
+            Username is required
+          </small>
+        </div>
+        <div class="col-12">
+          <label class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            formControlName="password"
+            placeholder="Password"
+          />
+          <small
+            class="text-danger"
+            *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+          >
+            Password is required
+          </small>
+        </div>
+        <div class="col-12 d-grid">
+          <button type="submit" class="btn primary-btn" [disabled]="loginForm.invalid">
+            Log in
+          </button>
+        </div>
+
+        <div class="text-center mt-3">
+          <a class="have-account" [routerLink]="['/register']"
+            >Don't have an account yet? Register here</a
+          >
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="icon-side">
+    <img src="assets/forms/loginPageSideIcon.svg" alt="watching" />
+  </div>
+</div>

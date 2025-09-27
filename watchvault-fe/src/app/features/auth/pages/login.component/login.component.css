@@ -1,0 +1,72 @@
+.login-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.icon-side {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg-navbar);
+}
+
+.icon-side img {
+  max-width: 70%;
+  height: auto;
+}
+
+.form-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-side {
+  width: 100%;
+  max-width: 450px;
+  background-color: var(--color-bg-active);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(119, 0, 255, 0.5);
+}
+
+.primary-btn {
+  background-color: var(--color-accent);
+  color: var(--color-text-main);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  padding: 0.6rem 1.2rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.2s ease;
+  border: none;
+}
+
+.primary-btn:hover {
+  background-color: #5c00c2;
+  transform: translateY((-2px));
+  box-shadow: 0 4px 12px rgba(119, 0, 255, 0.6);
+}
+
+.have-account {
+  display: inline-block;
+  position: relative;
+  color: var(--color-accent);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.have-account::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-accent);
+  transition: width 0.3s ease;
+}
+
+.have-account:hover::after {
+  width: 100%;
+}
