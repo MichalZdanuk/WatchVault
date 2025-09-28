@@ -1,0 +1,15 @@
+.stat-card {
+  background: var(--color-bg-navbar);
+  border-radius: 8px;
+  color: var(--color-text-main);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  box-shadow: 8px 8px 18px -8px var(--color-accent-shadow);
+}
+.stat-value {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+.stat-label {
+  font-size: 0.9rem;
+  color: #aaa;
+}

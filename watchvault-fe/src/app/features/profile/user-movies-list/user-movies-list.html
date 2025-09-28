@@ -1,0 +1,27 @@
+<div>
+  <div class="d-flex justify-content-between align-items-center mb-2">
+    <h4 class="mb-0">{{ title }}</h4>
+    <a class="small accent-color" [routerLink]="['/watchlist']">See all</a>
+  </div>
+
+  <div *ngIf="!shownMovies?.length" class="empty-box p-3 rounded text-light text-center">
+    <div>{{ emptyMessage }}</div>
+    <a class="btn btn-outline-light btn-sm mt-2" [routerLink]="['/movies/search']">
+      Explore movies
+    </a>
+  </div>
+
+  <div *ngIf="shownMovies?.length" class="movies-grid">
+    <a
+      class="movie-tile"
+      *ngFor="let m of shownMovies"
+      [routerLink]="['/movies', m.simklId]"
+      [title]="m.title"
+    >
+      <div class="poster-wrap">
+        <img [src]="m.posterUrl" [alt]="m.title" />
+      </div>
+      <p class="movie-title text-truncate mt-1">{{ m.title }}</p>
+    </a>
+  </div>
+</div>

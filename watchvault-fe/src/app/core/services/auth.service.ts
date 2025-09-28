@@ -5,6 +5,7 @@ import { Register } from '../../shared/models/register';
 import { Observable } from 'rxjs';
 import { LoginResponse } from '../../shared/models/loginResponse';
 import { Login } from '../../shared/models/login';
+import { UserProfile } from '../../shared/models/user-profile';
 
 @Injectable({
   providedIn: 'root',
@@ -22,5 +23,9 @@ export class AuthService {
     const params = new HttpParams().set('username', login.username).set('password', login.password);
 
     return this.http.get<LoginResponse>(this.apiUrl + '/retrieve-token', { params });
+  }
+
+  getCurrentUserProfile(): Observable<UserProfile> {
+    return this.http.get<UserProfile>(`${this.apiUrl}/me`);
   }
 }
