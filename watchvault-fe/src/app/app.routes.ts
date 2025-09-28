@@ -9,6 +9,7 @@ import { MovieDetailsComponent } from './features/movies/pages/movie-details.com
 import { ProfileComponent } from './features/profile/pages/profile.component/profile.component';
 import { TrendingMoviesComponent } from './features/movies/pages/trending-movies.component/trending-movies.component';
 import { HomeComponent } from './features/home/pages/home.component/home.component';
+import { AuthGuard } from './core/auth/AuthGuard';
 
 export const routes: Routes = [
   {
@@ -23,6 +24,7 @@ export const routes: Routes = [
   {
     path: '',
     component: MainLayoutComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'movies/search', pathMatch: 'full' },
       { path: 'movies/search', component: MovieSearchComponent },

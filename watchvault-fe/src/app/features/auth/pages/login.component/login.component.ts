@@ -6,6 +6,7 @@ import { Login } from '../../../../shared/models/login';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthStateService } from '../../../../core/auth/AuthStateService';
 
 @Component({
   selector: 'app-login.component',
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
+    private authState: AuthStateService,
     private formBuilder: FormBuilder,
     private router: Router,
     private snackBar: MatSnackBar
@@ -37,7 +39,8 @@ export class LoginComponent implements OnInit {
     let login: Login = this.loginForm.value;
 
     this.authService.login(login).subscribe({
-      next: () => {
+      next: (res) => {
+        this.authState.login(res.accessToken);
         this.router.navigate(['/movies/trending']);
       },
       error: () => {
