@@ -1,12 +1,13 @@
 ﻿using WatchVault.Application.Common;
 using WatchVault.Application.Repositories;
+using WatchVault.Domain.Enums;
 
 namespace WatchVault.Application.Queries.GetCurrentUser;
 public sealed class GetCurrentUserQueryHandler(IUserContext userContext,
     IUnitOfWork unitOfWork)
-    : IQueryHandler<GetCurrentUserQuery, UserDto>
+    : IQueryHandler<GetCurrentUserQuery, UserProfileDto>
 {
-    public async Task<UserDto> Handle(GetCurrentUserQuery query, CancellationToken cancellationToken)
+    public async Task<UserProfileDto> Handle(GetCurrentUserQuery query, CancellationToken cancellationToken)
     {
         var userId = userContext.UserId;
 
@@ -17,12 +18,47 @@ public sealed class GetCurrentUserQueryHandler(IUserContext userContext,
             throw new UnauthorizedAccessException($"User {userId} not found.");
         }
 
-        return new UserDto(
+        var watchList = await unitOfWork.WatchListRepository.GetByUserIdAsync(userId);
+
+        var watchedMovies = watchList?.Items
+            .Where(i => i.WatchStatus == WatchStatus.Watched)
+            .OrderByDescending(i => i.WatchedAt)
+            .Take(10)
+            .Select(i => new MovieSummaryDto(
+                i.Movie.SimklId,
+                i.Movie.Title,
+                i.Movie.PosterUrl
+            ))
+            .ToList()
+            ?? new List<MovieSummaryDto>();
+
+        var toWatchMovies = watchList?.Items
+            .Where(i => i.WatchStatus == WatchStatus.ToWatch)
+            .OrderByDescending(i => i.AddedToWatchAt)
+            .Take(10)
+            .Select(i => new MovieSummaryDto(
+                i.Movie.SimklId,
+                i.Movie.Title,
+                i.Movie.PosterUrl
+            ))
+            .ToList()
+            ?? new List<MovieSummaryDto>();
+
+        var stats = new UserStatsDto(
+            watchList?.TotalWatched ?? 0,
+            watchList?.TotalToWatch ?? 0,
+            3
+        );
+
+        return new UserProfileDto(
             user.Id,
             user.FirstName,
             user.LastName,
             user.UserName,
-            user.Email
+            user.Email,
+            stats,
+            watchedMovies,
+            toWatchMovies
         );
     }
 }

@@ -1,2 +1,2 @@
 ﻿namespace WatchVault.Application.Queries.GetCurrentUser;
-public record GetCurrentUserQuery() : IQuery<UserDto>;
+public record GetCurrentUserQuery() : IQuery<UserProfileDto>;

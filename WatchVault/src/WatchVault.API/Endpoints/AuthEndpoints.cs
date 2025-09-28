@@ -38,7 +38,7 @@ public static class AuthEndpoints
             return Results.Ok(result);
         })
         .RequireAuthorization()
-        .Produces<UserDto>(StatusCodes.Status200OK)
+        .Produces<UserProfileDto>(StatusCodes.Status200OK)
         .Produces(StatusCodes.Status401Unauthorized)
         .Produces(StatusCodes.Status500InternalServerError);
     }

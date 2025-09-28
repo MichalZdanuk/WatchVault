@@ -9,7 +9,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - postgres_watchvaultdb:/var/lib/postgresql/data/
+      - postgres_watchvaultdb:/var/lib/postgresql/data
 
   identity:
     container_name: identity
@@ -44,7 +44,7 @@ services:
       - Keycloak__AuthServerUrl=http://identity:9090/
       - KeyCloak__Realm=myrealm
       - KeyCloak__ClientId=my-api
-      - KeyCloak__ClientSecret=VdaZwdAXJE6nU2ptiKjQ6gclqyxVUfdR
+      - KeyCloak__ClientSecret=rzpznnQsHu75mq0nLIto8Q2LTa0rrB62
       - KeyCloak__ssl-required=none
       - KeyCloak__resource=my-api
       - KeyCloak__verify-token-audience=false
