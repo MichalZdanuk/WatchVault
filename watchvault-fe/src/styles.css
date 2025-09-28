@@ -23,7 +23,7 @@ body {
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
-.container {
+.custom-container {
   padding: 30px;
   /* max-width: 1200px; */
   margin: auto;

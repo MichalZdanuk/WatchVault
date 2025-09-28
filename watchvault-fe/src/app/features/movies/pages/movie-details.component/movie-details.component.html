@@ -1,4 +1,4 @@
-<div class="container" *ngIf="!isLoading">
+<div class="custom-container" *ngIf="!isLoading">
   <app-movie-details-card
     *ngIf="movieDetails; else movieNotFound"
     [movieDetails]="movieDetails"
