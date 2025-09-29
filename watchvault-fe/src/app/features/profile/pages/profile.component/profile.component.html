@@ -1,9 +1,9 @@
 <div class="container py-4">
-  <div *ngIf="isLoading" class="d-flex justify-content-center py-5">
-    <div class="spinner-border text-primary" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
-  </div>
+  <app-loading-spinner
+    *ngIf="isLoading"
+    text="Loading profile ..."
+    [size]="3"
+  ></app-loading-spinner>
 
   <div *ngIf="!isLoading && userProfile">
     <app-user-profile-header [userProfile]="userProfile"></app-user-profile-header>
@@ -33,7 +33,10 @@
     </div>
   </div>
 
-  <div *ngIf="!isLoading && error" class="alert alert-danger">
-    {{ error }}
-  </div>
+  <app-error-message
+    *ngIf="!isLoading && error"
+    [message]="error"
+    retryText="Failed to load profile. Try again later!"
+    (retry)="reloadProfile()"
+  ></app-error-message>
 </div>

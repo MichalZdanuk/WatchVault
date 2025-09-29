@@ -1,0 +1,17 @@
+.loading-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0;
+  color: var(--color-text-main);
+}
+
+.accent-spinner {
+  color: var(--color-accent);
+  margin-bottom: 0.75rem;
+}
+
+.loading-text {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}

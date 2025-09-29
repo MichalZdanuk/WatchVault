@@ -4,9 +4,24 @@
     <app-info-icon tooltipText="Explore movies trending in the community"></app-info-icon>
   </h1>
 
-  <div fxLayout="row wrap" fxLayoutGap="40px grid">
-    <div *ngFor="let movie of filteredTrendingMovies">
-      <app-trending-movie-card [trendingMovie]="movie"></app-trending-movie-card>
+  <app-loading-spinner
+    *ngIf="isLoading"
+    text="Loading trending movies ..."
+    [size]="3"
+  ></app-loading-spinner>
+
+  <div *ngIf="!isLoading && filteredTrendingMovies.length">
+    <div fxLayout="row wrap" fxLayoutGap="40px grid">
+      <div *ngFor="let movie of filteredTrendingMovies">
+        <app-trending-movie-card [trendingMovie]="movie"></app-trending-movie-card>
+      </div>
     </div>
   </div>
+
+  <app-error-message
+    *ngIf="!isLoading && error"
+    [message]="error"
+    retryText="Failed to browse trending movies. Try again later!"
+    (retry)="reloadTrendingMovies()"
+  ></app-error-message>
 </div>

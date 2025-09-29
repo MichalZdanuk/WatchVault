@@ -1,12 +1,14 @@
-<div class="custom-container" *ngIf="!isLoading">
-  <app-movie-details-card
-    *ngIf="movieDetails; else movieNotFound"
-    [movieDetails]="movieDetails"
-  ></app-movie-details-card>
-</div>
+<div class="custom-container">
+  <app-loading-spinner *ngIf="isLoading" text="Loading movie details..."></app-loading-spinner>
 
-<ng-template #movieNotFound>
-  <div class="not-found-container">
+  <app-error-message
+    *ngIf="!isLoading && error"
+    [message]="error"
+    retryText="Retry"
+    (retry)="fetchMovieDetails()"
+  ></app-error-message>
+
+  <div *ngIf="!isLoading && notFound" class="not-found-container">
     <h2>Oops! Movie not found 😕</h2>
     <p>Try searching for another movie or check the trending movies.</p>
     <div class="not-found-actions">
@@ -14,4 +16,9 @@
       <button class="outline-btn" [routerLink]="'/movies/trending'">Trending Movies</button>
     </div>
   </div>
-</ng-template>
+
+  <app-movie-details-card
+    *ngIf="!isLoading && !error && !notFound && movieDetails"
+    [movieDetails]="movieDetails"
+  ></app-movie-details-card>
+</div>

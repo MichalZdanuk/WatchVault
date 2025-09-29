@@ -1,7 +1,40 @@
 .trending-movies-section-title {
   margin-bottom: 1rem;
+  font-weight: 600;
 }
 
 .trending-movies-container {
   padding: 3rem;
+}
+
+.loading-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0;
+  color: var(--color-text-main);
+}
+
+.accent-spinner {
+  color: var(--color-accent);
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 0.75rem;
+}
+
+.loading-text {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.error-box {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  background: var(--color-bg-navbar);
+  color: #ff6b6b;
+  font-weight: 500;
+}
+.error-box button {
+  margin-top: 0.5rem;
 }
