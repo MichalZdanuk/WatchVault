@@ -31,3 +31,8 @@
   margin-bottom: 1rem;
   color: var(--color-accent);
 }
+
+.feature-card h3 {
+  line-height: 1.2em;
+  min-height: calc(1.2em * 2);
+}
