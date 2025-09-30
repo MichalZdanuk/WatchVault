@@ -7,7 +7,7 @@ public record SimklMovieDetails(
     string Poster,
     string Fanart,
     DateTime? ReleaseDate,
-    int RuntimeMinutes,
+    int? RuntimeMinutes,
     double? ImdbRating,
     string Director,
     string Overview,

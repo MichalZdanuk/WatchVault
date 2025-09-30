@@ -9,14 +9,14 @@ public record Movie
     public int Year { get; }
     public string PosterUrl { get; } = default!;
     public DateTime? ReleaseDate { get; }
-    public int RuntimeMinutes { get; }
+    public int? RuntimeMinutes { get; }
     public string Director { get; } = default!;
     public string Overview { get; } = default!;
 
     protected Movie() { }
 
     private Movie(int simklId, string title, int year, string posterUrl,
-        DateTime? releaseDate, int runtimeMinutes, string director, string overview)
+        DateTime? releaseDate, int? runtimeMinutes, string director, string overview)
     {
         SimklId = simklId;
         Title = title;
@@ -29,7 +29,7 @@ public record Movie
     }
 
     public static Movie Of(int simklId, string title, int year, string type,
-        string posterUrl, DateTime? releaseDate, int runtimeMinutes,
+        string posterUrl, DateTime? releaseDate, int? runtimeMinutes,
         string director, string overview)
     {
         return new Movie(simklId, title.Trim(), year, posterUrl.Trim(),

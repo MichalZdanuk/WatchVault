@@ -7,7 +7,7 @@ public record SimklMovieDetailsDto(
     string PosterUrl,
     string FanartUrl,
     DateTime? Released,
-    int Runtime,
+    int? Runtime,
     double? ImdbRating,
     string Director,
     string Overview,

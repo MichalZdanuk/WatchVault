@@ -127,7 +127,7 @@ public class SimklApiConnector : ISimklApiConnector
         string Poster,
         string Fanart,
         string Released,
-        int Runtime,
+        int? Runtime,
         string Director,
         string Overview,
         List<string> Genres,
