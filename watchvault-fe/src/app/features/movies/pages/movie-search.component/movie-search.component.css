@@ -1,0 +1,9 @@
+.movies-search-container {
+  padding: 3rem;
+}
+
+.search-field {
+  max-width: 250px;
+  max-width: 220px;
+  flex: 1;
+}

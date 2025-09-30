@@ -1,1 +1,19 @@
-<p>movie-search.component works!</p>
+<div class="movies-search-container">
+  <div class="d-flex align-items-center justify-content-between mb-2">
+    <h1 class="d-flex align-items-center gap-2">
+      Search movies
+      <app-info-icon tooltipText="Search movies by title"></app-info-icon>
+    </h1>
+    <mat-form-field class="search-field">
+      <input #searchInput matInput placeholder="Type at least 3 characters" />
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row wrap" fxLayoutGap="24px grid">
+    <app-movie-card *ngFor="let movie of movies" [movie]="movie"></app-movie-card>
+  </div>
+
+  <div *ngIf="!movies.length && !error" class="empty-state">
+    <p>Start typing to search for movies 🎬</p>
+  </div>
+</div>
