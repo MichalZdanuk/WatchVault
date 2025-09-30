@@ -37,8 +37,8 @@ export class MovieSearchComponent {
     fromEvent<InputEvent>(this.searchInput.nativeElement, 'keyup')
       .pipe(
         map((event) => (event.target as HTMLInputElement).value.trim().toLowerCase()),
-        filter((term) => term.length >= 3), // only search if >= 3 chars
-        debounceTime(400), // wait for typing to stop
+        filter((term) => term.length >= 3),
+        debounceTime(400),
         distinctUntilChanged(),
         switchMap((searchTerm) =>
           this.simklService.getMovies(searchTerm, this.page, this.pageSize).pipe(
