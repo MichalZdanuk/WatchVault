@@ -12,7 +12,10 @@
       <div class="movie-meta">
         <p><strong>Director:</strong> {{ movieDetails.director }}</p>
         <p><strong>Genres:</strong> {{ movieDetails.genres.join(', ') }}</p>
-        <p><strong>Runtime:</strong> {{ movieDetails.runtime }} min</p>
+        <p>
+          <strong>Runtime:</strong>
+          {{ movieDetails.runtime ? movieDetails.runtime + 'min' : 'N/A' }}
+        </p>
         <p *ngIf="movieDetails.released">
           <strong>Release date:</strong> {{ movieDetails.released | date }}
         </p>
