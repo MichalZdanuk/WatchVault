@@ -7,3 +7,14 @@
   max-width: 220px;
   flex: 1;
 }
+
+.empty-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+  width: 100%;
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 2rem;
+}
