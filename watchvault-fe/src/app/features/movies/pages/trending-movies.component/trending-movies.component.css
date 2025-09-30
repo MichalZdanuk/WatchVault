@@ -1,10 +1,41 @@
-.trending-movies-section-title {
-  margin-bottom: 1rem;
-  font-weight: 600;
-}
-
 .trending-movies-container {
   padding: 3rem;
+}
+
+.trending-movies-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.trending-movies-section-title {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filters-bar {
+  display: flex;
+  gap: 1rem;
+}
+
+.filter-select {
+  min-width: 150px;
+}
+
+.mat-mdc-form-field {
+  background-color: var(--color-bg-navbar);
+  border-radius: 8px;
+  padding: 0 0.5rem;
+}
+
+.mat-mdc-select-value,
+.mat-mdc-option {
+  background-color: var(--color-bg-active) !important;
+  border-radius: 8px !important;
+  margin-bottom: 5px !important;
 }
 
 .loading-box {

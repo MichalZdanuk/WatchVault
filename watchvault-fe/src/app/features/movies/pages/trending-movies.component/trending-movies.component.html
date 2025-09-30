@@ -1,8 +1,29 @@
 <div class="trending-movies-container">
-  <h1 class="trending-movies-section-title">
-    Trending movies
-    <app-info-icon tooltipText="Explore movies trending in the community"></app-info-icon>
-  </h1>
+  <div class="trending-movies-header">
+    <h1 class="trending-movies-section-title">
+      Trending movies
+      <app-info-icon tooltipText="Explore movies trending in the community"></app-info-icon>
+    </h1>
+
+    <div class="filters-bar">
+      <mat-form-field appearance="fill" class="filter-select">
+        <mat-select [value]="trendingInterval" (selectionChange)="onIntervalChange($event.value)">
+          <mat-option [value]="0">Today</mat-option>
+          <mat-option [value]="1">This Week</mat-option>
+          <mat-option [value]="2">This Month</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="filter-select">
+        <mat-select [value]="sortOrder" (selectionChange)="onSortChange($event.value)">
+          <mat-option value="popularity">Popularity</mat-option>
+          <mat-option value="title">Title</mat-option>
+          <mat-option value="release_date">Release Date</mat-option>
+          <mat-option value="imdb_rating">IMDb Rating</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
 
   <app-loading-spinner
     *ngIf="isLoading"

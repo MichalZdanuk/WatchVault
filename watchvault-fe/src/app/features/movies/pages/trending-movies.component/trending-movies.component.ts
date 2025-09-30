@@ -9,11 +9,13 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { InfoIcon } from '../../../../shared/components/info-icon/info-icon';
 import { LoadingSpinner } from '../../../../shared/components/loading-spinner/loading-spinner';
 import { ErrorMessage } from '../../../../shared/components/error-message/error-message';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-trending-movies.component',
   imports: [
     MatTooltipModule,
+    MatSelectModule,
     CommonModule,
     FlexModule,
     TrendingMovieCard,
@@ -29,6 +31,7 @@ export class TrendingMoviesComponent implements OnInit {
   filteredTrendingMovies: TrendingMovie[] = [];
   isLoading: boolean = true;
   error: string | null = null;
+  sortOrder: string = 'popularity';
 
   trendingInterval: TrendingInterval = TrendingInterval.Today;
 
@@ -45,7 +48,7 @@ export class TrendingMoviesComponent implements OnInit {
     this.simklService.getTrendingMovies(this.trendingInterval).subscribe({
       next: (t) => {
         this.trendingMovies = t;
-        this.filteredTrendingMovies = t;
+        this.applySorting();
         this.isLoading = false;
       },
       error: (err) => {
@@ -54,5 +57,30 @@ export class TrendingMoviesComponent implements OnInit {
         console.error(err);
       },
     });
+  }
+
+  onIntervalChange(interval: TrendingInterval): void {
+    this.trendingInterval = interval;
+    this.reloadTrendingMovies();
+  }
+
+  onSortChange(sortValue: string): void {
+    this.sortOrder = sortValue;
+    this.applySorting();
+  }
+
+  private applySorting(): void {
+    this.filteredTrendingMovies = [...this.trendingMovies];
+
+    if (this.sortOrder === 'popularity') {
+    } else if (this.sortOrder === 'title') {
+      this.filteredTrendingMovies.sort((a, b) => a.title.localeCompare(b.title));
+    } else if (this.sortOrder === 'release_date') {
+      this.filteredTrendingMovies.sort(
+        (a, b) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime()
+      );
+    } else if (this.sortOrder === 'imdb_rating') {
+      this.filteredTrendingMovies.sort((a, b) => (b.imdbRating ?? 0) - (a.imdbRating ?? 0));
+    }
   }
 }
