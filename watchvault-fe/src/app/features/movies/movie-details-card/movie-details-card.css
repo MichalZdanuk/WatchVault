@@ -79,6 +79,7 @@
 
 .secondary-btn {
   background-color: transparent;
+  border: 2px solid var(--color-accent) !important;
   color: var(--color-accent);
 }
 
