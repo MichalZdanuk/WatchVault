@@ -1,4 +1,6 @@
-﻿namespace WatchVault.Application.DTO;
+﻿using WatchVault.Application.Enums;
+
+namespace WatchVault.Application.DTO;
 public record SimklMovieDetailsDto(
     int SimklId,
     string Title,
@@ -11,6 +13,7 @@ public record SimklMovieDetailsDto(
     double? ImdbRating,
     string Director,
     string Overview,
+    Status? Status,
     List<string> Genres,
     List<UserRecommendationDto> UserRecommendations
 );

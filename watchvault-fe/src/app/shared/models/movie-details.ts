@@ -1,3 +1,4 @@
+import { Status } from './status';
 import { UserRecommendation } from './user-recommendation';
 
 export interface MovieDetails {
@@ -12,6 +13,7 @@ export interface MovieDetails {
   imdbRating: number | null;
   director: string;
   overview: string;
+  Status: Status;
   genres: string[];
   userRecommendations: UserRecommendation[];
 }
