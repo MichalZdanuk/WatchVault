@@ -41,7 +41,10 @@
         <mat-icon>check_circle</mat-icon>
         Mark Watched
       </button>
-      <div *ngIf="movieDetails.status === Status.Watched" class="watched-badge">
+      <div
+        *ngIf="movieDetails.status === Status.Watched"
+        class="d-flex align-items-center justify-content-center gap-2 fw-semibold rounded px-3 py-2 watched-badge"
+      >
         <mat-icon>check_circle</mat-icon>
         Already Watched
       </div>
