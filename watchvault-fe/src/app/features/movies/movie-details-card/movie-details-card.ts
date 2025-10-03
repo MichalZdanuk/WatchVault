@@ -6,6 +6,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { MovieRecommendations } from '../movie-recommendations/movie-recommendations';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { SimklService } from '../../../core/services/simkl.service';
+import { WatchlistService } from '../../../core/services/watchlist-service';
+import { Status } from '../../../shared/models/status';
 
 @Component({
   selector: 'app-movie-details-card',
@@ -16,10 +19,23 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 export class MovieDetailsCard {
   @Input() movieDetails!: MovieDetails;
 
-  constructor(private router: Router, private snackBar: MatSnackBar) {}
+  protected readonly Status = Status;
+
+  constructor(
+    private watchlistService: WatchlistService,
+    private router: Router,
+    private snackBar: MatSnackBar
+  ) {}
 
   addToWatchlist(simklId: number): void {
-    console.log(`Adding movie: ${simklId}`);
+    this.watchlistService.addWatchListItem(simklId, Status.ToWatch).subscribe({
+      next: () => {
+        this.movieDetails.status = Status.ToWatch;
+      },
+      error: (err) => {
+        this.showSnackBarError('Failed to add to watch');
+      },
+    });
 
     this.snackBar.open('Added to watchlist', '', {
       panelClass: ['custom-snackbar'],
@@ -30,10 +46,26 @@ export class MovieDetailsCard {
   }
 
   markWatched(simklId: number): void {
-    console.log(`Marking as watched movie: ${simklId}`);
+    this.watchlistService.addWatchListItem(simklId, Status.Watched).subscribe({
+      next: () => {
+        this.movieDetails.status = Status.Watched;
+      },
+      error: (err) => {
+        this.showSnackBarError('Failed to mark as watched');
+      },
+    });
 
     this.snackBar.open('Marked as watched', '', {
       panelClass: ['custom-snackbar'],
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+    });
+  }
+
+  private showSnackBarError(message: string): void {
+    this.snackBar.open(message, '', {
+      panelClass: ['error-snackbar'],
       duration: 3000,
       horizontalPosition: 'center',
       verticalPosition: 'bottom',

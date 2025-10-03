@@ -13,7 +13,7 @@ export interface MovieDetails {
   imdbRating: number | null;
   director: string;
   overview: string;
-  Status: Status;
+  status: Status | null;
   genres: string[];
   userRecommendations: UserRecommendation[];
 }

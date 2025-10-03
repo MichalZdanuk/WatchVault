@@ -24,14 +24,27 @@
     </mat-card-content>
 
     <mat-card-actions class="movie-actions">
-      <button class="action-btn primary-btn" (click)="addToWatchlist(movieDetails.simklId)">
+      <button
+        class="action-btn primary-btn"
+        (click)="addToWatchlist(movieDetails.simklId)"
+        *ngIf="movieDetails.status !== Status.Watched"
+        [disabled]="movieDetails.status === Status.ToWatch"
+      >
         <mat-icon>playlist_add</mat-icon>
-        Add to Watchlist
+        {{ movieDetails.status === Status.ToWatch ? 'Already added to watch' : 'Add to Watchlist' }}
       </button>
-      <button class="action-btn secondary-btn" (click)="markWatched(movieDetails.simklId)">
+      <button
+        class="action-btn secondary-btn"
+        (click)="markWatched(movieDetails.simklId)"
+        *ngIf="movieDetails.status !== Status.Watched"
+      >
         <mat-icon>check_circle</mat-icon>
         Mark Watched
       </button>
+      <div *ngIf="movieDetails.status === Status.Watched" class="watched-badge">
+        <mat-icon>check_circle</mat-icon>
+        Already Watched
+      </div>
     </mat-card-actions>
   </mat-card>
 </div>

@@ -10,6 +10,7 @@
   --color-accent-hover: #5c00c2;
   --color-accent-shadow: rgba(119, 0, 255, 0.5);
   --color-accent-shadow-hover: rgba(119, 0, 255, 0.6);
+  --color-success: #4caf50;
 }
 
 html,
