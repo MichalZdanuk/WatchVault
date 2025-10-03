@@ -19,23 +19,34 @@ public class WatchList : Aggregate
 
     public void AddToWatch(Movie movie)
     {
-        EnsureMovieNotPresentAlready(movie.SimklId);
-        var item = WatchListItem.Create(Id, WatchStatus.ToWatch, movie);
-        _items.Add(item);
+        var item = _items.FirstOrDefault(x => x.Movie.SimklId == movie.SimklId);
+        if (item is null)
+        {
+            var newItem = WatchListItem.Create(Id, WatchStatus.ToWatch, movie);
+            _items.Add(newItem);
+            return;
+        }
+        else
+        {
+            throw new InvalidOperationException($"Movie {movie.SimklId} already exists.");
+        }
     }
 
     public void AddWatched(Movie movie)
     {
-        EnsureMovieNotPresentAlready(movie.SimklId);
-        var item = WatchListItem.Create(Id, WatchStatus.Watched, movie);
-        _items.Add(item);
-    }
+        var item = _items.FirstOrDefault(x => x.Movie.SimklId == movie.SimklId);
+        if (item is null)
+        {
+            var newItem = WatchListItem.Create(Id, WatchStatus.Watched, movie);
+            _items.Add(newItem);
+            return;
+        }
 
-    public void MarkAsWatched(Guid watchListItemId)
-    {
-        var item = GetItemOrThrow(watchListItemId);
-
-        item.MarkAsWatched();
+        if (item.WatchStatus == WatchStatus.ToWatch)
+        {
+            item.MarkAsWatched();
+            return;
+        }
     }
 
     public void RemoveWatchListItem(Guid watchListItemId)
@@ -43,12 +54,6 @@ public class WatchList : Aggregate
         var item = GetItemOrThrow(watchListItemId);
 
         _items.Remove(item);
-    }
-
-    private void EnsureMovieNotPresentAlready(int simklId)
-    {
-        if (_items.Any(x => x.Movie.SimklId == simklId))
-            throw new InvalidOperationException($"Movie {simklId} already exists in watchlist.");
     }
 
     private WatchListItem GetItemOrThrow(Guid watchListItemId)
