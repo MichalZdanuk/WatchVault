@@ -6,6 +6,8 @@
 }
 
 .navbar-toolbar {
+  display: flex;
+  flex-direction: column;
   font-weight: bold;
   font-size: 20px;
   border-bottom: 1px solid #222;
@@ -65,4 +67,10 @@
   font-size: 20px;
   line-height: 1;
   vertical-align: middle;
+}
+
+.user-info {
+  font-weight: normal;
+  font-size: 0.7rem;
+  color: var(--color-accent);
 }

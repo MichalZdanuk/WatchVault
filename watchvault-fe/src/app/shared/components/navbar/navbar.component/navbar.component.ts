@@ -20,7 +20,15 @@ import { AuthStateService } from '../../../../core/auth/AuthStateService';
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent {
-  constructor(private authState: AuthStateService) {}
+  username: string = '';
+
+  constructor(private authState: AuthStateService) {
+    const token = authState.getDecodedToken();
+
+    if (token) {
+      this.username = token.name;
+    }
+  }
 
   onLogout(): void {
     this.authState.logout();

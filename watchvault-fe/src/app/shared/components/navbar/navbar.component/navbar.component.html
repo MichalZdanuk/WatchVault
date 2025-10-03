@@ -1,6 +1,10 @@
 <div class="navbar-container">
   <div>
-    <mat-toolbar class="navbar-toolbar"> <span>🎥 WatchVault</span> </mat-toolbar>
+    <mat-toolbar class="navbar-toolbar">
+      <span>🎥 WatchVault</span>
+      <span class="user-info">Logged in as: {{ username }}</span>
+    </mat-toolbar>
+
     <mat-nav-list class="navbar-list">
       <mat-list-item [routerLink]="'/movies/search'" routerLinkActive="active">
         <mat-icon class="nav-icon">search</mat-icon> <span>Search Movies</span>
