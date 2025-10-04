@@ -1,0 +1,23 @@
+<div class="item-card">
+  <div class="poster-container">
+    <img [src]="item.movie.posterUrl" alt="{{ item.movie.title }}" />
+    <button
+      class="favourite-btn"
+      *ngIf="item.watchStatus === Status.Watched"
+      (click)="toggleFavourite(item.id)"
+      [class.favourite]="item.isFavourite"
+    >
+      <mat-icon>{{ item.isFavourite ? 'favorite' : 'favorite_border' }}</mat-icon>
+    </button>
+  </div>
+
+  <div class="d-flex flex-column px-3 py-2 gap-2">
+    <h3 class="title">{{ item.movie.title }}</h3>
+    <div class="d-flex justify-content-between opacity-75 details">
+      <span class="fw-medium">{{ item.movie.runtimeMinutes || '-' }} min</span>
+      <span class="fst-italic">{{ item.movie.year }}</span>
+    </div>
+  </div>
+
+  <a [routerLink]="['/movies', item.movie.simklId]" class="details-link"> View Details </a>
+</div>

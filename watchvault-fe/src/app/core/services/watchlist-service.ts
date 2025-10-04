@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Status } from '../../shared/models/status';
 import { Observable } from 'rxjs';
+import { WatchListSummary } from '../../shared/models/watchlist-summary';
+import { PagedWatchListItems } from '../../shared/models/paged-watchlist-items';
 
 @Injectable({
   providedIn: 'root',
@@ -14,5 +16,23 @@ export class WatchlistService {
 
   addWatchListItem(simklId: number, status: Status): Observable<void> {
     return this.http.post<void>(`${this.apiUrl}/add`, { simklId: simklId, watchStatus: status });
+  }
+
+  getWatchListSummary(): Observable<WatchListSummary> {
+    return this.http.get<WatchListSummary>(`${this.apiUrl}`);
+  }
+
+  browseWatchListItems(
+    status: Status | null,
+    pageNumber: number = 1,
+    pageSize: number = 10
+  ): Observable<PagedWatchListItems> {
+    let params = new HttpParams().set('pageNumber', pageNumber).set('pageSize', pageSize);
+
+    if (status !== null && status !== undefined) {
+      params = params.set('status', status);
+    }
+
+    return this.http.get<PagedWatchListItems>(`${this.apiUrl}/items`, { params });
   }
 }

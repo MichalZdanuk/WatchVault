@@ -1,1 +1,12 @@
-<p>watchlist.component works!</p>
+<div class="watchlist-container">
+  <app-watchlist-summary></app-watchlist-summary>
+
+  <mat-tab-group class="watchlist-tabs">
+    <mat-tab label="To Watch">
+      <app-watchlist-items [status]="Status.ToWatch"></app-watchlist-items>
+    </mat-tab>
+    <mat-tab label="Watched">
+      <app-watchlist-items [status]="Status.Watched"></app-watchlist-items>
+    </mat-tab>
+  </mat-tab-group>
+</div>

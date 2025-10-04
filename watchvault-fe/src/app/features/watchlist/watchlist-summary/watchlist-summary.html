@@ -1,0 +1,35 @@
+<app-loading-spinner
+  *ngIf="isLoading"
+  text="Loading trending movies ..."
+  [size]="3"
+></app-loading-spinner>
+
+<app-error-message
+  *ngIf="!isLoading && error"
+  [message]="error"
+  retryText="Failed to browse trending movies. Try again later!"
+></app-error-message>
+
+<div *ngIf="summary" class="summary-cards">
+  <div class="summary-card">
+    <div class="summary-number">{{ summary.totalWatched }}</div>
+    <div class="summary-label">Watched</div>
+  </div>
+
+  <div class="summary-card">
+    <div class="summary-number">{{ summary.totalToWatch }}</div>
+    <div class="summary-label">To Watch</div>
+  </div>
+
+  <div class="summary-card">
+    <div class="summary-number">{{ summary.totalRuntimeMinutes / 60 | number : '1.0-0' }}</div>
+    <div class="summary-label">Hours Watched</div>
+  </div>
+
+  <div class="summary-card">
+    <div class="summary-number">
+      {{ summary.lastWatchedAt ? (summary.lastWatchedAt | date : 'medium') : '-' }}
+    </div>
+    <div class="summary-label">Last Watched</div>
+  </div>
+</div>

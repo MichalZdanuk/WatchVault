@@ -1,0 +1,25 @@
+<app-loading-spinner
+  *ngIf="isLoading"
+  text="Loading trending movies ..."
+  [size]="3"
+></app-loading-spinner>
+
+<app-error-message
+  *ngIf="!isLoading && error"
+  [message]="error"
+  retryText="Failed to browse trending movies. Try again later!"
+></app-error-message>
+
+<div *ngIf="!isLoading && items.length === 0" class="empty mt-2">No movies found.</div>
+
+<div class="items-grid" *ngIf="items.length > 0">
+  <app-watchlist-item-card *ngFor="let item of items" [item]="item"></app-watchlist-item-card>
+</div>
+
+<div class="pagination" *ngIf="totalCount > pageSize">
+  <button (click)="onPageChange(pageNumber - 1)" [disabled]="pageNumber === 1">Prev</button>
+  <span>Page {{ pageNumber }}</span>
+  <button (click)="onPageChange(pageNumber + 1)" [disabled]="pageNumber * pageSize >= totalCount">
+    Next
+  </button>
+</div>
