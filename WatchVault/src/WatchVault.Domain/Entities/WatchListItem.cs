@@ -9,6 +9,7 @@ public class WatchListItem : Entity
     public WatchStatus WatchStatus { get; private set; }
     public DateTime? AddedToWatchAt { get; private set; }
     public DateTime? WatchedAt { get; private set; }
+    public bool IsFavourite { get; private set; }
     public Movie Movie { get; private set; } = default!;
 
     private WatchListItem() { }
@@ -40,5 +41,15 @@ public class WatchListItem : Entity
 
         WatchStatus = WatchStatus.Watched;
         WatchedAt = DateTime.UtcNow;
+    }
+
+    public void ToggleFavourite()
+    {
+        if (WatchStatus != WatchStatus.Watched)
+        {
+            throw new InvalidOperationException("Only watched movies can be marked as favourite.");
+        }
+
+        IsFavourite = !IsFavourite;
     }
 }

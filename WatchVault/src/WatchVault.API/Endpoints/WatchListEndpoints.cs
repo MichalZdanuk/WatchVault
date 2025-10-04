@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using WatchVault.Application.Commands.AddMovie;
 using WatchVault.Application.Commands.RemoveMovie;
+using WatchVault.Application.Commands.ToggleFavourite;
 using WatchVault.Application.DTO;
 using WatchVault.Application.Enums;
 using WatchVault.Application.Queries.BrowseWatchListItems;
@@ -50,6 +51,16 @@ public static class WatchListEndpoints
             return Results.NoContent();
         })
         .Produces(StatusCodes.Status204NoContent)
+        .Produces(StatusCodes.Status404NotFound)
+        .Produces(StatusCodes.Status500InternalServerError);
+
+        watchList.MapPost("/items/{id:Guid}/favourite", async (Guid id, IMediator mediator) =>
+        {
+            await mediator.Send(new ToggleFavouriteCommand(id));
+            return Results.NoContent();
+        })
+        .Produces(StatusCodes.Status204NoContent)
+        .Produces(StatusCodes.Status400BadRequest)
         .Produces(StatusCodes.Status404NotFound)
         .Produces(StatusCodes.Status500InternalServerError);
     }

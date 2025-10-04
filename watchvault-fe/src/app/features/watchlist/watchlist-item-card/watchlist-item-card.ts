@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 import { WatchStatus } from '../../../shared/models/watch-status';
 import { RouterLink } from '@angular/router';
+import { WatchlistService } from '../../../core/services/watchlist-service';
 
 @Component({
   selector: 'app-watchlist-item-card',
@@ -15,9 +16,16 @@ export class WatchlistItemCard {
   @Input() item!: WatchListItem;
   Status = WatchStatus;
 
+  constructor(private watchListService: WatchlistService) {}
+
   toggleFavourite(id: string): void {
-    this.item.isFavourite = !this.item.isFavourite;
-    console.log(`Toggled favourite for watchlist item: ${id}, now: ${this.item.isFavourite}`);
-    // TODO: call BE
+    this.watchListService.toggleFavourite(id).subscribe({
+      next: () => {
+        this.item.isFavourite = !this.item.isFavourite;
+      },
+      error: (err) => {
+        console.error('Failed to toggle favourite', err);
+      },
+    });
   }
 }

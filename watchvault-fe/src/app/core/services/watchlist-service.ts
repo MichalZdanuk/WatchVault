@@ -35,4 +35,8 @@ export class WatchlistService {
 
     return this.http.get<PagedWatchListItems>(`${this.apiUrl}/items`, { params });
   }
+
+  toggleFavourite(id: string): Observable<void> {
+    return this.http.post<void>(`${this.apiUrl}/items/${id}/favourite`, {});
+  }
 }
