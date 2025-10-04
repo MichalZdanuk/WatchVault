@@ -1,7 +1,12 @@
 <div class="watchlist-container">
-  <app-watchlist-summary></app-watchlist-summary>
+  <h1 class="d-flex align-items-center gap-2">
+    Watchlist Overview
+    <app-info-icon
+      tooltipText="See your watchlist progress, time spent watching, and recent activity at a glance."
+    ></app-info-icon>
+  </h1>
 
-  <mat-tab-group class="watchlist-tabs">
+  <mat-tab-group class="mb-4">
     <mat-tab label="To Watch">
       <app-watchlist-items [status]="Status.ToWatch"></app-watchlist-items>
     </mat-tab>
@@ -9,4 +14,6 @@
       <app-watchlist-items [status]="Status.Watched"></app-watchlist-items>
     </mat-tab>
   </mat-tab-group>
+
+  <app-watchlist-summary></app-watchlist-summary>
 </div>
