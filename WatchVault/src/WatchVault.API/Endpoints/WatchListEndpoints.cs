@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using WatchVault.Application.Commands.AddMovie;
 using WatchVault.Application.Commands.RemoveMovie;
 using WatchVault.Application.DTO;
+using WatchVault.Application.Enums;
+using WatchVault.Application.Queries.BrowseWatchListItems;
 using WatchVault.Application.Queries.GetWatchList;
 
 namespace WatchVault.API.Endpoints;
@@ -24,11 +26,21 @@ public static class WatchListEndpoints
 
         watchList.MapGet("", async (IMediator mediator) =>
         {
-            var watchList = await mediator.Send(new GetWatchListQuery());
+            var watchListsummary = await mediator.Send(new GetWatchListSummaryQuery());
 
-            return Results.Ok(watchList);
+            return Results.Ok(watchListsummary);
         })
-        .Produces<WatchListDto>(StatusCodes.Status200OK)
+        .Produces<WatchListSummaryDto>(StatusCodes.Status200OK)
+        .Produces(StatusCodes.Status500InternalServerError);
+
+        watchList.MapGet("/items", async ([FromQuery] Status? status, [FromQuery] int pageNumber, [FromQuery] int pageSize, IMediator mediator) =>
+        {
+            var result = await mediator.Send(new BrowseWatchListItemsQuery(status, pageNumber, pageSize));
+
+            return Results.Ok(result);
+        })
+        .Produces<PagedWatchListItemsDto>(StatusCodes.Status200OK)
+        .Produces(StatusCodes.Status401Unauthorized)
         .Produces(StatusCodes.Status500InternalServerError);
 
         watchList.MapDelete("/items/{id:Guid}", async (Guid id, IMediator mediator) =>

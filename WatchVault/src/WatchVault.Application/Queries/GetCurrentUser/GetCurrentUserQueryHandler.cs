@@ -47,7 +47,7 @@ public sealed class GetCurrentUserQueryHandler(IUserContext userContext,
         var stats = new UserStatsDto(
             watchList?.TotalWatched ?? 0,
             watchList?.TotalToWatch ?? 0,
-            3
+            0
         );
 
         return new UserProfileDto(
