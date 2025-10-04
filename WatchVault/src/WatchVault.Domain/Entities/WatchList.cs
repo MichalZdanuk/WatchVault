@@ -11,6 +11,35 @@ public class WatchList : Aggregate
 
     public int TotalWatched => _items.Count(x => x.WatchStatus == WatchStatus.Watched);
     public int TotalToWatch => _items.Count(x => x.WatchStatus == WatchStatus.ToWatch);
+    public int TotalRuntimeMinutes => _items
+        .Where(x => x.WatchStatus == WatchStatus.Watched)
+        .Sum(x => x.Movie.RuntimeMinutes ?? 0);
+
+    public double AverageRuntimeMinutes
+    {
+        get
+        {
+            var runtimes = _items
+                .Where(x => x.WatchStatus == WatchStatus.Watched && x.Movie.RuntimeMinutes.HasValue)
+                .Select(x => x.Movie.RuntimeMinutes!.Value)
+                .ToList();
+
+            return runtimes.Count > 0 ? runtimes.Average() : 0;
+        }
+    }
+
+    public int? EarliestYearWatched =>
+        _items.Where(x => x.WatchStatus == WatchStatus.Watched).Select(x => (int?)x.Movie.Year).Min();
+    public int? LatestYearWatched =>
+        _items.Where(x => x.WatchStatus == WatchStatus.Watched).Select(x => (int?)x.Movie.Year).Max();
+
+    public DateTime? LastWatchedAt =>
+    _items.Where(x => x.WatchStatus == WatchStatus.Watched && x.WatchedAt.HasValue)
+          .Max(x => x.WatchedAt);
+
+    public DateTime? LastAddedToWatchAt =>
+        _items.Where(x => x.WatchStatus == WatchStatus.ToWatch && x.AddedToWatchAt.HasValue)
+              .Max(x => x.AddedToWatchAt);
 
     private WatchList() { }
 

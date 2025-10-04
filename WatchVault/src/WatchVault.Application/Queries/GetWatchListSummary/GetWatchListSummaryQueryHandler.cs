@@ -15,6 +15,14 @@ public sealed class GetWatchListSummaryQueryHandler(IUserContext userContext,
             throw new InvalidOperationException($"User {userContext.UserId} has no watchlist.");
         }
 
-        return new WatchListSummaryDto(watchList.Id, watchList.TotalWatched, watchList.TotalToWatch);
+        return new WatchListSummaryDto(watchList.Id,
+            watchList.TotalWatched,
+            watchList.TotalToWatch,
+            watchList.TotalRuntimeMinutes,
+            watchList.AverageRuntimeMinutes,
+            watchList.EarliestYearWatched,
+            watchList.LatestYearWatched,
+            watchList.LastWatchedAt,
+            watchList.LastAddedToWatchAt);
     }
 }
