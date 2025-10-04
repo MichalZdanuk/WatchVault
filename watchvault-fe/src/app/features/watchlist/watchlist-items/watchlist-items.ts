@@ -42,7 +42,7 @@ export class WatchlistItems implements OnInit {
           this.isLoading = false;
         },
         error: () => {
-          this.error = 'Failed to load items.';
+          this.error = '⚠️ Failed to load watchlist items.';
           this.isLoading = false;
         },
       });

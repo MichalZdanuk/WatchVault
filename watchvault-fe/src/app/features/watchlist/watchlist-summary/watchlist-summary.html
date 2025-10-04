@@ -1,35 +1,80 @@
+<h1 class="d-flex align-items-center gap-2 mb-4">
+  Watchlist Overview
+  <app-info-icon
+    tooltipText="See your watchlist progress, time spent watching, and recent activity at a glance."
+  ></app-info-icon>
+</h1>
+
 <app-loading-spinner
   *ngIf="isLoading"
-  text="Loading trending movies ..."
+  text="Loading watchlist summary ..."
   [size]="3"
 ></app-loading-spinner>
 
 <app-error-message
   *ngIf="!isLoading && error"
   [message]="error"
-  retryText="Failed to browse trending movies. Try again later!"
+  retryText="Failed to fetch watchlist summary. Try again later!"
 ></app-error-message>
 
-<div *ngIf="summary" class="summary-cards">
-  <div class="summary-card">
-    <div class="summary-number">{{ summary.totalWatched }}</div>
-    <div class="summary-label">Watched</div>
-  </div>
-
-  <div class="summary-card">
-    <div class="summary-number">{{ summary.totalToWatch }}</div>
-    <div class="summary-label">To Watch</div>
-  </div>
-
-  <div class="summary-card">
-    <div class="summary-number">{{ summary.totalRuntimeMinutes / 60 | number : '1.0-0' }}</div>
-    <div class="summary-label">Hours Watched</div>
-  </div>
-
-  <div class="summary-card">
-    <div class="summary-number">
-      {{ summary.lastWatchedAt ? (summary.lastWatchedAt | date : 'medium') : '-' }}
+<div *ngIf="summary" class="summary-section">
+  <div class="summary-group">
+    <h3 class="group-title">Progress</h3>
+    <div class="summary-cards">
+      <div class="summary-card">
+        <div class="summary-number">{{ summary.totalWatched }}</div>
+        <div class="summary-label">Watched</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-number">{{ summary.totalToWatch }}</div>
+        <div class="summary-label">To Watch</div>
+      </div>
     </div>
-    <div class="summary-label">Last Watched</div>
+  </div>
+
+  <div class="summary-group">
+    <h3 class="group-title">Time Spent</h3>
+    <div class="summary-cards">
+      <div class="summary-card">
+        <div class="summary-number">{{ summary.totalRuntimeMinutes / 60 | number : '1.0-0' }}</div>
+        <div class="summary-label">Hours Watched</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-number">{{ summary.averageRuntimeMinutes | number : '1.0-0' }}</div>
+        <div class="summary-label">Avg Runtime (min)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="summary-group">
+    <h3 class="group-title">Collection</h3>
+    <div class="summary-cards">
+      <div class="summary-card">
+        <div class="summary-number">
+          {{ summary.earliestYearWatched || '-' }} → {{ summary.latestYearWatched || '-' }}
+        </div>
+        <div class="summary-label">Year Range</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="summary-group">
+    <h3 class="group-title">Recent Activity</h3>
+    <div class="summary-cards">
+      <div class="summary-card">
+        <div class="summary-number">
+          {{
+            summary.lastAddedToWatchAt ? (summary.lastAddedToWatchAt | date : 'mediumDate') : '-'
+          }}
+        </div>
+        <div class="summary-label">Last Added to Watch</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-number">
+          {{ summary.lastWatchedAt ? (summary.lastWatchedAt | date : 'mediumDate') : '-' }}
+        </div>
+        <div class="summary-label">Last Watched</div>
+      </div>
+    </div>
   </div>
 </div>

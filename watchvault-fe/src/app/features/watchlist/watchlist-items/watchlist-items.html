@@ -1,16 +1,18 @@
 <app-loading-spinner
   *ngIf="isLoading"
-  text="Loading trending movies ..."
+  text="Loading watchlist items ..."
   [size]="3"
 ></app-loading-spinner>
 
 <app-error-message
   *ngIf="!isLoading && error"
   [message]="error"
-  retryText="Failed to browse trending movies. Try again later!"
+  retryText="Failed to browse watchlist items. Try again later!"
 ></app-error-message>
 
-<div *ngIf="!isLoading && items.length === 0" class="empty mt-2">No movies found.</div>
+<div *ngIf="!isLoading && !error && items.length === 0" class="empty mt-2">
+  No movies added yet to watchlist.
+</div>
 
 <div class="items-grid" *ngIf="items.length > 0">
   <app-watchlist-item-card *ngFor="let item of items" [item]="item"></app-watchlist-item-card>
