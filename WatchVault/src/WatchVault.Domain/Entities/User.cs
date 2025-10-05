@@ -7,11 +7,14 @@ public class User : Entity
     public string LastName { get; private set; } = default!;
     public string UserName { get; private set; } = default!;
     public string Email { get; private set; } = default!;
+    public Guid ImageId { get; private set; } = default!;
 
     private User() { }
 
     public static User Create(Guid id,
-        string firstName, string lastName, string userName, string email)
+        string firstName, string lastName,
+        string userName, string email,
+        Guid imageId)
     {
         return new User()
         {
@@ -19,7 +22,8 @@ public class User : Entity
             FirstName = firstName,
             LastName = lastName,
             UserName = userName,
-            Email = email
+            Email = email,
+            ImageId = imageId,
         };
     }
 }

@@ -13,14 +13,21 @@ public static class AuthEndpoints
     {
         var auth = app.MapGroup("/api/auth");
 
-        auth.MapPost("/register", async ([FromBody] RegisterCommand command, IMediator mediator) =>
+        auth.MapPost("/register", async ([FromForm] RegisterDto dto, IMediator mediator) =>
         {
+            var command = new RegisterCommand(dto.FirstName,
+                dto.LastName,
+                dto.Username,
+                dto.Email,
+                dto.Password,
+                dto.File);
             await mediator.Send(command);
-            return Results.Ok();
+            return Results.Created();
         })
         .Produces(StatusCodes.Status201Created)
         .Produces(StatusCodes.Status400BadRequest)
-        .Produces(StatusCodes.Status500InternalServerError);
+        .Produces(StatusCodes.Status500InternalServerError)
+        .DisableAntiforgery();
 
         auth.MapGet("/retrieve-token", async (string username, string password, IMediator mediator) =>
         {

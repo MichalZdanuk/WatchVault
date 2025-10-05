@@ -33,6 +33,16 @@ services:
     ports:
       - "6379:6379"
 
+  azurite:
+    container_name: azurite
+    image: mcr.microsoft.com/azure-storage/azurite
+    restart: always
+    ports:
+      - "10000:10000"
+    volumes:
+      - ./azurite_data:/data
+    command: "azurite-blob --blobHost 0.0.0.0 --location /data"
+
   watchvault.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
@@ -53,11 +63,14 @@ services:
       - Simkl__BaseAddress=https://api.simkl.com
       - CorsPolicy__PolicyName=CustomPolicy
       - CorsPolicy__AllowedOrigins__0=http://localhost:4200
+      - AzureStorage__ConnectionString=DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://azurite:10000/devstoreaccount1;
+      - AzureStorage__BlobContainerName=files
 
     depends_on:
       - watchvaultdb
       - identity
       - redis
+      - azurite
     ports:
       - "6000:8080"
       - "6060:8081"

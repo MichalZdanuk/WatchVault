@@ -38,6 +38,8 @@ public static class DependencyInjection
             return new SimklServiceCachingDecorator(inner, cache);
         });
 
+        services.AddAzuriteBlobStorage(configuration);
+
         return services;
     }
 
@@ -54,6 +56,13 @@ public static class DependencyInjection
                 EndPoints = { redisConnection }
             };
         });
+
+        return services;
+    }
+
+    private static IServiceCollection AddAzuriteBlobStorage(this IServiceCollection services, IConfiguration configuration)
+    {
+        services.AddScoped<IBlobService, BlobService>();
 
         return services;
     }

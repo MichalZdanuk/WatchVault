@@ -9,6 +9,7 @@ public static class MappingExtensions
         app.MapTestEndpoints();
         app.MapSimklMovieEndpoints();
         app.MapWatchListEndpoints();
+        app.MapUserEndpoints();
 
         return app;
     }
