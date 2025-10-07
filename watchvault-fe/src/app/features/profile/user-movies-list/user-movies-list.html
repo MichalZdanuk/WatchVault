@@ -1,7 +1,12 @@
 <div>
   <div class="d-flex justify-content-between align-items-center mb-2">
     <h4 class="mb-0">{{ title }}</h4>
-    <a class="small accent-color" [routerLink]="['/watchlist']">See all</a>
+    <a
+      class="small accent-color"
+      [routerLink]="['/watchlist']"
+      [queryParams]="{ tab: title === 'Recently Watched' ? 'watched' : 'toWatch' }"
+      >See all</a
+    >
   </div>
 
   <div *ngIf="!shownMovies?.length" class="empty-box p-3 rounded text-light text-center">

@@ -1,4 +1,4 @@
-<h2 class="mt-4">Statistics</h2>
+<h2 class="mt-4">Overall Statistics</h2>
 
 <app-loading-spinner
   *ngIf="isLoading"
@@ -42,13 +42,13 @@
   </div>
 
   <div class="summary-group">
-    <h3 class="group-title">Collection</h3>
+    <h3 class="group-title">Watched Range</h3>
     <div class="summary-cards">
       <div class="summary-card">
         <div class="summary-number">
           {{ summary.earliestYearWatched || '-' }} → {{ summary.latestYearWatched || '-' }}
         </div>
-        <div class="summary-label">Year Range</div>
+        <div class="summary-label">Year Range (Watched)</div>
       </div>
     </div>
   </div>

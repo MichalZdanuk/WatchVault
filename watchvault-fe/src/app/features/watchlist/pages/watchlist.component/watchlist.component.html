@@ -6,7 +6,11 @@
     ></app-info-icon>
   </h1>
 
-  <mat-tab-group class="mb-4">
+  <mat-tab-group
+    [(selectedIndex)]="selectedTabIndex"
+    (selectedIndexChange)="onTabChange($event)"
+    class="mb-4"
+  >
     <mat-tab label="To Watch">
       <app-watchlist-items [status]="Status.ToWatch"></app-watchlist-items>
     </mat-tab>
