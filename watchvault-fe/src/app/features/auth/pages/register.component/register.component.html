@@ -139,6 +139,19 @@
           </small>
         </div>
 
+        <div class="col-12">
+          <label class="form-label">Profile Picture</label>
+          <input
+            type="file"
+            accept="image/png, image/jpeg"
+            class="form-control"
+            (change)="onFileSelected($event)"
+          />
+          <small class="validation-message" [class.visible]="!selectedFile">
+            Profile image is required (PNG/JPG file)
+          </small>
+        </div>
+
         <div class="col-12 d-grid">
           <button type="submit" class="btn primary-btn" [disabled]="registerForm.invalid">
             Sign up

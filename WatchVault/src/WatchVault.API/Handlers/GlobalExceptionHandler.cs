@@ -19,6 +19,7 @@ public class GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger) : IE
             BadRequestException badRequestException => (HttpStatusCode.BadRequest, badRequestException.Message),
             NotFoundException notFoundException => (HttpStatusCode.NotFound, notFoundException.Message),
             ForbiddenException forbiddenException => (HttpStatusCode.Forbidden, forbiddenException.Message),
+            ConflictException conflictException => (HttpStatusCode.Conflict, conflictException.Message),
             _ => (HttpStatusCode.InternalServerError, "An unexpected error occurred.")
         };
 

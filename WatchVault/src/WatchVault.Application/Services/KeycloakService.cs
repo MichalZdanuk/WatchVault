@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.Options;
+using System.Net;
 using System.Net.Http.Json;
 using System.Text.Json;
+using WatchVault.Application.Exceptions;
 using WatchVault.Application.Options;
 
 namespace WatchVault.Application.Services;
@@ -43,6 +45,9 @@ public class KeycloakService : IUserRegistrationService
             new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
         var resp = await _httpClient.SendAsync(request);
+
+        await VerifyIfConflictedResponse(resp);
+
         resp.EnsureSuccessStatusCode();
 
         var location = resp.Headers.Location?.ToString()
@@ -96,5 +101,27 @@ public class KeycloakService : IUserRegistrationService
             throw new InvalidOperationException("Keycloak token response does not contain access_token.");
 
         return accessToken.GetString()!;
+    }
+
+    private async Task VerifyIfConflictedResponse(HttpResponseMessage resp)
+    {
+        if (resp.StatusCode == HttpStatusCode.Conflict)
+        {
+            var content = await resp.Content.ReadAsStringAsync();
+
+            try
+            {
+                var json = JsonDocument.Parse(content);
+                if (json.RootElement.TryGetProperty("errorMessage", out var messageProp))
+                {
+                    var message = messageProp.GetString() ?? "Username or email already exists.";
+                    throw new UserCredentialsAlreadyTakenException(message);
+                }
+            }
+            catch (JsonException)
+            {
+                throw new UserCredentialsAlreadyTakenException("Conflict occurred while creating user.");
+            }
+        }
     }
 }

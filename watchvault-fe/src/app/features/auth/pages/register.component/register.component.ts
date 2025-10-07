@@ -18,6 +18,7 @@ export class RegisterComponent implements OnInit {
   errorMessage: string = '';
   hidePassword: boolean = true;
   hideConfirmPassword: boolean = true;
+  selectedFile: File | null = null;
 
   constructor(
     private authService: AuthService,
@@ -34,7 +35,30 @@ export class RegisterComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', Validators.required],
+      file: ['', Validators.required],
     });
+  }
+
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (!input.files?.length) return;
+
+    const file = input.files[0];
+    const validTypes = ['image/png', 'image/jpeg'];
+
+    if (!validTypes.includes(file.type)) {
+      this.snackBar.open('Please upload a valid PNG or JPG image.', '', {
+        panelClass: ['error-snackbar'],
+        duration: 3000,
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom',
+      });
+      this.registerForm.patchValue({ file: null });
+      return;
+    }
+
+    this.selectedFile = file;
+    this.registerForm.patchValue({ file });
   }
 
   onSubmit(): void {
@@ -46,13 +70,23 @@ export class RegisterComponent implements OnInit {
       next: () => {
         this.router.navigate(['/login']);
       },
-      error: () => {
-        this.snackBar.open('Registration failed. Please try again later.', '', {
-          panelClass: ['error-snackbar'],
-          duration: 3000,
-          horizontalPosition: 'center',
-          verticalPosition: 'bottom',
-        });
+      error: (err) => {
+        console.log(err);
+        if (err.status === 409 && err.error?.Message) {
+          this.snackBar.open(err.error.Message, '', {
+            panelClass: ['error-snackbar'],
+            duration: 3000,
+            horizontalPosition: 'center',
+            verticalPosition: 'bottom',
+          });
+        } else {
+          this.snackBar.open('Registration failed. Please try again later.', '', {
+            panelClass: ['error-snackbar'],
+            duration: 3000,
+            horizontalPosition: 'center',
+            verticalPosition: 'bottom',
+          });
+        }
       },
     });
   }

@@ -15,7 +15,19 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   register(register: Register): Observable<void> {
-    return this.http.post<void>(this.apiUrl + '/register', register);
+    const formData = new FormData();
+
+    formData.append('firstName', register.firstName);
+    formData.append('lastName', register.lastName);
+    formData.append('username', register.username);
+    formData.append('email', register.email);
+    formData.append('password', register.password);
+
+    if (register.file) {
+      formData.append('file', register.file);
+    }
+
+    return this.http.post<void>(this.apiUrl + '/register', formData);
   }
 
   login(login: Login): Observable<LoginResponse> {
