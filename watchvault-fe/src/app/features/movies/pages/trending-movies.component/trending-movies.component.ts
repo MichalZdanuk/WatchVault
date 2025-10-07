@@ -72,15 +72,37 @@ export class TrendingMoviesComponent implements OnInit {
   private applySorting(): void {
     this.filteredTrendingMovies = [...this.trendingMovies];
 
-    if (this.sortOrder === 'popularity') {
-    } else if (this.sortOrder === 'title') {
-      this.filteredTrendingMovies.sort((a, b) => a.title.localeCompare(b.title));
-    } else if (this.sortOrder === 'release_date') {
-      this.filteredTrendingMovies.sort(
-        (a, b) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime()
-      );
-    } else if (this.sortOrder === 'imdb_rating') {
-      this.filteredTrendingMovies.sort((a, b) => (b.imdbRating ?? 0) - (a.imdbRating ?? 0));
+    switch (this.sortOrder) {
+      case 'title_asc':
+        this.filteredTrendingMovies.sort((a, b) => a.title.localeCompare(b.title));
+        break;
+      case 'title_desc':
+        this.filteredTrendingMovies.sort((a, b) => b.title.localeCompare(a.title));
+        break;
+      case 'release_date_asc':
+        this.filteredTrendingMovies.sort(
+          (a, b) => new Date(a.releaseDate).getTime() - new Date(b.releaseDate).getTime()
+        );
+        break;
+      case 'release_date_desc':
+        this.filteredTrendingMovies.sort(
+          (a, b) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime()
+        );
+        break;
+      case 'imdb_rating_asc':
+        this.filteredTrendingMovies.sort((a, b) => (a.imdbRating ?? 0) - (b.imdbRating ?? 0));
+        break;
+      case 'imdb_rating_desc':
+        this.filteredTrendingMovies.sort((a, b) => (b.imdbRating ?? 0) - (a.imdbRating ?? 0));
+        break;
+      case 'runtime_minutes_asc':
+        this.filteredTrendingMovies.sort((a, b) => a.runtimeMinutes - b.runtimeMinutes);
+        break;
+      case 'runtime_minutes_desc':
+        this.filteredTrendingMovies.sort((a, b) => b.runtimeMinutes - a.runtimeMinutes);
+        break;
+      default:
+        break;
     }
   }
 }

@@ -6,6 +6,7 @@ public record SimklTrendingMovieDto(
     string ReleaseDate,
     double? ImdbRating,
     string Runtime,
+    int RuntimeMinutes,
     string Overview,
     string Metadata
 );

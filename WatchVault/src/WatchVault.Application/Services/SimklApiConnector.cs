@@ -2,6 +2,7 @@
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text.Json.Serialization;
+using WatchVault.Application.Helpers;
 using WatchVault.Application.Options;
 using WatchVault.Application.ValueObjects;
 using WatchVault.Shared.Pagination;
@@ -87,6 +88,7 @@ public class SimklApiConnector : ISimklApiConnector
             r.ReleaseDate,
             r.Ratings?.Simkl?.Rating,
             r.Runtime,
+            RuntimeParser.GetRuntimeMinutes(r.Runtime),
             r.Overview,
             CleanMetadata(r.Metadata)
         )).ToList() ?? new();

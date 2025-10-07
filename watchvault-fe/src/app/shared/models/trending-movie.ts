@@ -5,6 +5,7 @@ export interface TrendingMovie {
   releaseDate: string;
   imdbRating: number | null;
   runtime: string;
+  runtimeMinutes: number;
   overview: string;
   metadata: string;
 }

@@ -15,6 +15,7 @@ public class SimklTrendingMoviesQueryHandler(ISimklApiConnector simkl)
             m.ReleaseDate,
             m.ImdbRating,
             m.Runtime,
+            m.RuntimeMinutes,
             m.Overview,
             m.Metadata
         )).ToList();

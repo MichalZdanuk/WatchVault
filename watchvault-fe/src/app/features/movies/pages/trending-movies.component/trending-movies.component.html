@@ -17,9 +17,14 @@
       <mat-form-field appearance="fill" class="filter-select">
         <mat-select [value]="sortOrder" (selectionChange)="onSortChange($event.value)">
           <mat-option value="popularity">Popularity</mat-option>
-          <mat-option value="title">Title</mat-option>
-          <mat-option value="release_date">Release Date</mat-option>
-          <mat-option value="imdb_rating">IMDb Rating</mat-option>
+          <mat-option value="title_asc">Title A–Z</mat-option>
+          <mat-option value="title_desc">Title Z–A</mat-option>
+          <mat-option value="release_date_desc">Newest</mat-option>
+          <mat-option value="release_date_asc">Oldest</mat-option>
+          <mat-option value="imdb_rating_asc">Rating 🔼</mat-option>
+          <mat-option value="imdb_rating_desc">Rating 🔽</mat-option>
+          <mat-option value="runtime_minutes_desc">Longest</mat-option>
+          <mat-option value="runtime_minutes_asc">Shortest</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
