@@ -31,7 +31,7 @@ public class SimklApiConnector : ISimklApiConnector
             r.Title,
             r.Year,
             r.EndpointType,
-            $"https://simkl.in/posters/{r.Poster}_m.jpg",
+            string.IsNullOrEmpty(r.Poster) ? string.Empty : $"https://simkl.in/posters/{r.Poster}_m.jpg",
             r.Ids.SimklId
         )).ToList() ?? new();
 
@@ -56,8 +56,8 @@ public class SimklApiConnector : ISimklApiConnector
             raw.Year,
             raw.Type,
             raw.Ids.Simkl,
-            $"https://simkl.in/posters/{raw.Poster}_m.jpg",
-            $"https://simkl.in/fanart/{raw.Fanart}_mobile.jpg",
+            string.IsNullOrEmpty(raw.Poster) ? string.Empty : $"https://simkl.in/posters/{raw.Poster}_m.jpg",
+            string.IsNullOrEmpty(raw.Fanart) ? string.Empty : $"https://simkl.in/fanart/{raw.Fanart}_mobile.jpg",
             releasedDate,
             raw.Runtime,
             raw.Ratings?.Imdb?.Rating,
@@ -68,7 +68,7 @@ public class SimklApiConnector : ISimklApiConnector
                 new UserRecommendation(
                     u.Title,
                     u.Year,
-                    $"https://simkl.in/posters/{u.Poster}_w.jpg",
+                    string.IsNullOrEmpty(u.Poster) ? string.Empty : $"https://simkl.in/posters/{u.Poster}_w.jpg",
                     u.Ids.Simkl
                 )).ToList() ?? new List<UserRecommendation>()
                 );
@@ -82,7 +82,7 @@ public class SimklApiConnector : ISimklApiConnector
         var items = raw?.Select(r => new SimklTrendingMovie(
             r.Title,
             r.Url,
-            $"https://simkl.in/posters/{r.Poster}_m.jpg",
+            string.IsNullOrEmpty(r.Poster) ? string.Empty : $"https://simkl.in/posters/{r.Poster}_m.jpg",
             r.Ids.SimklId,
             r.ReleaseDate,
             r.Ratings?.Simkl?.Rating,

@@ -4,7 +4,17 @@
       <mat-card-title>{{ movieDetails.title }} ({{ movieDetails.year }})</mat-card-title>
     </mat-card-header>
 
-    <img mat-card-image [src]="movieDetails.fanartUrl" alt="Fanart for {{ movieDetails.title }}" />
+    <img
+      mat-card-image
+      [src]="
+        movieDetails.posterUrl
+          ? movieDetails.posterUrl
+          : movieDetails.fanartUrl
+          ? movieDetails.fanartUrl
+          : 'assets/movies/moviePosterUnavailable.png'
+      "
+      alt="Fanart for {{ movieDetails.title }}"
+    />
 
     <mat-card-content>
       <p class="overview">{{ movieDetails.overview }}</p>

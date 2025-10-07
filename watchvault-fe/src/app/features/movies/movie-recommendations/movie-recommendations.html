@@ -8,7 +8,11 @@
       *ngFor="let rec of recommendations"
       [routerLink]="['/movies', rec.simklId]"
     >
-      <img mat-card-image [src]="rec.poster" [alt]="rec.title" />
+      <img
+        mat-card-image
+        [src]="rec.poster ? rec.poster : 'assets/movies/moviePosterUnavailable.png'"
+        [alt]="rec.title"
+      />
       <mat-card-content>
         <p class="rec-title">{{ rec.title }}</p>
         <p class="rec-year">{{ rec.year || 'N/A' }}</p>

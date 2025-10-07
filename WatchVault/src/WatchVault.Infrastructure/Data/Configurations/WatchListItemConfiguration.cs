@@ -16,10 +16,10 @@ public class WatchListItemConfiguration
             movieBuilder.Property(x => x.SimklId).IsRequired();
             movieBuilder.Property(x => x.Title).IsRequired();
             movieBuilder.Property(x => x.Year).IsRequired();
-            movieBuilder.Property(x => x.PosterUrl).IsRequired();
+            movieBuilder.Property(x => x.PosterUrl).IsRequired(false);
             movieBuilder.Property(x => x.ReleaseDate).IsRequired(false);
             movieBuilder.Property(x => x.RuntimeMinutes).IsRequired(false);
-            movieBuilder.Property(x => x.Director).IsRequired();
+            movieBuilder.Property(x => x.Director).IsRequired(false);
             movieBuilder.Property(x => x.Overview).IsRequired();
         });
     }
