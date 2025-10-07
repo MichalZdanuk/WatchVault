@@ -57,9 +57,9 @@ public sealed class GetCurrentUserQueryHandler(IUserContext userContext,
 
         return new UserProfileDto(
             user.Id,
+            user.UserName,
             user.FirstName,
             user.LastName,
-            user.UserName,
             user.Email,
             stats,
             watchedMovies,
