@@ -4,5 +4,5 @@ export interface Register {
   username: string;
   email: string;
   password: string;
-  file?: File | null;
+  file: File;
 }

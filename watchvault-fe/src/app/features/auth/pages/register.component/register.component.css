@@ -108,3 +108,15 @@
 .validation-message.visible {
   visibility: visible;
 }
+
+.required {
+  color: var(--bs-danger, #dc3545);
+  margin-left: 2px;
+}
+
+.file-hint {
+  display: block;
+  margin-top: 0.4rem;
+  color: #6fa8dc;
+  font-size: 0.9rem;
+}
