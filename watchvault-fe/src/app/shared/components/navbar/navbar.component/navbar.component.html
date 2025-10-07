@@ -1,8 +1,7 @@
 <div class="navbar-container">
   <div>
-    <mat-toolbar class="navbar-toolbar">
+    <mat-toolbar class="navbar-toolbar mt-3">
       <span>🎥 WatchVault</span>
-      <span class="user-info">Logged as: {{ username }}</span>
     </mat-toolbar>
 
     <mat-nav-list class="navbar-list">
@@ -21,6 +20,7 @@
     </mat-nav-list>
   </div>
   <div class="logout-section">
+    <span class="user-info">Logged as: {{ username }}</span>
     <button mat-list-item (click)="onLogout()">
       <mat-icon class="nav-icon">logout</mat-icon> <span>Logout</span>
     </button>
