@@ -26,4 +26,9 @@ public class User : Entity
             ImageId = imageId,
         };
     }
+
+    public void UpdateImage(Guid imageId)
+    {
+        ImageId = imageId;
+    }
 }

@@ -40,4 +40,10 @@ public sealed class BlobService : IBlobService
 
         return null;
     }
+
+    public async Task DeleteAsync(Guid fileId)
+    {
+        var blobClient = _containerClient.GetBlobClient(fileId.ToString());
+        await blobClient.DeleteIfExistsAsync();
+    }
 }

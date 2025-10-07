@@ -22,4 +22,10 @@ public class UserRepository : IUserRepository
         return await _context.Users
             .SingleOrDefaultAsync(u => u.Id == id);
     }
+
+    public Task UpdateAsync(User user)
+    {
+        _context.Users.Update(user);
+        return Task.CompletedTask;
+    }
 }

@@ -1,4 +1,6 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using WatchVault.Application.Commands.UploadAvatar;
 using WatchVault.Application.DTO;
 using WatchVault.Application.Queries.GetCurrentUser;
 using WatchVault.Application.Queries.GetUserAvatar;
@@ -21,6 +23,17 @@ public static class UserEndpoints
         .Produces(StatusCodes.Status401Unauthorized)
         .Produces(StatusCodes.Status404NotFound)
         .Produces(StatusCodes.Status500InternalServerError);
+
+        user.MapPost("/avatar", async ([FromForm] UploadAvatarDto dto, IMediator mediator) =>
+        {
+            var result = await mediator.Send(new UploadAvatarCommand(dto.File));
+
+            return Results.NoContent();
+        })
+        .Produces(StatusCodes.Status204NoContent)
+        .Produces(StatusCodes.Status401Unauthorized)
+        .Produces(StatusCodes.Status500InternalServerError)
+        .DisableAntiforgery();
 
         user.MapGet("/me", async (IMediator mediator) =>
         {
