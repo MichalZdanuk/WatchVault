@@ -1,4 +1,5 @@
 ﻿using WatchVault.Application.Common;
+using WatchVault.Application.Exceptions;
 using WatchVault.Application.Repositories;
 using WatchVault.Application.Services;
 
@@ -21,7 +22,7 @@ public sealed class GetUserAvatarQueryHandler(IUserContext userContext,
 
         if (blob is null)
         {
-            throw new FileNotFoundException("Avatar not found.");
+            throw new AvatarNotFoundException(userContext.UserId);
         }
 
         return new FileResponseDto(blob.Value.Stream, blob.Value.ContentType);

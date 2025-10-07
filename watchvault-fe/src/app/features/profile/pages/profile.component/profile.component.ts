@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../../core/services/auth.service';
 import { UserProfile } from '../../../../shared/models/user-profile';
 import { CommonModule } from '@angular/common';
 import { UserProfileHeader } from '../../user-profile-header/user-profile-header';
@@ -7,6 +6,7 @@ import { UserStatistics } from '../../user-statistics/user-statistics';
 import { UserMoviesList } from '../../user-movies-list/user-movies-list';
 import { LoadingSpinner } from '../../../../shared/components/loading-spinner/loading-spinner';
 import { ErrorMessage } from '../../../../shared/components/error-message/error-message';
+import { UserService } from '../../../../core/services/user.service';
 
 @Component({
   selector: 'app-profile.component',
@@ -26,7 +26,7 @@ export class ProfileComponent implements OnInit {
   isLoading: boolean = true;
   error: string | null = null;
 
-  constructor(private authService: AuthService) {}
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
     this.reloadProfile();
@@ -35,7 +35,7 @@ export class ProfileComponent implements OnInit {
   reloadProfile(): void {
     this.isLoading = true;
     this.error = null;
-    this.authService.getCurrentUserProfile().subscribe({
+    this.userService.getCurrentUserProfile().subscribe({
       next: (p) => {
         this.userProfile = p;
         this.isLoading = false;
