@@ -11,6 +11,7 @@ public class WatchList : Aggregate
 
     public int TotalWatched => _items.Count(x => x.WatchStatus == WatchStatus.Watched);
     public int TotalToWatch => _items.Count(x => x.WatchStatus == WatchStatus.ToWatch);
+    public int TotalFavourites => _items.Count(x => x.IsFavourite);
     public int TotalRuntimeMinutes => _items
         .Where(x => x.WatchStatus == WatchStatus.Watched)
         .Sum(x => x.Movie.RuntimeMinutes ?? 0);

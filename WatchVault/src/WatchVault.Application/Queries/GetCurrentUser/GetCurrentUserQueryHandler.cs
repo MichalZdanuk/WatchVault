@@ -20,7 +20,12 @@ public sealed class GetCurrentUserQueryHandler(IUserContext userContext,
 
         var watchList = await unitOfWork.WatchListRepository.GetByUserIdAsync(userId);
 
-        var watchedMovies = watchList?.Items
+        if (watchList is null)
+        {
+            throw new InvalidOperationException($"User {userContext.UserId} has no watchlist.");
+        }
+
+        var watchedMovies = watchList.Items
             .Where(i => i.WatchStatus == WatchStatus.Watched)
             .OrderByDescending(i => i.WatchedAt)
             .Take(10)
@@ -32,7 +37,7 @@ public sealed class GetCurrentUserQueryHandler(IUserContext userContext,
             .ToList()
             ?? new List<MovieSummaryDto>();
 
-        var toWatchMovies = watchList?.Items
+        var toWatchMovies = watchList.Items
             .Where(i => i.WatchStatus == WatchStatus.ToWatch)
             .OrderByDescending(i => i.AddedToWatchAt)
             .Take(10)
@@ -45,9 +50,9 @@ public sealed class GetCurrentUserQueryHandler(IUserContext userContext,
             ?? new List<MovieSummaryDto>();
 
         var stats = new UserStatsDto(
-            watchList?.TotalWatched ?? 0,
-            watchList?.TotalToWatch ?? 0,
-            0
+            watchList.TotalWatched,
+            watchList.TotalToWatch,
+            watchList.TotalFavourites
         );
 
         return new UserProfileDto(
