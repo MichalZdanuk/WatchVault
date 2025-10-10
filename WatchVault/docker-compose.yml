@@ -17,5 +17,12 @@ services:
   azurite:
     image: mcr.microsoft.com/azure-storage/azurite
 
+  frontend:
+    build:
+      context: ../watchvault-fe
+      dockerfile: Dockerfile
+    networks:
+      - default
+
 volumes:
   postgres_watchvaultdb:
