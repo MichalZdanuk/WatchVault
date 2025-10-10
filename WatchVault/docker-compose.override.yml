@@ -10,6 +10,7 @@ services:
       - "5432:5432"
     volumes:
       - postgres_watchvaultdb:/var/lib/postgresql/data
+      - ./docker/postgres-init:/docker-entrypoint-initdb.d 
 
   identity:
     container_name: identity
@@ -51,10 +52,10 @@ services:
       - ConnectionStrings__Database=Server=watchvaultdb;Port=5432;Database=WatchVaultDb;User Id=postgres;Password=postgres;Include Error Detail=true
       - ConnectionStrings__Redis=redis:6379
       - Omdb__ApiKey=apiKey
-      - Keycloak__AuthServerUrl=http://identity:9090/
+      - Keycloak__AuthServerUrl=http://identity:8080/
       - KeyCloak__Realm=myrealm
       - KeyCloak__ClientId=my-api
-      - KeyCloak__ClientSecret=rzpznnQsHu75mq0nLIto8Q2LTa0rrB62
+      - KeyCloak__ClientSecret=zeYNaWgRa3NMlCXfQXDLfoYPIO5nQ4Qo
       - KeyCloak__ssl-required=none
       - KeyCloak__resource=my-api
       - KeyCloak__verify-token-audience=false
