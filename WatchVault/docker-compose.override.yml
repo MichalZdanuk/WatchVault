@@ -46,6 +46,8 @@ services:
     command: "azurite-blob --blobHost 0.0.0.0 --location /data"
 
   watchvault.api:
+    env_file:
+      - .env
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
@@ -61,7 +63,7 @@ services:
       - KeyCloak__resource=my-api
       - KeyCloak__verify-token-audience=false
       - KeyCloak__GrantType=password
-      - Simkl__ApiKey=your_api_key
+      - Simkl__ApiKey=${SIMKL_API_KEY}
       - Simkl__BaseAddress=https://api.simkl.com
       - CorsPolicy__PolicyName=CustomPolicy
       - CorsPolicy__AllowedOrigins__0=http://localhost:4200
