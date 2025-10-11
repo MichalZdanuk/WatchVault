@@ -1,5 +1,5 @@
 ﻿namespace WatchVault.Application.DTO;
-public record SimklTrendingMovieDto(
+public record TrendingMovieDto(
     int SimklId,
     string Title,
     string PosterUrl,

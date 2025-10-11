@@ -1,14 +1,14 @@
 ﻿using WatchVault.Application.Services;
 
-namespace WatchVault.Application.Queries.SimkGetlTrendingMovies;
+namespace WatchVault.Application.Queries.GetTrendingMovies;
 public class SimklTrendingMoviesQueryHandler(ISimklApiConnector simkl)
-    : IQueryHandler<SimklGetTrendingMoviesQuery, List<SimklTrendingMovieDto>>
+    : IQueryHandler<GetTrendingMoviesQuery, List<TrendingMovieDto>>
 {
-    public async Task<List<SimklTrendingMovieDto>> Handle(SimklGetTrendingMoviesQuery query, CancellationToken ct)
+    public async Task<List<TrendingMovieDto>> Handle(GetTrendingMoviesQuery query, CancellationToken ct)
     {
         var response = await simkl.GetTrendingMoviesAsync(query.Period);
 
-        return response.Items.Select(m => new SimklTrendingMovieDto(
+        return response.Items.Select(m => new TrendingMovieDto(
             m.SimklId,
             m.Title,
             m.Poster,

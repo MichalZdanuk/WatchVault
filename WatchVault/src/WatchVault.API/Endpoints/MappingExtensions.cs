@@ -6,7 +6,7 @@ public static class MappingExtensions
     {
         app.MapAuthEndpoints();
         app.MapTestEndpoints();
-        app.MapSimklMovieEndpoints();
+        app.MapMovieEndpoints();
         app.MapWatchListEndpoints();
         app.MapUserEndpoints();
 

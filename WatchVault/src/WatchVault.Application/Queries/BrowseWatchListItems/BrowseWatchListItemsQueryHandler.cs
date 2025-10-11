@@ -36,7 +36,7 @@ public sealed class BrowseWatchListItemsQueryHandler(IUserContext userContext,
                 item.AddedToWatchAt,
                 item.WatchedAt,
                 item.IsFavourite,
-                new SimklMovieDto(
+                new MovieWatchlistItemDto(
                     item.Movie.SimklId,
                     item.Movie.Title,
                     item.Movie.Year,

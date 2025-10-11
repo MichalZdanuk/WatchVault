@@ -3,10 +3,8 @@ import { MovieDetails } from '../../../shared/models/movie-details';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
-import { Router } from '@angular/router';
 import { MovieRecommendations } from '../movie-recommendations/movie-recommendations';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { SimklService } from '../../../core/services/simkl.service';
 import { WatchlistService } from '../../../core/services/watchlist-service';
 import { Status } from '../../../shared/models/status';
 
@@ -21,18 +19,14 @@ export class MovieDetailsCard {
 
   protected readonly Status = Status;
 
-  constructor(
-    private watchlistService: WatchlistService,
-    private router: Router,
-    private snackBar: MatSnackBar
-  ) {}
+  constructor(private watchlistService: WatchlistService, private snackBar: MatSnackBar) {}
 
   addToWatchlist(simklId: number): void {
     this.watchlistService.addWatchListItem(simklId, Status.ToWatch).subscribe({
       next: () => {
         this.movieDetails.status = Status.ToWatch;
       },
-      error: (err) => {
+      error: () => {
         this.showSnackBarError('Failed to add to watch');
       },
     });
@@ -50,7 +44,7 @@ export class MovieDetailsCard {
       next: () => {
         this.movieDetails.status = Status.Watched;
       },
-      error: (err) => {
+      error: () => {
         this.showSnackBarError('Failed to mark as watched');
       },
     });

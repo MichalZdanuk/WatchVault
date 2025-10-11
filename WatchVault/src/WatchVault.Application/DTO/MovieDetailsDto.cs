@@ -1,7 +1,7 @@
 ﻿using WatchVault.Application.Enums;
 
 namespace WatchVault.Application.DTO;
-public record SimklMovieDetailsDto(
+public record MovieDetailsDto(
     int SimklId,
     string Title,
     int Year,

@@ -10,8 +10,8 @@ import { MovieDetails } from '../../shared/models/movie-details';
 @Injectable({
   providedIn: 'root',
 })
-export class SimklService {
-  private apiUrl = environment.apiUrl + '/simkl/movies';
+export class MovieService {
+  private apiUrl = environment.apiUrl + '/movies';
 
   constructor(private http: HttpClient) {}
 

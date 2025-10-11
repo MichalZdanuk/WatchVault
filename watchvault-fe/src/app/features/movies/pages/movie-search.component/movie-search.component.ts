@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MovieCard } from '../../movie-card/movie-card';
-import { SimklService } from '../../../../core/services/simkl.service';
+import { MovieService } from '../../../../core/services/movie.service';
 import { Movie } from '../../../../shared/models/movie';
 import { FlexModule } from '@angular/flex-layout';
 import { MatInputModule } from '@angular/material/input';
@@ -31,7 +31,7 @@ export class MovieSearchComponent {
   page: number = 1;
   pageSize: number = 20;
 
-  constructor(private simklService: SimklService) {}
+  constructor(private movieService: MovieService) {}
 
   ngOnInit(): void {
     fromEvent<InputEvent>(this.searchInput.nativeElement, 'keyup')
@@ -41,7 +41,7 @@ export class MovieSearchComponent {
         debounceTime(400),
         distinctUntilChanged(),
         switchMap((searchTerm) =>
-          this.simklService.getMovies(searchTerm, this.page, this.pageSize).pipe(
+          this.movieService.getMovies(searchTerm, this.page, this.pageSize).pipe(
             catchError((err) => {
               this.error = '⚠️ Failed to search movies. Please try again.';
               console.error(err);

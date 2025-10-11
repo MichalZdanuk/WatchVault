@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { MovieDetails } from '../../../../shared/models/movie-details';
-import { SimklService } from '../../../../core/services/simkl.service';
+import { MovieService } from '../../../../core/services/movie.service';
 import { CommonModule } from '@angular/common';
 import { MovieDetailsCard } from '../../movie-details-card/movie-details-card';
 import { MatIconModule } from '@angular/material/icon';
@@ -28,7 +28,7 @@ export class MovieDetailsComponent implements OnInit {
   movieId!: number;
   notFound: boolean = false;
 
-  constructor(private activatedRoute: ActivatedRoute, private simklService: SimklService) {}
+  constructor(private activatedRoute: ActivatedRoute, private movieService: MovieService) {}
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params) => {
@@ -46,7 +46,7 @@ export class MovieDetailsComponent implements OnInit {
     this.notFound = false;
     this.movieDetails = null;
 
-    this.simklService.getMovieDetails(this.movieId).subscribe({
+    this.movieService.getMovieDetails(this.movieId).subscribe({
       next: (movieDetails) => {
         this.movieDetails = movieDetails;
         this.isLoading = false;

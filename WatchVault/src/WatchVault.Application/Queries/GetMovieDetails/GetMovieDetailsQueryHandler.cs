@@ -5,13 +5,13 @@ using WatchVault.Application.Repositories;
 using WatchVault.Application.Services;
 using WatchVault.Domain.Enums;
 
-namespace WatchVault.Application.Queries.SimklGetMovieDetails;
-public class SimklGetMovieDetailsQueryHandler(ISimklApiConnector simkl,
+namespace WatchVault.Application.Queries.GetMovieDetails;
+public class GetMovieDetailsQueryHandler(ISimklApiConnector simkl,
     IUnitOfWork unitOfWork,
     IUserContext userContext)
-    : IQueryHandler<SimklGetMovieDetailsQuery, SimklMovieDetailsDto>
+    : IQueryHandler<GetMovieDetailsQuery, MovieDetailsDto>
 {
-    public async Task<SimklMovieDetailsDto> Handle(SimklGetMovieDetailsQuery query, CancellationToken ct)
+    public async Task<MovieDetailsDto> Handle(GetMovieDetailsQuery query, CancellationToken ct)
     {
         var raw = await simkl.GetMovieDetailsAsync(query.SimklId);
         if (raw is null)
@@ -25,7 +25,7 @@ public class SimklGetMovieDetailsQueryHandler(ISimklApiConnector simkl,
         var existing = watchlist.Items.FirstOrDefault(i => i.Movie.SimklId == query.SimklId);
         var status = existing?.WatchStatus;
 
-        return new SimklMovieDetailsDto(
+        return new MovieDetailsDto(
             raw.SimklId,
             raw.Title,
             raw.Year,

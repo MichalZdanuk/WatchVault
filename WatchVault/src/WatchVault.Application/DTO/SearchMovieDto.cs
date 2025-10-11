@@ -1,5 +1,5 @@
 ﻿namespace WatchVault.Application.DTO;
-public record SimklSearchMovieDto(
+public record SearchMovieDto(
     int SimklId,
     string Title,
     int Year,

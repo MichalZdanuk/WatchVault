@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SimklService } from '../../../../core/services/simkl.service';
+import { MovieService } from '../../../../core/services/movie.service';
 import { TrendingMovie } from '../../../../shared/models/trending-movie';
 import { TrendingInterval } from '../../../../shared/models/trending-interval';
 import { CommonModule } from '@angular/common';
@@ -35,7 +35,7 @@ export class TrendingMoviesComponent implements OnInit {
 
   trendingInterval: TrendingInterval = TrendingInterval.Today;
 
-  constructor(private simklService: SimklService) {}
+  constructor(private movieService: MovieService) {}
 
   ngOnInit(): void {
     this.reloadTrendingMovies();
@@ -45,7 +45,7 @@ export class TrendingMoviesComponent implements OnInit {
     this.isLoading = true;
     this.error = null;
 
-    this.simklService.getTrendingMovies(this.trendingInterval).subscribe({
+    this.movieService.getTrendingMovies(this.trendingInterval).subscribe({
       next: (t) => {
         this.trendingMovies = t;
         this.applySorting();
