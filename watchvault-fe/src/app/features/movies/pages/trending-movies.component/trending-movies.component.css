@@ -1,12 +1,12 @@
 .trending-movies-container {
-  padding: 3rem;
+  padding: 1rem 1.5rem;
 }
 
 .trending-movies-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 2rem;
+  margin-bottom: 1.2rem;
 }
 
 .trending-movies-section-title {
