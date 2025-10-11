@@ -26,7 +26,6 @@ public static class DependencyInjection
         services.Configure<KeycloakOptions>(configuration.GetSection("Keycloak"));
         services.Configure<SimklOptions>(configuration.GetSection("Simkl"));
 
-        services.AddHttpClient<IMovieApiService, OmdbMovieApiService>();
         services.AddHttpClient<IUserRegistrationService, KeycloakService>();
 
 
