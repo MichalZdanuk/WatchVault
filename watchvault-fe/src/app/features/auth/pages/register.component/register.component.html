@@ -55,7 +55,7 @@
               registerForm.get('username')?.invalid && registerForm.get('username')?.touched
             "
           >
-            Username must be at least 8 characters
+            Username is required
           </small>
         </div>
 
@@ -160,7 +160,7 @@
         </div>
       </div>
 
-      <div class="text-center mt-3">
+      <div class="text-center mt-2">
         <a class="have-account" [routerLink]="['/login']">Already have an account?</a>
       </div>
     </form>

@@ -21,13 +21,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 1rem 1rem;
 }
 
 .form-side {
   width: 100%;
   max-width: 450px;
   background-color: var(--color-bg-active);
-  padding: 2rem;
+  padding: 0.5rem 1.5rem;
   border-radius: 12px;
   box-shadow: 0 6px 12px var(--color-accent-shadow);
 }
@@ -99,8 +100,8 @@
 .validation-message {
   display: block;
   min-height: 1em;
-  margin-top: 4px;
-  font-size: 0.8rem;
+  margin-top: 2px;
+  font-size: 0.7rem;
   color: var(--bs-danger, #dc3545);
   visibility: hidden;
 }
@@ -116,7 +117,7 @@
 
 .file-hint {
   display: block;
-  margin-top: 0.4rem;
+  margin-top: 0.3rem;
   color: #6fa8dc;
   font-size: 0.9rem;
 }
