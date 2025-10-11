@@ -127,6 +127,24 @@ The main goal was to deliver a **fully functional MVP** quickly while keeping it
 
 ---
 
+## 📝 Swagger
+
+![Swagger](https://github.com/user-attachments/assets/6ad5c898-9bb1-4545-bd00-918469e774f1)  
+
+---
+
+## ❤️‍🩹 Health checks
+
+![HealthChecks](https://github.com/user-attachments/assets/c066088a-851f-4dc1-aa54-2e0fbfc989d2)  
+
+Health checks monitor the status of critical backend services such as PostgreSQL, Redis, Keycloak, and Azure Blob Storage.
+
+![HealthChecksDashboard](https://github.com/user-attachments/assets/a065b09e-a1dd-4a9f-8f8d-ba98a1d43d43)  
+
+The HealthChecks UI dashboard provides a visual overview of all service health metrics in real time.
+
+---
+
 ## 🧩 Requirements  
 
 There are two ways to run the application:  
