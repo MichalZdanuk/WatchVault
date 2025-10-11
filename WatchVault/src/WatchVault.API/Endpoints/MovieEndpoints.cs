@@ -19,7 +19,8 @@ public static class MovieEndpoints
             var movies = await mediator.Send(new SearchMoviesQuery(searchTerm, page, pageSize));
             return Results.Ok(movies);
         })
-        .Produces<List<SearchMovieDto>>(StatusCodes.Status200OK);
+        .Produces<List<SearchMovieDto>>(StatusCodes.Status200OK)
+        .WithTags("Movies");
 
         simkl.MapGet("/{id:int}", async (int id, IMediator mediator) =>
         {
@@ -27,13 +28,15 @@ public static class MovieEndpoints
             return details is not null ? Results.Ok(details) : Results.NotFound();
         })
         .Produces<MovieDetailsDto>(StatusCodes.Status200OK)
-        .Produces(StatusCodes.Status404NotFound);
+        .Produces(StatusCodes.Status404NotFound)
+        .WithTags("Movies");
 
         simkl.MapGet("/trending", async ([FromQuery] TrendingInterval trendingInterval, IMediator mediator) =>
         {
             var trending = await mediator.Send(new GetTrendingMoviesQuery(trendingInterval.ToString()));
             return Results.Ok(trending);
         })
-        .Produces<List<TrendingMovieDto>>(StatusCodes.Status200OK);
+        .Produces<List<TrendingMovieDto>>(StatusCodes.Status200OK)
+        .WithTags("Movies");
     }
 }

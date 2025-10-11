@@ -7,6 +7,8 @@ public static class TestEndpoints
         var test = app.MapGroup("/api/test");
 
         test.MapGet("/ping", () => Results.Ok("pong"))
-            .Produces<string>(StatusCodes.Status200OK);
+            .Produces<string>(StatusCodes.Status200OK)
+            .WithTags("Test")
+            .ExcludeFromDescription();
     }
 }

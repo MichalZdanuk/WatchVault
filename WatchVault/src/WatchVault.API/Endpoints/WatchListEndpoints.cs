@@ -23,7 +23,8 @@ public static class WatchListEndpoints
         })
         .Produces<Guid>(StatusCodes.Status201Created)
         .Produces(StatusCodes.Status400BadRequest)
-        .Produces(StatusCodes.Status500InternalServerError);
+        .Produces(StatusCodes.Status500InternalServerError)
+        .WithTags("Watchlist");
 
         watchList.MapGet("", async (IMediator mediator) =>
         {
@@ -32,7 +33,8 @@ public static class WatchListEndpoints
             return Results.Ok(watchListsummary);
         })
         .Produces<WatchListSummaryDto>(StatusCodes.Status200OK)
-        .Produces(StatusCodes.Status500InternalServerError);
+        .Produces(StatusCodes.Status500InternalServerError)
+        .WithTags("Watchlist");
 
         watchList.MapGet("/items", async ([FromQuery] Status? status, [FromQuery] int pageNumber, [FromQuery] int pageSize, IMediator mediator) =>
         {
@@ -42,7 +44,8 @@ public static class WatchListEndpoints
         })
         .Produces<PagedWatchListItemsDto>(StatusCodes.Status200OK)
         .Produces(StatusCodes.Status401Unauthorized)
-        .Produces(StatusCodes.Status500InternalServerError);
+        .Produces(StatusCodes.Status500InternalServerError)
+        .WithTags("Watchlist");
 
         watchList.MapDelete("/items/{id:Guid}", async (Guid id, IMediator mediator) =>
         {
@@ -52,7 +55,8 @@ public static class WatchListEndpoints
         })
         .Produces(StatusCodes.Status204NoContent)
         .Produces(StatusCodes.Status404NotFound)
-        .Produces(StatusCodes.Status500InternalServerError);
+        .Produces(StatusCodes.Status500InternalServerError)
+        .WithTags("Watchlist");
 
         watchList.MapPost("/items/{id:Guid}/favourite", async (Guid id, IMediator mediator) =>
         {
@@ -62,6 +66,7 @@ public static class WatchListEndpoints
         .Produces(StatusCodes.Status204NoContent)
         .Produces(StatusCodes.Status400BadRequest)
         .Produces(StatusCodes.Status404NotFound)
-        .Produces(StatusCodes.Status500InternalServerError);
+        .Produces(StatusCodes.Status500InternalServerError)
+        .WithTags("Watchlist");
     }
 }

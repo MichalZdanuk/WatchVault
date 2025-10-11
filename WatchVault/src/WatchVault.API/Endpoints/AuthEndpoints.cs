@@ -26,7 +26,8 @@ public static class AuthEndpoints
         .Produces(StatusCodes.Status201Created)
         .Produces(StatusCodes.Status400BadRequest)
         .Produces(StatusCodes.Status500InternalServerError)
-        .DisableAntiforgery();
+        .DisableAntiforgery()
+        .WithTags("Authentication");
 
         auth.MapGet("/retrieve-token", async (string username, string password, IMediator mediator) =>
         {
@@ -36,6 +37,7 @@ public static class AuthEndpoints
         })
         .Produces<RetrieveTokenDto>(StatusCodes.Status200OK)
         .Produces(StatusCodes.Status400BadRequest)
-        .Produces(StatusCodes.Status500InternalServerError);
+        .Produces(StatusCodes.Status500InternalServerError)
+        .WithTags("Authentication");
     }
 }
