@@ -14,7 +14,9 @@ public static class WatchListEndpoints
 {
     public static void MapWatchListEndpoints(this WebApplication app)
     {
-        var watchList = app.MapGroup("/api/watchlist").RequireAuthorization();
+        var watchList = app.MapGroup("/api/watchlist")
+            .RequireAuthorization()
+            .RequireRateLimiting("relaxed");
 
         watchList.MapPost("/add", async ([FromBody] AddMovieCommand command, IMediator mediator) =>
         {

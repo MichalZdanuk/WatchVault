@@ -9,7 +9,7 @@ builder.Services.AddApiOptions(builder.Configuration);
 builder.Services.AddKeycloakWebApiAuthentication(builder.Configuration);
 builder.Services.AddAuthentication();
 builder.Services.AddAuthorization();
-
+builder.Services.AddRateLimiting();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -22,6 +22,8 @@ builder.Services
 builder.Services.AddSwaggerDocumentation();
 
 var app = builder.Build();
+
+app.UseRateLimiting();
 
 if (app.Environment.IsDevelopment())
 {

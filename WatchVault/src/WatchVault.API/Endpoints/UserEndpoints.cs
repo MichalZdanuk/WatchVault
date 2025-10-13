@@ -12,7 +12,8 @@ public static class UserEndpoints
     public static void MapUserEndpoints(this WebApplication app)
     {
         var user = app.MapGroup("/api/user")
-            .RequireAuthorization();
+            .RequireAuthorization()
+            .RequireRateLimiting("relaxed");
 
         user.MapGet("/avatar", async (IMediator mediator) =>
         {

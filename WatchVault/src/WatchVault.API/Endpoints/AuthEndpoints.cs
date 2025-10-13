@@ -10,7 +10,8 @@ public static class AuthEndpoints
 {
     public static void MapAuthEndpoints(this WebApplication app)
     {
-        var auth = app.MapGroup("/api/auth");
+        var auth = app.MapGroup("/api/auth")
+            .RequireRateLimiting("fixed");
 
         auth.MapPost("/register", async ([FromForm] RegisterDto dto, IMediator mediator) =>
         {

@@ -12,7 +12,7 @@ public static class MovieEndpoints
 {
     public static void MapMovieEndpoints(this WebApplication app)
     {
-        var simkl = app.MapGroup("/api/movies");
+        var simkl = app.MapGroup("/api/movies").RequireRateLimiting("fixed");
 
         simkl.MapGet("/search", async ([FromQuery] string searchTerm, [FromQuery] int page, [FromQuery] int pageSize, IMediator mediator) =>
         {

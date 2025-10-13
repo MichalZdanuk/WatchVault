@@ -71,7 +71,9 @@ All screenshots can also be found in the [`/SystemDemonstration`](./SystemDemons
   - Minimal API  
   - Entity Framework Core  
   - MediatR  
-  - FluentValidation  
+  - FluentValidation
+  - HealthChecks
+  - RateLimiting
 - **Redis** (caching layer)  
 - **PostgreSQL**  
 - **Keycloak** (authentication & identity provider)  
