@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
+using WatchVault.Application.Factories;
 using WatchVault.Application.Options;
 using WatchVault.Application.Services;
 using WatchVault.Shared.Behaviors;
@@ -17,6 +18,7 @@ public static class DependencyInjection
         services.AddMediatRWithBehaviors(applicationAssembly);
         services.AddServices(configuration);
         services.AddDistributedRedisCache(configuration);
+        services.AddFactories();
 
         return services;
     }
@@ -62,6 +64,13 @@ public static class DependencyInjection
     private static IServiceCollection AddAzuriteBlobStorage(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddScoped<IBlobService, BlobService>();
+
+        return services;
+    }
+
+    private static IServiceCollection AddFactories(this IServiceCollection services)
+    {
+        services.AddScoped<IWatchListAnalyticsFactory, WatchListAnalyticsFactory>();
 
         return services;
     }

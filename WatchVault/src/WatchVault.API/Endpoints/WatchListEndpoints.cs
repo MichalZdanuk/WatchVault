@@ -7,6 +7,7 @@ using WatchVault.Application.DTO;
 using WatchVault.Application.Enums;
 using WatchVault.Application.Queries.BrowseWatchListItems;
 using WatchVault.Application.Queries.GetWatchList;
+using WatchVault.Application.Queries.GetWatchListAnalytics;
 
 namespace WatchVault.API.Endpoints;
 
@@ -68,6 +69,18 @@ public static class WatchListEndpoints
         .Produces(StatusCodes.Status204NoContent)
         .Produces(StatusCodes.Status400BadRequest)
         .Produces(StatusCodes.Status404NotFound)
+        .Produces(StatusCodes.Status500InternalServerError)
+        .WithTags("Watchlist");
+
+        watchList.MapGet("/analytics", async ([FromQuery] StatisticsPeriod statisticsPeriod,
+            [FromQuery] DateTime startDate, [FromQuery] DateTime endDate, IMediator mediator) =>
+        {
+            var watchListAnalytics = await mediator.Send(new GetWatchListAnalyticsQuery(statisticsPeriod, startDate, endDate));
+
+            return Results.Ok(watchListAnalytics);
+        })
+        .Produces<WatchListAnalyticsDto>(StatusCodes.Status200OK)
+        .Produces(StatusCodes.Status401Unauthorized)
         .Produces(StatusCodes.Status500InternalServerError)
         .WithTags("Watchlist");
     }

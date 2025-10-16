@@ -23,4 +23,28 @@ public class WatchListRepository(WatchVaultDbContext dbContext)
         dbContext.WatchLists.Update(watchList);
         return Task.CompletedTask;
     }
+
+    public async Task<IReadOnlyCollection<WatchListItem>> GetWatchedItemsInRangeAsync(Guid userId, DateTime start, DateTime end)
+    {
+        var watchListId = await dbContext.WatchLists
+            .Where(wl => wl.UserId == userId)
+            .Select(wl => wl.Id)
+            .SingleOrDefaultAsync();
+
+        if (watchListId == Guid.Empty)
+        {
+            return Array.Empty<WatchListItem>();
+        }
+
+        var items = await dbContext.WatchListItems
+            .AsNoTracking()
+            .Where(i => i.WatchListId == watchListId
+                        && i.WatchStatus == Domain.Enums.WatchStatus.Watched
+                        && i.WatchedAt.HasValue
+                        && i.WatchedAt.Value >= start
+                        && i.WatchedAt.Value <= end)
+            .ToListAsync();
+
+        return items;
+    }
 }
