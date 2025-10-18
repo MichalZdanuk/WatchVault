@@ -1,8 +1,13 @@
 <div class="analytics-container">
   <h1 class="d-flex align-items-center gap-2">
     Watchlist Analytics Dashboard
-    <app-info-icon tooltipText="Analyze your watching trends by visual insights."></app-info-icon>
+    <app-info-icon
+      tooltipText="Analyze your watching trends by visual insights and aggregated data."
+    ></app-info-icon>
   </h1>
+  <p class="mt-2 hint-text">
+    Explore your recent activity and track your watch habits through visual insights.
+  </p>
 
   <app-loading-spinner
     *ngIf="isLoading"
@@ -17,7 +22,10 @@
   ></app-error-message>
 
   <div *ngIf="!isLoading && !errorMessage">
-    <h2 class="mt-4">Overall Statistics</h2>
+    <h2 class="mt-4">Your Watch Trends</h2>
+    <p class="mb-3 hint-text">
+      Charts below show how many movies you watched and your total runtime across different periods.
+    </p>
     <div class="charts-grid-top">
       <app-analytics-chart
         [title]="'Last 7 Days'"
