@@ -1,0 +1,15 @@
+<div *ngIf="lastWeekAnalytics">
+  <h2>{{ lastWeekAnalytics.period }} analytics</h2>
+  <table>
+    <tr>
+      <th>Period</th>
+      <th>Watched Count</th>
+      <th>Total Runtime (min)</th>
+    </tr>
+    <tr *ngFor="let item of lastWeekAnalytics.data">
+      <td>{{ item.periodLabel }}</td>
+      <td>{{ item.watchedCount }}</td>
+      <td>{{ item.totalRuntimeMinutes }}</td>
+    </tr>
+  </table>
+</div>

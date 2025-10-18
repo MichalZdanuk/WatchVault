@@ -10,6 +10,7 @@ import { ProfileComponent } from './features/profile/pages/profile.component/pro
 import { TrendingMoviesComponent } from './features/movies/pages/trending-movies.component/trending-movies.component';
 import { HomeComponent } from './features/home/pages/home.component/home.component';
 import { AuthGuard } from './core/auth/AuthGuard';
+import { AnalyticsComponent } from './features/analytics/pages/analytics.component/analytics.component';
 
 export const routes: Routes = [
   {
@@ -32,6 +33,7 @@ export const routes: Routes = [
       { path: 'movies/:id', component: MovieDetailsComponent },
       { path: 'watchlist', component: WatchlistComponent },
       { path: 'profile', component: ProfileComponent },
+      { path: 'analytics', component: AnalyticsComponent },
     ],
   },
 
