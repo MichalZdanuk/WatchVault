@@ -12,11 +12,12 @@ public record Movie
     public int? RuntimeMinutes { get; }
     public string Director { get; } = default!;
     public string Overview { get; } = default!;
+    public IReadOnlyList<string> Genres { get; } = new List<string>();
 
     protected Movie() { }
 
     private Movie(int simklId, string title, int year, string posterUrl,
-        DateTime? releaseDate, int? runtimeMinutes, string director, string overview)
+        DateTime? releaseDate, int? runtimeMinutes, string director, string overview, IReadOnlyList<string> genres)
     {
         SimklId = simklId;
         Title = title;
@@ -26,13 +27,14 @@ public record Movie
         RuntimeMinutes = runtimeMinutes;
         Director = director;
         Overview = overview;
+        Genres = genres;
     }
 
     public static Movie Of(int simklId, string title, int year, string type,
         string posterUrl, DateTime? releaseDate, int? runtimeMinutes,
-        string director, string overview)
+        string director, string overview, IReadOnlyList<string> genres)
     {
         return new Movie(simklId, title.Trim(), year, posterUrl.Trim(),
-            releaseDate, runtimeMinutes, director.Trim(), overview.Trim());
+            releaseDate, runtimeMinutes, director.Trim(), overview.Trim(), genres?.ToList() ?? new List<string>());
     }
 }

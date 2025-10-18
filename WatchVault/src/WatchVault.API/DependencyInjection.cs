@@ -53,12 +53,12 @@ public static class DependencyInjection
                 tags: new[] { "storage", "azurite" }
             );
 
-        services.AddHealthChecksUI(options =>
-        {
-            options.SetEvaluationTimeInSeconds(10);
-            options.AddHealthCheckEndpoint("API Health", "/health");
-        })
-        .AddInMemoryStorage();
+        //services.AddHealthChecksUI(options =>
+        //{
+        //    options.SetEvaluationTimeInSeconds(10);
+        //    options.AddHealthCheckEndpoint("API Health", "/health");
+        //})
+        //.AddInMemoryStorage();
 
         return services;
     }
@@ -75,10 +75,10 @@ public static class DependencyInjection
             ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse,
         });
 
-        app.MapHealthChecksUI(options =>
-        {
-            options.UIPath = "/health-ui";
-        });
+        //app.MapHealthChecksUI(options =>
+        //{
+        //    options.UIPath = "/health-ui";
+        //});
 
         return app;
     }

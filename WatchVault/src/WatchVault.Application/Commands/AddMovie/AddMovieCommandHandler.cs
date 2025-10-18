@@ -27,7 +27,8 @@ public sealed class AddMovieCommandHandler(
             movieDetails.ReleaseDate,
             movieDetails.RuntimeMinutes,
             movieDetails.Director,
-            movieDetails.Overview
+            movieDetails.Overview,
+            movieDetails.Genres.ToList()
         );
 
         var watchList = await unitOfWork.WatchListRepository.GetByUserIdAsync(userContext.UserId);

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Text.Json;
 using WatchVault.Domain.Entities;
 using WatchVault.Shared.Data;
 
@@ -21,6 +22,12 @@ public class WatchListItemConfiguration
             movieBuilder.Property(x => x.RuntimeMinutes).IsRequired(false);
             movieBuilder.Property(x => x.Director).IsRequired(false);
             movieBuilder.Property(x => x.Overview).IsRequired();
+            movieBuilder.Property(x => x.Genres)
+                .HasConversion(
+                    v => JsonSerializer.Serialize(v, (JsonSerializerOptions?)null),
+                    v => JsonSerializer.Deserialize<List<string>>(v, (JsonSerializerOptions?)null) ?? new List<string>())
+                .HasColumnType("jsonb")
+                .IsRequired(false);
         });
     }
 }
