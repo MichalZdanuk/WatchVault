@@ -36,18 +36,18 @@ export class AnalyticsComponent implements OnInit {
 
     const now = new Date();
 
-    const weekStart = new Date(now);
-    weekStart.setDate(weekStart.getDate() - 6);
+    const weekStart = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate() - 6));
+    const weekEnd = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
 
-    const monthStart = new Date(now);
-    monthStart.setDate(monthStart.getDate() - 27);
+    const monthStart = new Date(Date.UTC(now.getFullYear(), now.getMonth(), 1));
+    const monthEnd = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
 
-    const yearStart = new Date(now.getFullYear(), 0, 1);
-    const yearEnd = new Date(now.getFullYear(), 11, 31);
+    const yearStart = new Date(Date.UTC(now.getFullYear(), 0, 1));
+    const yearEnd = new Date(Date.UTC(now.getFullYear(), 11, 31));
 
     Promise.all([
       this.analyticsService.getAnalytics(StatisticsPeriod.Day, weekStart, now).toPromise(),
-      this.analyticsService.getAnalytics(StatisticsPeriod.Day, monthStart, now).toPromise(),
+      this.analyticsService.getAnalytics(StatisticsPeriod.Day, monthStart, monthEnd).toPromise(),
       this.analyticsService.getAnalytics(StatisticsPeriod.Month, yearStart, yearEnd).toPromise(),
     ])
       .then(([week, month, year]) => {
