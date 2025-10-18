@@ -71,6 +71,7 @@ public static class DependencyInjection
     private static IServiceCollection AddFactories(this IServiceCollection services)
     {
         services.AddScoped<IWatchListAnalyticsFactory, WatchListAnalyticsFactory>();
+        services.AddScoped<IWatchListInsightsFactory, WatchListInsightsFactory>();
 
         return services;
     }
