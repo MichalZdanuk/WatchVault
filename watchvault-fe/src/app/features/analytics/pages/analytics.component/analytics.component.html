@@ -1,15 +1,52 @@
-<div *ngIf="lastWeekAnalytics">
-  <h2>{{ lastWeekAnalytics.period }} analytics</h2>
-  <table>
-    <tr>
-      <th>Period</th>
-      <th>Watched Count</th>
-      <th>Total Runtime (min)</th>
-    </tr>
-    <tr *ngFor="let item of lastWeekAnalytics.data">
-      <td>{{ item.periodLabel }}</td>
-      <td>{{ item.watchedCount }}</td>
-      <td>{{ item.totalRuntimeMinutes }}</td>
-    </tr>
-  </table>
+<div class="analytics-container">
+  <h1 class="d-flex align-items-center gap-2">
+    Watchlist Analytics Dashboard
+    <app-info-icon tooltipText="Analyze your watching trends by visual insights."></app-info-icon>
+  </h1>
+
+  <app-loading-spinner
+    *ngIf="isLoading"
+    text="Loading visuals for analytics ..."
+    [size]="3"
+  ></app-loading-spinner>
+  <app-error-message
+    *ngIf="!isLoading && errorMessage"
+    [message]="errorMessage"
+    retryText="Failed to charts for analytics. Try again later!"
+    (retry)="loadAllAnalytics()"
+  ></app-error-message>
+
+  <div *ngIf="!isLoading && !errorMessage">
+    <h2 class="mt-4">Overall Statistics</h2>
+    <div class="charts-grid-top">
+      <app-analytics-chart
+        [title]="'Last 7 Days'"
+        [analyticsData]="lastWeekAnalytics"
+        [metric]="activeMetric"
+        type="bar"
+      >
+      </app-analytics-chart>
+
+      <app-analytics-chart
+        [title]="'Last 4 Weeks'"
+        [analyticsData]="lastMonthAnalytics"
+        [metric]="activeMetric"
+        type="bar"
+      >
+      </app-analytics-chart>
+    </div>
+    <div class="charts-grid-bottom">
+      <app-analytics-chart
+        [title]="'This Year'"
+        [analyticsData]="thisYearAnalytics"
+        [metric]="activeMetric"
+        type="bar"
+      >
+      </app-analytics-chart>
+    </div>
+
+    <button (click)="toggleMetric()" class="toggle-btn">
+      Show {{ activeMetric === 'watchedCount' ? 'Runtime (min)' : 'Watched Count' }}
+    </button>
+  </div>
 </div>
