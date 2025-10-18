@@ -22,7 +22,7 @@
   ></app-error-message>
 
   <div *ngIf="!isLoading && !errorMessage">
-    <h2 class="mt-4">Your Watch Trends</h2>
+    <h3 class="mt-4">Your Watch Trends</h3>
     <p class="mb-3 hint-text">
       Charts below show how many movies you watched and your total runtime across different periods.
     </p>
@@ -31,7 +31,7 @@
         [title]="'Last 7 Days'"
         [analyticsData]="lastWeekAnalytics"
         [metric]="activeMetric"
-        type="bar"
+        [type]="chartType"
       >
       </app-analytics-chart>
 
@@ -39,7 +39,7 @@
         [title]="'This month'"
         [analyticsData]="lastMonthAnalytics"
         [metric]="activeMetric"
-        type="bar"
+        [type]="chartType"
       >
       </app-analytics-chart>
     </div>
@@ -48,13 +48,19 @@
         [title]="'This Year'"
         [analyticsData]="thisYearAnalytics"
         [metric]="activeMetric"
-        type="bar"
+        [type]="chartType"
       >
       </app-analytics-chart>
     </div>
 
-    <button (click)="toggleMetric()" class="toggle-btn">
-      Show {{ activeMetric === 'watchedCount' ? 'Runtime (min)' : 'Watched Count' }}
-    </button>
+    <div class="chart-controls">
+      <button class="primary-btn" (click)="toggleMetric()">
+        {{ activeMetric === 'watchedCount' ? 'Show Runtime (min)' : 'Show Watched Count' }}
+      </button>
+
+      <button class="primary-btn" (click)="toggleChartType()">
+        {{ chartType === 'bar' ? 'Show Line Chart' : 'Show Bar Chart' }}
+      </button>
+    </div>
   </div>
 </div>

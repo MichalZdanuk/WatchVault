@@ -4,22 +4,7 @@
 
 .hint-text {
   color: var(--color-accent);
-  opacity: 0.7;
-}
-
-.toggle-btn {
-  margin: 10px 0 20px 0;
-  padding: 8px 16px;
-  background-color: var(--color-accent);
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.toggle-btn:hover {
-  background-color: var(--color-accent-hover);
+  opacity: 0.8;
 }
 
 .charts-grid-top {
@@ -31,4 +16,30 @@
 
 .charts-grid-bottom {
   width: 100%;
+}
+
+.chart-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.chart-controls .primary-btn {
+  background-color: var(--color-accent);
+  color: var(--color-text-main);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 0.65rem 1.4rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.chart-controls .primary-btn:hover {
+  background-color: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px var(--color-accent-shadow-hover);
 }

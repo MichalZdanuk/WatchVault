@@ -16,6 +16,7 @@ import { ErrorMessage } from '../../../../shared/components/error-message/error-
 })
 export class AnalyticsComponent implements OnInit {
   activeMetric: 'watchedCount' | 'runtimeMinutes' = 'watchedCount';
+  chartType: 'bar' | 'line' = 'bar';
 
   lastWeekAnalytics: WatchListAnalytics | null = null;
   lastMonthAnalytics: WatchListAnalytics | null = null;
@@ -35,9 +36,7 @@ export class AnalyticsComponent implements OnInit {
     this.errorMessage = null;
 
     const now = new Date();
-
     const weekStart = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate() - 6));
-    const weekEnd = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
 
     const monthStart = new Date(Date.UTC(now.getFullYear(), now.getMonth(), 1));
     const monthEnd = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
@@ -66,5 +65,9 @@ export class AnalyticsComponent implements OnInit {
 
   toggleMetric(): void {
     this.activeMetric = this.activeMetric === 'watchedCount' ? 'runtimeMinutes' : 'watchedCount';
+  }
+
+  toggleChartType(): void {
+    this.chartType = this.chartType === 'bar' ? 'line' : 'bar';
   }
 }
