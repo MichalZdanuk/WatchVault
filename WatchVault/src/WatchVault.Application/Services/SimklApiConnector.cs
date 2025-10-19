@@ -69,7 +69,7 @@ public class SimklApiConnector : ISimklApiConnector
                 new UserRecommendation(
                     u.Title,
                     u.Year,
-                    string.IsNullOrEmpty(u.Poster) ? string.Empty : $"https://simkl.in/posters/{u.Poster}_w.jpg",
+                    string.IsNullOrEmpty(u.Poster) ? string.Empty : $"https://simkl.in/posters/{u.Poster}_m.jpg",
                     u.Ids.Simkl
                 )).ToList() ?? new List<UserRecommendation>()
                 );
