@@ -24,7 +24,16 @@ public sealed class BrowseWatchListItemsQueryHandler(IUserContext userContext,
             items = items.Where(i => i.WatchStatus == query.Status.Value.ConvertToDomainWatchStatus()).AsQueryable();
         }
 
+        items = query.Status switch
+        {
+            Status.Watched => items.OrderByDescending(i => i.WatchedAt ?? i.UpdateDate),
+            Status.ToWatch => items.OrderByDescending(i => i.AddedToWatchAt ?? i.UpdateDate),
+            _ => items.OrderByDescending(i => i.UpdateDate)
+        };
+
         var totalCount = items.Count();
+
+
 
         var paged = items
             .OrderByDescending(i => i.AddedToWatchAt ?? i.WatchedAt)
