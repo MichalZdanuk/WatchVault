@@ -7,4 +7,5 @@ public interface IWatchListRepository
     Task AddAsync(WatchList watchList);
     Task UpdateAsync(WatchList watchList);
     Task<IReadOnlyCollection<WatchListItem>> GetWatchedItemsInRangeAsync(Guid userId, DateTime start, DateTime end);
+    Task<IReadOnlyCollection<WatchListItem>> GetWatchlistHistoryAsync(Guid userId, int pageNumber, int pageSize);
 }

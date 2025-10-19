@@ -5,10 +5,12 @@ using WatchVault.Application.Commands.RemoveMovie;
 using WatchVault.Application.Commands.ToggleFavourite;
 using WatchVault.Application.DTO;
 using WatchVault.Application.Enums;
+using WatchVault.Application.Queries.BrowseWatchHistory;
 using WatchVault.Application.Queries.BrowseWatchListItems;
 using WatchVault.Application.Queries.GetWatchList;
 using WatchVault.Application.Queries.GetWatchListAnalytics;
 using WatchVault.Application.Queries.GetWatchListInsights;
+using WatchVault.Shared.Pagination;
 
 namespace WatchVault.API.Endpoints;
 
@@ -92,6 +94,17 @@ public static class WatchListEndpoints
             return Results.Ok(watchListInsights);
         })
         .Produces<WatchListInsightsDto>(StatusCodes.Status200OK)
+        .Produces(StatusCodes.Status401Unauthorized)
+        .Produces(StatusCodes.Status500InternalServerError)
+        .WithTags("Watchlist");
+
+        watchList.MapGet("/history", async ([FromQuery] int pageNumber, [FromQuery] int pageSize, IMediator mediator) =>
+        {
+            var result = await mediator.Send(new BrowseWatchHistoryQuery(pageNumber, pageSize));
+
+            return Results.Ok(result);
+        })
+        .Produces<PagedResponse<WatchHistoryItemDto>>(StatusCodes.Status200OK)
         .Produces(StatusCodes.Status401Unauthorized)
         .Produces(StatusCodes.Status500InternalServerError)
         .WithTags("Watchlist");

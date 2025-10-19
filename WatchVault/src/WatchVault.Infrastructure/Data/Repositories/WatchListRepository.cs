@@ -47,4 +47,27 @@ public class WatchListRepository(WatchVaultDbContext dbContext)
 
         return items;
     }
+
+    public async Task<IReadOnlyCollection<WatchListItem>> GetWatchlistHistoryAsync(Guid userId, int pageNumber, int pageSize)
+    {
+        var watchListId = await dbContext.WatchLists
+            .Where(wl => wl.UserId == userId)
+            .Select(wl => wl.Id)
+            .SingleOrDefaultAsync();
+
+        if (watchListId == Guid.Empty)
+        {
+            return Array.Empty<WatchListItem>();
+        }
+
+        var items = await dbContext.WatchListItems
+            .AsNoTracking()
+            .Where(wli => wli.WatchListId == watchListId)
+            .OrderByDescending(wli => wli.UpdateDate)
+            .Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync();
+
+        return items;
+    }
 }

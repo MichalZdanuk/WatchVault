@@ -14,4 +14,16 @@ public static class Extensions
             return WatchStatus.Watched;
         }
     }
+
+    public static Status ConvertToApplicationWatchStatus(this WatchStatus watchStatus)
+    {
+        if (watchStatus == WatchStatus.ToWatch)
+        {
+            return Status.ToWatch;
+        }
+        else
+        {
+            return Status.Watched;
+        }
+    }
 }
