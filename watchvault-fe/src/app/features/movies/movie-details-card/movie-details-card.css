@@ -1,54 +1,79 @@
 .movie-details-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 90dvh;
 }
 
 .movie-details-card {
-  width: 60vw;
+  width: 100%;
   max-width: 900px;
   background-color: var(--color-bg-navbar);
   border-radius: 12px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.movie-details-card mat-card-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  padding-bottom: 10px;
+@media (min-width: 992px) {
+  .movie-details-card {
+    flex-direction: row;
+  }
 }
 
-.movie-details-card img {
+.poster-container {
+  width: 272px;
+  aspect-ratio: 272 / 388;
+  overflow: hidden;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.poster-container img {
   width: 100%;
-  height: 400px;
-  object-fit: cover;
+  height: 100%;
+  object-fit: contain;
+  object-position: top center;
+  border-radius: inherit;
 }
 
-.movie-details-card .overview {
-  margin: 1rem 0;
+.movie-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--color-accent);
+}
+
+.overview {
   font-size: 1rem;
   line-height: 1.5;
-}
-
-.movie-details-card .movie-meta {
-  font-size: 0.95rem;
-  line-height: 1.4;
+  margin-bottom: 0.75rem;
   color: var(--color-text-main);
 }
 
-.movie-details-card mat-card-actions {
-  padding: 1rem;
+.movie-meta p {
+  font-size: 0.95rem;
+  color: var(--color-text-main);
+  margin: 0.2rem 0;
+}
+
+.genre-badge {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.2rem;
+  font-size: 0.8rem;
+  background-color: var(--color-accent);
+  color: #fff;
+  border-radius: 4px;
 }
 
 .movie-actions {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 }
 
-.movie-actions .action-btn {
+.action-btn {
   border-radius: 8px;
   font-weight: 500;
   letter-spacing: 0.5px;
@@ -70,10 +95,6 @@
   transform: none;
 }
 
-.movie-actions .action-btn mat-icon {
-  font-size: 20px;
-}
-
 .primary-btn {
   background-color: var(--color-accent);
   color: var(--color-text-main);
@@ -87,7 +108,7 @@
 
 .secondary-btn {
   background-color: transparent;
-  border: 2px solid var(--color-accent) !important;
+  border: 2px solid var(--color-accent);
   color: var(--color-accent);
 }
 
@@ -101,4 +122,14 @@
   color: var(--color-success);
   background: rgba(76, 175, 80, 0.1);
   border: 1px solid var(--color-success);
+  border-radius: 6px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 991px) {
+  .poster-container {
+    width: 50%;
+    margin: 0 auto;
+  }
 }

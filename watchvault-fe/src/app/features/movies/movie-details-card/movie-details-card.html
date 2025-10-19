@@ -1,67 +1,83 @@
 <div class="movie-details-container">
-  <mat-card class="movie-details-card">
-    <mat-card-header>
-      <mat-card-title>{{ movieDetails.title }} ({{ movieDetails.year }})</mat-card-title>
-    </mat-card-header>
-
-    <img
-      mat-card-image
-      [src]="
-        movieDetails.posterUrl
-          ? movieDetails.posterUrl
-          : movieDetails.fanartUrl
-          ? movieDetails.fanartUrl
-          : 'assets/movies/moviePosterUnavailable.png'
-      "
-      alt="Fanart for {{ movieDetails.title }}"
-    />
-
-    <mat-card-content>
-      <p class="overview">{{ movieDetails.overview }}</p>
-
-      <div class="movie-meta">
-        <p><strong>Director:</strong> {{ movieDetails.director }}</p>
-        <p><strong>Genres:</strong> {{ movieDetails.genres.join(', ') }}</p>
-        <p>
-          <strong>Runtime:</strong>
-          {{ movieDetails.runtime ? movieDetails.runtime + 'min' : 'N/A' }}
-        </p>
-        <p *ngIf="movieDetails.released">
-          <strong>Release date:</strong> {{ movieDetails.released | date }}
-        </p>
-        <p><strong>IMDb rating:</strong> {{ movieDetails.imdbRating ?? 'N/A' }}</p>
+  <div class="d-flex justify-content-center p-2">
+    <mat-card class="movie-details-card d-flex flex-column flex-lg-row p-3">
+      <div class="poster-container me-lg-4 mb-3 mb-lg-0">
+        <img
+          [src]="
+            movieDetails.posterUrl
+              ? movieDetails.posterUrl
+              : movieDetails.fanartUrl
+              ? movieDetails.fanartUrl
+              : 'assets/movies/moviePosterUnavailable.png'
+          "
+          alt="Poster for {{ movieDetails.title }}"
+        />
       </div>
-    </mat-card-content>
 
-    <mat-card-actions class="movie-actions">
-      <button
-        class="action-btn primary-btn"
-        (click)="addToWatchlist(movieDetails.simklId)"
-        *ngIf="movieDetails.status !== Status.Watched"
-        [disabled]="movieDetails.status === Status.ToWatch"
-      >
-        <mat-icon>playlist_add</mat-icon>
-        {{ movieDetails.status === Status.ToWatch ? 'Already added to watch' : 'Add to Watchlist' }}
-      </button>
-      <button
-        class="action-btn secondary-btn"
-        (click)="markWatched(movieDetails.simklId)"
-        *ngIf="movieDetails.status !== Status.Watched"
-      >
-        <mat-icon>check_circle</mat-icon>
-        Mark Watched
-      </button>
-      <div
-        *ngIf="movieDetails.status === Status.Watched"
-        class="d-flex align-items-center justify-content-center gap-2 fw-semibold rounded px-3 py-2 watched-badge"
-      >
-        <mat-icon>check_circle</mat-icon>
-        Already Watched
+      <div class="flex-1 d-flex flex-column justify-content-between">
+        <mat-card-header>
+          <mat-card-title class="d-flex align-items-center justify-content-between movie-title">
+            {{ movieDetails.title }} ({{ movieDetails.year }})
+          </mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+          <p class="overview">{{ movieDetails.overview }}</p>
+
+          <div class="movie-meta">
+            <p><strong>Director:</strong> {{ movieDetails.director }}</p>
+            <p>
+              <strong>Genres: </strong>
+              <span *ngFor="let genre of movieDetails.genres | slice : 0 : 3" class="genre-badge">{{
+                genre
+              }}</span>
+            </p>
+            <p>
+              <strong>Runtime:</strong>
+              {{ movieDetails.runtime ? movieDetails.runtime + ' min' : 'N/A' }}
+            </p>
+            <p *ngIf="movieDetails.released">
+              <strong>Release date:</strong> {{ movieDetails.released | date }}
+            </p>
+            <p><strong>IMDb rating:</strong> {{ movieDetails.imdbRating ?? 'N/A' }}</p>
+          </div>
+        </mat-card-content>
+
+        <mat-card-actions class="movie-actions mt-auto">
+          <button
+            class="action-btn primary-btn"
+            (click)="addToWatchlist(movieDetails.simklId)"
+            *ngIf="movieDetails.status !== Status.Watched"
+            [disabled]="movieDetails.status === Status.ToWatch"
+          >
+            <mat-icon>playlist_add</mat-icon>
+            {{
+              movieDetails.status === Status.ToWatch ? 'Already added to watch' : 'Add to Watchlist'
+            }}
+          </button>
+
+          <button
+            class="action-btn secondary-btn"
+            (click)="markWatched(movieDetails.simklId)"
+            *ngIf="movieDetails.status !== Status.Watched"
+          >
+            <mat-icon>check_circle</mat-icon>
+            Mark Watched
+          </button>
+
+          <div
+            *ngIf="movieDetails.status === Status.Watched"
+            class="d-flex align-items-center justify-content-center gap-2 fw-semibold rounded px-3 py-2 watched-badge"
+          >
+            <mat-icon>check_circle</mat-icon>
+            Already Watched
+          </div>
+        </mat-card-actions>
       </div>
-    </mat-card-actions>
-  </mat-card>
+    </mat-card>
+  </div>
+
+  <app-movie-recommendations
+    [recommendations]="movieDetails.userRecommendations"
+  ></app-movie-recommendations>
 </div>
-
-<app-movie-recommendations
-  [recommendations]="movieDetails.userRecommendations"
-></app-movie-recommendations>
