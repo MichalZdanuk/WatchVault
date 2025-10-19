@@ -5,6 +5,7 @@ import { Status } from '../../shared/models/status';
 import { Observable } from 'rxjs';
 import { WatchListSummary } from '../../shared/models/watchlist-summary';
 import { PagedWatchListItems } from '../../shared/models/paged-watchlist-items';
+import { WatchListHistoryResponse } from '../../shared/models/watchlist-history-response';
 
 @Injectable({
   providedIn: 'root',
@@ -38,5 +39,14 @@ export class WatchlistService {
 
   toggleFavourite(id: string): Observable<void> {
     return this.http.post<void>(`${this.apiUrl}/items/${id}/favourite`, {});
+  }
+
+  browseWatchListHistory(
+    pageNumber: number = 1,
+    pageSize: number = 20
+  ): Observable<WatchListHistoryResponse> {
+    let params = new HttpParams().set('pageNumber', pageNumber).set('pageSize', pageSize);
+
+    return this.http.get<WatchListHistoryResponse>(`${this.apiUrl}/history`, { params });
   }
 }

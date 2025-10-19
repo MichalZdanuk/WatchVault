@@ -11,6 +11,7 @@ import { TrendingMoviesComponent } from './features/movies/pages/trending-movies
 import { HomeComponent } from './features/home/pages/home.component/home.component';
 import { AuthGuard } from './core/auth/AuthGuard';
 import { AnalyticsComponent } from './features/analytics/pages/analytics.component/analytics.component';
+import { HistoryComponent } from './features/history/pages/history.component/history.component';
 
 export const routes: Routes = [
   {
@@ -34,6 +35,7 @@ export const routes: Routes = [
       { path: 'watchlist', component: WatchlistComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'analytics', component: AnalyticsComponent },
+      { path: 'history', component: HistoryComponent },
     ],
   },
 

@@ -1,0 +1,26 @@
+<div class="history-container">
+  <h1 class="d-flex align-items-center gap-2 mb-4">
+    Your Watch History
+    <app-info-icon
+      tooltipText="View your complete watch history. You can edit watch dates or revisit what you’ve watched."
+    ></app-info-icon>
+  </h1>
+
+  <ng-container *ngIf="isLoading">
+    <app-loading-spinner text="Loading your history..."></app-loading-spinner>
+  </ng-container>
+
+  <app-error-message
+    *ngIf="!isLoading && error"
+    [message]="error"
+    retryText="Retry"
+    (retry)="loadHistory(1, 20)"
+  ></app-error-message>
+
+  <app-history-panel
+    *ngIf="!isLoading && !error && history"
+    [history]="history"
+    (pageChange)="loadHistory($event, pageSize)"
+    (pageSizeChange)="loadHistory(1, $event)"
+  ></app-history-panel>
+</div>

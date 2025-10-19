@@ -1,0 +1,22 @@
+<div class="history-panel">
+  <div *ngIf="history.items.length; else noItems" class="history-list">
+    <app-history-item *ngFor="let item of history.items" [item]="item"></app-history-item>
+  </div>
+
+  <ng-template #noItems>
+    <p class="empty-state">No watch history yet. Start adding movies!</p>
+  </ng-template>
+
+  <div class="pagination" *ngIf="history.items.length">
+    <button
+      mat-stroked-button
+      color="primary"
+      (click)="onPrevPage()"
+      [disabled]="history.pageNumber === 1"
+    >
+      Prev
+    </button>
+    <span>Page {{ history.pageNumber }}</span>
+    <button mat-stroked-button color="primary" (click)="onNextPage()">Next</button>
+  </div>
+</div>

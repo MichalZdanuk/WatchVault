@@ -1,0 +1,43 @@
+<div class="history-item" [class.watched]="item.status === 1">
+  <img
+    class="poster"
+    [src]="item.posterUrl || 'assets/movies/moviePosterUnavailable.png'"
+    [alt]="item.title"
+    [routerLink]="['/movies', item.simklId]"
+  />
+
+  <div class="details">
+    <div class="header">
+      <h3>
+        <a [routerLink]="['/movies', item.simklId]" class="text-decoration-none text-light">
+          {{ item.title }}
+        </a>
+      </h3>
+      <mat-icon *ngIf="item.isFavourite" color="accent">favorite</mat-icon>
+    </div>
+
+    <div class="genres">
+      <ng-container *ngFor="let genre of item.genres | slice : 0 : 3">
+        <span class="genre-badge">{{ genre }}</span>
+      </ng-container>
+    </div>
+
+    <div class="dates">
+      <span
+        >To watch:
+        {{ item.addedToWatchAt ? (item.addedToWatchAt | date : 'MMM d, y, HH:mm') : '—' }}</span
+      >
+      <span class="d-flex align-items-center gap-1">
+        Watched: {{ item.watchedAt ? (item.watchedAt | date : 'MMM d, y, HH:mm') : '—' }}
+        <button
+          *ngIf="item.status === 1"
+          class="calendar-btn"
+          (click)="onEditWatchDate(item)"
+          matTooltip="Edit watch date"
+        >
+          <mat-icon>edit_calendar</mat-icon>
+        </button>
+      </span>
+    </div>
+  </div>
+</div>
