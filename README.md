@@ -9,7 +9,8 @@ It allows users to:
 - Browse trending movies shared within the community  
 - Search movies by title  
 - Add movies to personal watchlists (*Watched | To Watch*)  
-- Manage and rate their own movie collection  
+- Browse watch history
+- Analyze their watching trends, patterns, and habits through insightful visualizations (plot, line, and pie charts)
 
 All movie data is powered by the **[Simkl API](https://simkl.com/api/)** — a public and free movie database API.  
 The backend wraps this external API through a controlled caching and proxy layer, ensuring efficient and stable data access.
@@ -26,6 +27,7 @@ The backend wraps this external API through a controlled caching and proxy layer
 The concept behind *WatchVault* is inspired by popular movie-tracking platforms such as *TV Time*.  
 While simple in functionality, it demonstrates a realistic **MVP (Minimum Viable Product)** for:
 - Personalized movie tracking and recommendations
+- Visualizing and analyzing user watching habits, patterns, and runtime trends through charts and statistics
 - Seamless integration of front-end and back-end technologies  
 - Scalable and clean full-stack architecture  
 
@@ -48,19 +50,30 @@ All screenshots can also be found in the [`/SystemDemonstration`](./SystemDemons
 ![Login Page](https://github.com/user-attachments/assets/264fe856-af5b-42f3-b829-883262f193a9)
 
 ### 🔥 Trending Movies  
-![Trending Movies](https://github.com/user-attachments/assets/447804df-3e55-4015-a5a8-ced8a968370e)
+![Trending Movies](https://github.com/user-attachments/assets/5ea9e95f-0a56-473b-8242-ccd41b3e95c5)
 
 ### 🔍 Search Movies  
-![Search Movies](https://github.com/user-attachments/assets/1bad2366-9c78-4aa3-91f9-804c00f694f2)
+![Search Movies](https://github.com/user-attachments/assets/c2a51d3b-2bca-4393-aff1-5f56986aabae)
 
 ### 🎬 Movie Details  
-![Movie Details](https://github.com/user-attachments/assets/82404bb7-be51-4db7-853b-1573c45b6856)
+![Movie Details](https://github.com/user-attachments/assets/49a43a97-edc0-4d2f-a31e-8480ebc1eacd)
 
 ### 🎞️ Watchlist Overview  
-![Watchlist Overview](https://github.com/user-attachments/assets/e4571a85-f934-47b5-aa10-eb622a057698)
+![Watchlist Overview](https://github.com/user-attachments/assets/6d1ce526-0ff8-46ec-a6a1-1913921ff145)
 
 ### 👤 Profile Page  
-![Profile Page](https://github.com/user-attachments/assets/9f338f00-25fb-4011-a29e-750c7a82319b)
+![Profile Page](https://github.com/user-attachments/assets/5856dd5c-6ce1-4b4e-9b98-5795f74d900c)
+
+### 🕒 Watch History
+![Watch History Page](https://github.com/user-attachments/assets/6cae5ebb-50ec-4fc0-8884-dd9064b6254d)
+
+### 📊 Watchlist Analysis
+
+![Watchlist analysis - bar chart (watched movies count)](https://github.com/user-attachments/assets/002cecf1-7db1-4394-aba9-ce37eb6d7869)
+
+![Watchlist analysis - bar chart (runtime minutes)](https://github.com/user-attachments/assets/5ad8b608-3d02-4a5a-bbd0-95c857ad26bb)
+
+![Watchlist analysis - line chart (runtime minutes)](https://github.com/user-attachments/assets/f31853cf-0b67-40a7-a13d-c9789b9a962a)
 
 ---
 
