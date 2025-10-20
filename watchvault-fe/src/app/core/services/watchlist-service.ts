@@ -49,4 +49,8 @@ export class WatchlistService {
 
     return this.http.get<WatchListHistoryResponse>(`${this.apiUrl}/history`, { params });
   }
+
+  updateWatchDate(id: string, date: Date): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/${id}/items`, { WatchedAt: date });
+  }
 }

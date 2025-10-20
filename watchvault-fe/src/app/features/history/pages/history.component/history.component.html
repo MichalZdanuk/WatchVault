@@ -21,6 +21,5 @@
     *ngIf="!isLoading && !error && history"
     [history]="history"
     (pageChange)="loadHistory($event, pageSize)"
-    (pageSizeChange)="loadHistory(1, $event)"
   ></app-history-panel>
 </div>

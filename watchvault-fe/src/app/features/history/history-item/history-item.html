@@ -23,20 +23,30 @@
     </div>
 
     <div class="dates">
-      <span
-        >To watch:
-        {{ item.addedToWatchAt ? (item.addedToWatchAt | date : 'MMM d, y, HH:mm') : '—' }}</span
-      >
+      <span>
+        To watch:
+        {{ item.addedToWatchAt ? (item.addedToWatchAt | date : 'MMM d, y, HH:mm') : '—' }}
+      </span>
+
       <span class="d-flex align-items-center gap-1">
         Watched: {{ item.watchedAt ? (item.watchedAt | date : 'MMM d, y, HH:mm') : '—' }}
+
+        <input
+          matInput
+          [matDatepicker]="picker"
+          (dateChange)="onDateSelected($event)"
+          class="visually-hidden"
+          [max]="today"
+        />
         <button
           *ngIf="item.status === 1"
           class="calendar-btn"
-          (click)="onEditWatchDate(item)"
+          (click)="picker.open()"
           matTooltip="Edit watch date"
         >
           <mat-icon>edit_calendar</mat-icon>
         </button>
+        <mat-datepicker #picker (closed)="onDatepickerClosed()"></mat-datepicker>
       </span>
     </div>
   </div>

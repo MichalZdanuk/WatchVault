@@ -75,3 +75,8 @@ body {
 .accent-color {
   color: var(--color-accent);
 }
+
+.mat-datepicker-content {
+  background-color: #2e3238 !important;
+  border-radius: 12px !important;
+}
