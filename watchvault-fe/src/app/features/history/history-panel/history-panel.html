@@ -17,6 +17,13 @@
       Prev
     </button>
     <span>Page {{ history.pageNumber }}</span>
-    <button mat-stroked-button color="primary" (click)="onNextPage()">Next</button>
+    <button
+      mat-stroked-button
+      color="primary"
+      (click)="onNextPage()"
+      [disabled]="history.pageNumber >= history.totalPages"
+    >
+      Next
+    </button>
   </div>
 </div>

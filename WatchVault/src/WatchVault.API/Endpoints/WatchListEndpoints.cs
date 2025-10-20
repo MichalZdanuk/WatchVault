@@ -11,7 +11,6 @@ using WatchVault.Application.Queries.BrowseWatchListItems;
 using WatchVault.Application.Queries.GetWatchList;
 using WatchVault.Application.Queries.GetWatchListAnalytics;
 using WatchVault.Application.Queries.GetWatchListInsights;
-using WatchVault.Shared.Pagination;
 
 namespace WatchVault.API.Endpoints;
 
@@ -105,7 +104,7 @@ public static class WatchListEndpoints
 
             return Results.Ok(result);
         })
-        .Produces<PagedResponse<WatchHistoryItemDto>>(StatusCodes.Status200OK)
+        .Produces<WatchListHistoryDto>(StatusCodes.Status200OK)
         .Produces(StatusCodes.Status401Unauthorized)
         .Produces(StatusCodes.Status500InternalServerError)
         .WithTags("Watchlist");

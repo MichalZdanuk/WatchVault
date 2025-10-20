@@ -3,6 +3,8 @@ import { Status } from './status';
 export interface WatchListHistoryResponse {
   pageNumber: number;
   pageSize: number;
+  totalCount: number;
+  totalPages: number;
   items: WatchHistoryItem[];
 }
 

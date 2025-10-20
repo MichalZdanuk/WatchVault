@@ -1,13 +1,12 @@
 ﻿using WatchVault.Application.Common;
 using WatchVault.Application.Enums;
 using WatchVault.Application.Repositories;
-using WatchVault.Shared.Pagination;
 
 namespace WatchVault.Application.Queries.BrowseWatchHistory;
 public sealed class BrowseWatchHistoryQueryHandler(IUserContext userContext,
-    IUnitOfWork unitOfWork) : IQueryHandler<BrowseWatchHistoryQuery, PagedResponse<WatchHistoryItemDto>>
+    IUnitOfWork unitOfWork) : IQueryHandler<BrowseWatchHistoryQuery, WatchListHistoryDto>
 {
-    public async Task<PagedResponse<WatchHistoryItemDto>> Handle(BrowseWatchHistoryQuery query, CancellationToken cancellationToken)
+    public async Task<WatchListHistoryDto> Handle(BrowseWatchHistoryQuery query, CancellationToken cancellationToken)
     {
         var userId = userContext.UserId;
 
@@ -27,9 +26,12 @@ public sealed class BrowseWatchHistoryQueryHandler(IUserContext userContext,
             )
         ).ToList();
 
-        return new PagedResponse<WatchHistoryItemDto>(
+        var totalCount = await unitOfWork.WatchListRepository.GetWatchlistHistoryCountAsync(userId);
+
+        return new WatchListHistoryDto(
             query.PageNumber,
             query.PageSize,
+            totalCount,
             dtos
         );
     }

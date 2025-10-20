@@ -70,4 +70,22 @@ public class WatchListRepository(WatchVaultDbContext dbContext)
 
         return items;
     }
+
+    public async Task<int> GetWatchlistHistoryCountAsync(Guid userId)
+    {
+        var watchListId = await dbContext.WatchLists
+            .Where(wl => wl.UserId == userId)
+            .Select(wl => wl.Id)
+            .SingleOrDefaultAsync();
+
+        if (watchListId == Guid.Empty)
+            return 0;
+
+        var count = await dbContext.WatchListItems
+            .AsNoTracking()
+            .Where(wli => wli.WatchListId == watchListId)
+            .CountAsync();
+
+        return count;
+    }
 }
