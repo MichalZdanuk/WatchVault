@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using WatchVault.Application.Commands.AddMovie;
+using WatchVault.Application.Commands.EditWatchDate;
 using WatchVault.Application.Commands.RemoveMovie;
 using WatchVault.Application.Commands.ToggleFavourite;
 using WatchVault.Application.DTO;
@@ -106,6 +107,18 @@ public static class WatchListEndpoints
         })
         .Produces<PagedResponse<WatchHistoryItemDto>>(StatusCodes.Status200OK)
         .Produces(StatusCodes.Status401Unauthorized)
+        .Produces(StatusCodes.Status500InternalServerError)
+        .WithTags("Watchlist");
+
+        watchList.MapPut("/{id:Guid}/items", async (Guid id, [FromBody] EditWatchDateDto dto, IMediator mediator) =>
+        {
+            await mediator.Send(new EditWatchDateCommand(id, dto.WatchedAt));
+
+            return Results.NoContent();
+        })
+        .Produces(StatusCodes.Status204NoContent)
+        .Produces(StatusCodes.Status400BadRequest)
+        .Produces(StatusCodes.Status404NotFound)
         .Produces(StatusCodes.Status500InternalServerError)
         .WithTags("Watchlist");
     }

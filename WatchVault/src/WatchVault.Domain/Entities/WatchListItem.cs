@@ -52,4 +52,16 @@ public class WatchListItem : Entity
 
         IsFavourite = !IsFavourite;
     }
+
+    public void TryUpdateWatchedAt(DateTime watchedAt, out bool success)
+    {
+        if (WatchStatus != WatchStatus.Watched)
+        {
+            success = false;
+            return;
+        }
+
+        WatchedAt = watchedAt;
+        success = true;
+    }
 }
