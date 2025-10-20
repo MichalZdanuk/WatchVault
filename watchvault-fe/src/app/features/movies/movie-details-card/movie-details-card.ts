@@ -7,18 +7,10 @@ import { MovieRecommendations } from '../movie-recommendations/movie-recommendat
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { WatchlistService } from '../../../core/services/watchlist-service';
 import { Status } from '../../../shared/models/status';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-movie-details-card',
-  imports: [
-    MatCardModule,
-    MatIconModule,
-    MatSnackBarModule,
-    CommonModule,
-    MovieRecommendations,
-    RouterLink,
-  ],
+  imports: [MatCardModule, MatIconModule, MatSnackBarModule, CommonModule, MovieRecommendations],
   templateUrl: './movie-details-card.html',
   styleUrl: './movie-details-card.css',
 })
