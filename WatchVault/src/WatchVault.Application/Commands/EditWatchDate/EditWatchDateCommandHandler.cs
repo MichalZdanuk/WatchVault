@@ -1,10 +1,13 @@
-﻿using WatchVault.Application.Common;
+﻿using Microsoft.Extensions.Caching.Distributed;
+using WatchVault.Application.Common;
 using WatchVault.Application.Exceptions;
+using WatchVault.Application.Helpers;
 using WatchVault.Application.Repositories;
 
 namespace WatchVault.Application.Commands.EditWatchDate;
 public sealed class EditWatchDateCommandHandler(IUserContext userContext,
-    IUnitOfWork unitOfWork)
+    IUnitOfWork unitOfWork,
+    IDistributedCache cache)
     : ICommandHandler<EditWatchDateCommand, bool>
 {
     public async Task<bool> Handle(EditWatchDateCommand command, CancellationToken cancellationToken)
@@ -34,6 +37,8 @@ public sealed class EditWatchDateCommandHandler(IUserContext userContext,
 
         await unitOfWork.WatchListRepository.UpdateAsync(watchList);
         await unitOfWork.SaveChangesAsync();
+
+        await CacheHelper.ClearUserHistoryAsync(cache, userId);
 
         return true;
     }

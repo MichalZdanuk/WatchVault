@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Caching.Distributed;
 using WatchVault.Application.Common;
 using WatchVault.Application.Enums;
+using WatchVault.Application.Helpers;
 using WatchVault.Application.Repositories;
 
 namespace WatchVault.Application.Queries.BrowseWatchHistory;
@@ -37,6 +38,8 @@ public sealed class BrowseWatchHistoryQueryHandler(IUserContext userContext,
 
             return new WatchListHistoryDto(query.PageNumber, query.PageSize, totalCount, dtos);
         }, CacheProfiles.ShortLived);
+
+        await CacheHelper.TrackUserHistoryKeyAsync(cache, userId, cacheKey);
 
         return result ?? new WatchListHistoryDto(query.PageNumber, query.PageSize, 0, []);
     }
