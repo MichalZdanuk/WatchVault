@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { WatchHistoryItem } from '../../../shared/models/watchlist-history-response';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
@@ -28,6 +28,7 @@ import { DatePipe } from '@angular/common';
 })
 export class HistoryItem {
   @Input() item!: WatchHistoryItem;
+  @Output() deleted = new EventEmitter<string>();
   today = new Date();
 
   constructor(
@@ -64,4 +65,27 @@ export class HistoryItem {
   }
 
   onDatepickerClosed() {}
+
+  confirmDelete() {
+    if (confirm(`Are you sure you want to remove "${this.item.title}" from your history?`)) {
+      this.watchlistService.removeWatchListItem(this.item.id).subscribe({
+        next: () => {
+          this.snackBar.open(`Removed "${this.item.title}" from history`, '', {
+            panelClass: ['custom-snackbar'],
+            duration: 3000,
+            horizontalPosition: 'center',
+            verticalPosition: 'bottom',
+          });
+          this.deleted.emit(this.item.id);
+        },
+        error: (err) => {
+          console.error('Failed to remove item', err);
+          this.snackBar.open('Failed to remove item', '', {
+            panelClass: ['error-snackbar'],
+            duration: 3000,
+          });
+        },
+      });
+    }
+  }
 }

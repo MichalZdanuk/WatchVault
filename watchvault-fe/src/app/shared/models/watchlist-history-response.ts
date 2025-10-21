@@ -10,12 +10,10 @@ export interface WatchListHistoryResponse {
 
 export interface WatchHistoryItem {
   id: string;
-  addedToWatchAt: Date | null;
-  watchedAt: Date | null;
+  watchedAt: Date;
   isFavourite: boolean;
   simklId: number;
   title: string;
   posterUrl: string;
   genres: string[];
-  status: Status;
 }

@@ -1,53 +1,59 @@
-<div class="history-item" [class.watched]="item.status === 1">
-  <img
-    class="poster"
-    [src]="item.posterUrl || 'assets/movies/moviePosterUnavailable.png'"
-    [alt]="item.title"
-    [routerLink]="['/movies', item.simklId]"
-  />
+<div class="history-item">
+  <div class="poster-container">
+    <img
+      class="poster"
+      [src]="item.posterUrl || 'assets/movies/moviePosterUnavailable.png'"
+      [alt]="item.title"
+      [routerLink]="['/movies', item.simklId]"
+    />
+    <mat-icon *ngIf="item.isFavourite" class="poster-favourite">favorite</mat-icon>
+  </div>
 
   <div class="details">
     <div class="header">
-      <h3>
-        <a [routerLink]="['/movies', item.simklId]" class="text-decoration-none text-light">
-          {{ item.title }}
-        </a>
-      </h3>
-      <mat-icon *ngIf="item.isFavourite" color="accent">favorite</mat-icon>
+      <div class="title-section">
+        <h3>
+          <a [routerLink]="['/movies', item.simklId]" class="text-decoration-none text-light">
+            {{ item.title }}
+          </a>
+        </h3>
+        <div class="watched-date">
+          <span>Watched: {{ item.watchedAt | date : 'MMM d, y, HH:mm' }}</span>
+
+          <input
+            matInput
+            [matDatepicker]="picker"
+            (dateChange)="onDateSelected($event)"
+            class="visually-hidden"
+            [max]="today"
+          />
+
+          <button class="calendar-btn" (click)="picker.open()" matTooltip="Edit watch date">
+            <mat-icon>edit_calendar</mat-icon>
+          </button>
+
+          <mat-datepicker #picker (closed)="onDatepickerClosed()"></mat-datepicker>
+        </div>
+      </div>
+
+      <div class="action-icons">
+        <button
+          class="navigate-btn"
+          matTooltip="Go to movie details"
+          [routerLink]="['/movies', item.simklId]"
+        >
+          <mat-icon>info</mat-icon>
+        </button>
+        <button class="delete-btn" matTooltip="Remove from history" (click)="confirmDelete()">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
     </div>
 
-    <div class="genres">
+    <div class="genres mt-2">
       <ng-container *ngFor="let genre of item.genres | slice : 0 : 3">
         <span class="genre-badge">{{ genre }}</span>
       </ng-container>
-    </div>
-
-    <div class="dates">
-      <span>
-        To watch:
-        {{ item.addedToWatchAt ? (item.addedToWatchAt | date : 'MMM d, y, HH:mm') : '—' }}
-      </span>
-
-      <span class="d-flex align-items-center gap-1">
-        Watched: {{ item.watchedAt ? (item.watchedAt | date : 'MMM d, y, HH:mm') : '—' }}
-
-        <input
-          matInput
-          [matDatepicker]="picker"
-          (dateChange)="onDateSelected($event)"
-          class="visually-hidden"
-          [max]="today"
-        />
-        <button
-          *ngIf="item.status === 1"
-          class="calendar-btn"
-          (click)="picker.open()"
-          matTooltip="Edit watch date"
-        >
-          <mat-icon>edit_calendar</mat-icon>
-        </button>
-        <mat-datepicker #picker (closed)="onDatepickerClosed()"></mat-datepicker>
-      </span>
     </div>
   </div>
 </div>

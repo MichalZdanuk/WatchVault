@@ -53,4 +53,8 @@ export class WatchlistService {
   updateWatchDate(id: string, date: Date): Observable<void> {
     return this.http.put<void>(`${this.apiUrl}/${id}/items`, { WatchedAt: date });
   }
+
+  removeWatchListItem(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/items/${id}`);
+  }
 }

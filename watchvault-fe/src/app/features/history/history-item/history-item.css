@@ -6,27 +6,38 @@
   padding: 0.75rem 1rem;
   gap: 0.75rem;
   box-shadow: 0 0 6px var(--color-accent-shadow);
-  transition: background 0.2s;
+  transition: background-color 0.2s;
   font-size: 0.95rem;
+  border-left: 3px solid var(--color-success);
 }
 
 .history-item:hover {
   background-color: var(--color-bg-hover);
 }
 
-.history-item.watched {
-  border-left: 3px solid var(--color-success);
+.poster-container {
+  position: relative;
+  width: 70px;
+  height: 105px;
 }
 
 .poster {
-  width: 70px;
-  height: 105px;
+  width: 100%;
+  height: 100%;
   border-radius: 6px;
   object-fit: cover;
+  cursor: pointer;
 }
 
-.poster:hover {
-  cursor: pointer;
+.poster-favourite {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: var(--color-accent);
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  padding: 2px;
+  font-size: 18px;
 }
 
 .details {
@@ -35,54 +46,92 @@
 
 .header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: flex-start;
 }
 
-.header h3 {
+.title-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.title-section h3 {
   margin: 0;
   font-size: 1rem;
   font-weight: 600;
 }
 
+.watched-date {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+  color: #bbb;
+}
+
+.action-icons {
+  display: flex;
+  align-items: center;
+}
+
+button.calendar-btn,
+button.delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  margin-left: 0.25rem;
+  transition: color 0.2s;
+}
+
+.calendar-btn {
+  color: var(--color-accent);
+}
+
+.calendar-btn:hover {
+  color: var(--color-accent-hover);
+}
+
+.delete-btn {
+  color: #d9534f;
+}
+
+.delete-btn:hover {
+  color: #ff6b6b;
+}
+
+.navigate-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-accent);
+  transition: color 0.2s;
+  padding: 0;
+}
+
+.navigate-btn:hover {
+  color: var(--color-accent-hover);
+}
+
 .genres {
   font-size: 0.85rem;
-  opacity: 0.8;
+  opacity: 0.85;
   margin-top: 0.25rem;
 }
 
 .genre-badge {
   display: inline-block;
   background-color: var(--color-accent);
+  color: #fff;
   padding: 0.15rem 0.5rem;
   margin-right: 0.5rem;
   margin-bottom: 0.25rem;
   border-radius: 5px;
   font-size: 0.75rem;
   font-weight: 500;
-}
-
-.dates {
-  display: flex;
-  flex-direction: column;
-  margin-top: 0.4rem;
-  font-size: 0.85rem;
-  gap: 0.15rem;
-  color: #bbb;
-}
-
-.calendar-btn {
-  background: none;
-  border: none;
-  color: var(--color-accent);
-  cursor: pointer;
-  margin-left: 0.25rem;
-  padding: 0;
-  vertical-align: middle;
-  display: inline-flex;
-  align-items: center;
-}
-
-.calendar-btn:hover {
-  color: var(--color-accent-hover);
 }

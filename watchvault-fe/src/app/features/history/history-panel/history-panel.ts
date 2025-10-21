@@ -23,4 +23,12 @@ export class HistoryPanel {
   onNextPage(): void {
     this.pageChange.emit(this.history.pageNumber + 1);
   }
+
+  onItemDeleted(id: string) {
+    this.history.items = this.history.items.filter((x) => x.id !== id);
+
+    if (this.history.items.length === 0 && this.history.pageNumber > 1) {
+      this.pageChange.emit(this.history.pageNumber - 1);
+    }
+  }
 }

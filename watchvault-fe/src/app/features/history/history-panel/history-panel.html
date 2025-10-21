@@ -1,6 +1,10 @@
 <div class="history-panel">
   <div *ngIf="history.items.length; else noItems" class="history-list">
-    <app-history-item *ngFor="let item of history.items" [item]="item"></app-history-item>
+    <app-history-item
+      *ngFor="let item of history.items"
+      [item]="item"
+      (deleted)="onItemDeleted($event)"
+    ></app-history-item>
   </div>
 
   <ng-template #noItems>
