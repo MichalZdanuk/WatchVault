@@ -5,8 +5,8 @@
       tooltipText="Analyze your watching trends by visual insights and aggregated data."
     ></app-info-icon>
   </h1>
-  <p class="mt-2 hint-text">
-    Explore your recent activity and track your watch habits through visual insights.
+  <p class="hint-muted">
+    Analytics are updated a few times per day. Recent changes may not appear instantly.
   </p>
 
   <app-loading-spinner
@@ -22,7 +22,7 @@
   ></app-error-message>
 
   <div *ngIf="!isLoading && !errorMessage">
-    <h3 class="mt-4">Your Watch Trends</h3>
+    <h4 class="mt-3">Your Watch Trends</h4>
     <p class="mb-3 hint-text">
       Charts below show how many movies you watched and your total runtime across different periods.
     </p>

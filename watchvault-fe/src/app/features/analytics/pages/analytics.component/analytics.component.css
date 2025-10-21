@@ -43,3 +43,9 @@
   transform: translateY(-2px);
   box-shadow: 0 4px 14px var(--color-accent-shadow-hover);
 }
+
+.hint-muted {
+  color: var(--color-hint-muted);
+  font-size: 0.85rem;
+  opacity: 0.8;
+}

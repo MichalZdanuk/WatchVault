@@ -1,3 +1,9 @@
 .history-container {
   padding: 1.5rem 2rem;
 }
+
+.hint-muted {
+  color: var(--color-hint-muted);
+  font-size: 0.85rem;
+  opacity: 0.8;
+}

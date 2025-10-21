@@ -11,6 +11,7 @@
   --color-accent-shadow: rgba(119, 0, 255, 0.5);
   --color-accent-shadow-hover: rgba(119, 0, 255, 0.6);
   --color-success: #4caf50;
+  --color-hint-muted: #999;
 }
 
 html,

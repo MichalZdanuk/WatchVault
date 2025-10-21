@@ -1,10 +1,14 @@
 <div class="history-container">
-  <h1 class="d-flex align-items-center gap-2 mb-4">
+  <h1 class="d-flex align-items-center gap-2">
     Your Watch History
     <app-info-icon
       tooltipText="View your complete watch history. You can edit watch dates or revisit what you’ve watched."
     ></app-info-icon>
   </h1>
+
+  <p class="hint-muted">
+    Your watch history updates every few minutes. Recent changes may take a little while to appear.
+  </p>
 
   <ng-container *ngIf="isLoading">
     <app-loading-spinner text="Loading your history..."></app-loading-spinner>
