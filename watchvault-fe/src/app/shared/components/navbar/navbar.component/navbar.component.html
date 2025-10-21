@@ -15,8 +15,13 @@
       <mat-list-item [routerLink]="'/watchlist'" routerLinkActive="active">
         <mat-icon class="nav-icon">list</mat-icon> <span>Watchlist</span>
       </mat-list-item>
-      <mat-list-item [routerLink]="'/history'" routerLinkActive="active">
-        <mat-icon class="nav-icon">history</mat-icon> <span>History</span>
+      <mat-list-item
+        [routerLink]="'/history'"
+        [queryParams]="{ page: 1 }"
+        routerLinkActive="active"
+      >
+        <mat-icon class="nav-icon">history</mat-icon>
+        <span>History</span>
       </mat-list-item>
       <mat-list-item [routerLink]="'/analytics'" routerLinkActive="active">
         <mat-icon class="nav-icon">line_axis</mat-icon> <span>Analytics</span>

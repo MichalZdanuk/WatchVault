@@ -6,6 +6,7 @@ import { HistoryPanel } from '../../history-panel/history-panel';
 import { WatchListHistoryResponse } from '../../../../shared/models/watchlist-history-response';
 import { LoadingSpinner } from '../../../../shared/components/loading-spinner/loading-spinner';
 import { ErrorMessage } from '../../../../shared/components/error-message/error-message';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-history.component',
@@ -21,10 +22,18 @@ export class HistoryComponent implements OnInit {
   isLoading: boolean = true;
   error: string | null = null;
 
-  constructor(private watchlistService: WatchlistService) {}
+  constructor(
+    private watchlistService: WatchlistService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.loadHistory(this.pageNumber, this.pageSize);
+    this.route.queryParams.subscribe((params) => {
+      const page = parseInt(params['page'], 10);
+      this.pageNumber = isNaN(page) || page < 1 ? 1 : page;
+      this.loadHistory(this.pageNumber, this.pageSize);
+    });
   }
 
   loadHistory(pageNumber: number, pageSize: number): void {
@@ -42,6 +51,15 @@ export class HistoryComponent implements OnInit {
         this.error = '⚠️ Failed to load history';
         this.isLoading = false;
       },
+    });
+  }
+
+  onPageChange(newPage: number) {
+    // Update the URL query param, trigger reload via subscription
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { page: newPage },
+      queryParamsHandling: 'merge',
     });
   }
 }

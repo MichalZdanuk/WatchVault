@@ -11,7 +11,6 @@ import { WatchListHistoryResponse } from '../../../shared/models/watchlist-histo
 })
 export class HistoryPanel {
   @Input() history!: WatchListHistoryResponse;
-
   @Output() pageChange = new EventEmitter<number>();
 
   onPrevPage(): void {
