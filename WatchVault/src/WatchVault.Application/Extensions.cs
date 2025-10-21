@@ -14,11 +14,14 @@ public static class Extensions
         DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
     };
 
-    private static DistributedCacheEntryOptions CacheOptions = new DistributedCacheEntryOptions()
-        .SetSlidingExpiration(TimeSpan.FromMinutes(30))
-        .SetAbsoluteExpiration(TimeSpan.FromMinutes(60));
-
-    public static async Task<T?> GetOrSetAsync<T>(this IDistributedCache cache, string cacheKey, Func<Task<T>> task)
+    /// <summary>
+    /// Gets or sets a cached value with optional cache configuration.
+    /// If <paramref name="options"/> is null, uses default (30/60 min).
+    /// </summary>
+    public static async Task<T?> GetOrSetAsync<T>(this IDistributedCache cache,
+        string cacheKey,
+        Func<Task<T>> task,
+        DistributedCacheEntryOptions? options = null)
     {
         var cachedBytes = await cache.GetAsync(cacheKey);
 
@@ -35,7 +38,7 @@ public static class Extensions
         if (result is not null)
         {
             var bytes = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(result, SerializerOptions));
-            await cache.SetAsync(cacheKey, bytes, CacheOptions);
+            await cache.SetAsync(cacheKey, bytes, options ?? CacheProfiles.Default);
         }
 
         return result;

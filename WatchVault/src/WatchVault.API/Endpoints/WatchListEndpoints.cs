@@ -87,7 +87,7 @@ public static class WatchListEndpoints
         .Produces(StatusCodes.Status500InternalServerError)
         .WithTags("Watchlist");
 
-        watchList.MapGet("/analytics/insights", async (IMediator mediator) =>
+        watchList.MapGet("/insights", async (IMediator mediator) =>
         {
             var watchListInsights = await mediator.Send(new GetWatchListInsightsQuery());
 

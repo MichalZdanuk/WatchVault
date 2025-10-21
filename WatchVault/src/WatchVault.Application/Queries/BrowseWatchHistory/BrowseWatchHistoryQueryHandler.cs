@@ -36,7 +36,7 @@ public sealed class BrowseWatchHistoryQueryHandler(IUserContext userContext,
                 .GetWatchlistHistoryCountAsync(userId);
 
             return new WatchListHistoryDto(query.PageNumber, query.PageSize, totalCount, dtos);
-        });
+        }, CacheProfiles.ShortLived);
 
         return result ?? new WatchListHistoryDto(query.PageNumber, query.PageSize, 0, []);
     }
