@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Caching.Distributed;
 using WatchVault.Application.Common;
-using WatchVault.Application.Enums;
 using WatchVault.Application.Helpers;
 using WatchVault.Application.Repositories;
 
@@ -22,14 +21,12 @@ public sealed class BrowseWatchHistoryQueryHandler(IUserContext userContext,
             var dtos = items.Select(x =>
                 new WatchHistoryItemDto(
                     x.Id,
-                    x.AddedToWatchAt,
-                    x.WatchedAt,
+                    x.WatchedAt!.Value,
                     x.IsFavourite,
                     x.Movie.SimklId,
                     x.Movie.Title,
                     x.Movie.PosterUrl,
-                    x.Movie.Genres,
-                    x.WatchStatus.ConvertToApplicationWatchStatus()
+                    x.Movie.Genres
                 )
             ).ToList();
 

@@ -62,8 +62,10 @@ public class WatchListRepository(WatchVaultDbContext dbContext)
 
         var items = await dbContext.WatchListItems
             .AsNoTracking()
-            .Where(wli => wli.WatchListId == watchListId)
-            .OrderByDescending(wli => wli.UpdateDate)
+            .Where(wli => wli.WatchListId == watchListId
+                && wli.WatchStatus == Domain.Enums.WatchStatus.Watched
+                && wli.WatchedAt != null)
+            .OrderByDescending(wli => wli.WatchedAt)
             .Skip((pageNumber - 1) * pageSize)
             .Take(pageSize)
             .ToListAsync();
@@ -83,7 +85,9 @@ public class WatchListRepository(WatchVaultDbContext dbContext)
 
         var count = await dbContext.WatchListItems
             .AsNoTracking()
-            .Where(wli => wli.WatchListId == watchListId)
+            .Where(wli => wli.WatchListId == watchListId
+                && wli.WatchStatus == Domain.Enums.WatchStatus.Watched
+                && wli.WatchedAt != null)
             .CountAsync();
 
         return count;
