@@ -36,11 +36,10 @@ export class HistoryComponent implements OnInit {
     this.watchlistService.browseWatchListHistory(this.pageNumber, this.pageSize).subscribe({
       next: (x) => {
         this.history = x;
+        this.isLoading = false;
       },
       error: () => {
         this.error = '⚠️ Failed to load history';
-      },
-      complete: () => {
         this.isLoading = false;
       },
     });
