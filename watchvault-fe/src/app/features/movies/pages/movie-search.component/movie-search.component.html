@@ -1,19 +1,37 @@
 <div class="movies-search-container">
-  <div class="d-flex align-items-center justify-content-between mb-2">
+  <div>
     <h1 class="d-flex align-items-center gap-2">
       Search movies
       <app-info-icon tooltipText="Search movies by title"></app-info-icon>
     </h1>
+
     <mat-form-field class="search-field">
-      <input #searchInput matInput placeholder="Type at least 3 characters" />
+      <mat-icon matPrefix>search</mat-icon>
+      <mat-label>Search by typing movie title</mat-label>
+      <input matInput #searchInput type="text" placeholder="Type at least 3 characters..." />
+      <mat-icon matSuffix *ngIf="searchTerm" (click)="clearSearch()" class="close-icon"
+        >close</mat-icon
+      >
     </mat-form-field>
   </div>
 
-  <div fxLayout="row wrap" fxLayoutGap="24px grid">
-    <app-movie-card *ngFor="let movie of movies" [movie]="movie"></app-movie-card>
+  <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+
+  <div *ngIf="!searchTerm; else searchResults" class="popular-section">
+    <h4>Popular Movies</h4>
+    <div class="movie-grid">
+      <app-popular-movie-card
+        *ngFor="let movie of popularMovies"
+        [movie]="movie"
+      ></app-popular-movie-card>
+    </div>
   </div>
 
-  <div *ngIf="!movies.length && !error" class="empty-state">
-    <p>🎬 Start typing to search for movies</p>
-  </div>
+  <ng-template #searchResults>
+    <div *ngIf="error" class="error-message">{{ error }}</div>
+
+    <div *ngIf="movies.length > 0" class="movie-grid">
+      <app-movie-card *ngFor="let movie of movies" [movie]="movie"></app-movie-card>
+    </div>
+  </ng-template>
 </div>

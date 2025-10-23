@@ -1,0 +1,14 @@
+<mat-card class="popular-movie-card" [routerLink]="['/movies', movie.simklId]">
+  <img
+    mat-card-image
+    [src]="movie.posterUrl ? movie.posterUrl : 'assets/movies/moviePosterUnavailable.png'"
+    [alt]="movie.title"
+  />
+  <mat-card-content>
+    <p class="movie-title">{{ movie.title }}</p>
+    <p class="movie-meta">
+      {{ movie.releaseDate | date : 'yyyy' }} •
+      <span *ngIf="movie.imdbRating">⭐ {{ movie.imdbRating }}/10</span>
+    </p>
+  </mat-card-content>
+</mat-card>
