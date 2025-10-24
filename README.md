@@ -116,7 +116,7 @@ This approach ensures:
 - Scalability  
 - Maintainability  
 
-![WatchVault Architecture](https://github.com/user-attachments/assets/058de4db-713f-40a5-98f0-c67ef58a6195)  
+![WatchVault Architecture](https://github.com/user-attachments/assets/7086d135-82e4-4e81-a039-fe0b6be424a8)
 
 *High-level architecture overview.*
 
