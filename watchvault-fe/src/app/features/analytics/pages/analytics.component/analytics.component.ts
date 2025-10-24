@@ -7,10 +7,12 @@ import { AnalyticsChart } from '../../analytics-chart/analytics-chart';
 import { InfoIcon } from '../../../../shared/components/info-icon/info-icon';
 import { LoadingSpinner } from '../../../../shared/components/loading-spinner/loading-spinner';
 import { ErrorMessage } from '../../../../shared/components/error-message/error-message';
+import { WatchListInsights } from '../../../../shared/models/watchlist-insights';
+import { InsightsGenres } from '../../insights-genres/insights-genres';
 
 @Component({
   selector: 'app-analytics.component',
-  imports: [CommonModule, AnalyticsChart, InfoIcon, LoadingSpinner, ErrorMessage],
+  imports: [CommonModule, AnalyticsChart, InsightsGenres, InfoIcon, LoadingSpinner, ErrorMessage],
   templateUrl: './analytics.component.html',
   styleUrl: './analytics.component.css',
 })
@@ -21,6 +23,7 @@ export class AnalyticsComponent implements OnInit {
   lastWeekAnalytics: WatchListAnalytics | null = null;
   lastMonthAnalytics: WatchListAnalytics | null = null;
   thisYearAnalytics: WatchListAnalytics | null = null;
+  insights: WatchListInsights | null = null;
 
   isLoading: boolean = true;
   errorMessage: string | null = null;
@@ -48,11 +51,13 @@ export class AnalyticsComponent implements OnInit {
       this.analyticsService.getAnalytics(StatisticsPeriod.Day, weekStart, now).toPromise(),
       this.analyticsService.getAnalytics(StatisticsPeriod.Day, monthStart, monthEnd).toPromise(),
       this.analyticsService.getAnalytics(StatisticsPeriod.Month, yearStart, yearEnd).toPromise(),
+      this.analyticsService.getInsights().toPromise(),
     ])
-      .then(([week, month, year]) => {
+      .then(([week, month, year, insights]) => {
         this.lastWeekAnalytics = week ?? null;
         this.lastMonthAnalytics = month ?? null;
         this.thisYearAnalytics = year ?? null;
+        this.insights = insights ?? null;
       })
       .catch((err) => {
         console.error(err);

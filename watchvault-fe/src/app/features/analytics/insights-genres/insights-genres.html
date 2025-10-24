@@ -1,0 +1,23 @@
+<div class="genres-grid">
+  <app-genre-pie-chart
+    [title]="'Watched Genres'"
+    [data]="insights.watchedGenresCount"
+  ></app-genre-pie-chart>
+
+  <app-genre-pie-chart
+    [title]="'To Watch Genres'"
+    [data]="insights.toWatchGenresCount"
+  ></app-genre-pie-chart>
+
+  <app-genre-pie-chart
+    [title]="'Favorite Genres'"
+    [data]="insights.favoriteGenresCount"
+  ></app-genre-pie-chart>
+</div>
+
+<div class="runtime-section">
+  <app-average-runtime-chart
+    [title]="'Average Runtime per Genre'"
+    [data]="insights.averageRuntimePerGenre"
+  ></app-average-runtime-chart>
+</div>

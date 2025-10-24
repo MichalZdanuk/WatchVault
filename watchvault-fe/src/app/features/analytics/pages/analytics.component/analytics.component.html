@@ -63,4 +63,11 @@
       </button>
     </div>
   </div>
+
+  <div *ngIf="insights && !isLoading && !errorMessage" class="genres-section">
+    <h4 class="mt-5">Genre Insights</h4>
+    <p class="hint-text">Explore your genre preferences and runtime patterns.</p>
+
+    <app-insights-genres [insights]="insights"></app-insights-genres>
+  </div>
 </div>
