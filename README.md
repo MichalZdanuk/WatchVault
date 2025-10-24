@@ -43,11 +43,11 @@ All screenshots can also be found in the [`/SystemDemonstration`](./SystemDemons
 ### 🏠 Landing Page  
 ![Landing Page](https://github.com/user-attachments/assets/2d8077a0-adcd-4beb-b488-efbcb86378f9)
 
-### 🔥 Trending Movies  
-![Trending Movies](https://github.com/user-attachments/assets/5ea9e95f-0a56-473b-8242-ccd41b3e95c5)
-
 ### 🔍 Search Movies  
 ![Search Movies](https://github.com/user-attachments/assets/5e76864a-a083-4dd4-a392-e3592908628d)
+
+### 🔥 Trending Movies  
+![Trending Movies](https://github.com/user-attachments/assets/5ea9e95f-0a56-473b-8242-ccd41b3e95c5)
 
 ### 🎬 Movie Details  
 ![Movie Details](https://github.com/user-attachments/assets/49a43a97-edc0-4d2f-a31e-8480ebc1eacd)
@@ -55,19 +55,21 @@ All screenshots can also be found in the [`/SystemDemonstration`](./SystemDemons
 ### 🎞️ Watchlist Overview  
 ![Watchlist Overview](https://github.com/user-attachments/assets/6d1ce526-0ff8-46ec-a6a1-1913921ff145)
 
-### 👤 Profile Page  
-![Profile Page](https://github.com/user-attachments/assets/5856dd5c-6ce1-4b4e-9b98-5795f74d900c)
-
 ### 🕒 Watch History
 ![Watch History Page](https://github.com/user-attachments/assets/30968798-e552-4735-939e-1390389df33e)
 
 ### 📊 Watchlist Analysis
 
-![Watchlist analysis - bar chart (watched movies count)](https://github.com/user-attachments/assets/002cecf1-7db1-4394-aba9-ce37eb6d7869)
+![Watchlist analysis - bar chart (runtime minutes)](https://github.com/user-attachments/assets/9ee40c83-6e12-4ede-835d-208d0fa9122d)
 
-![Watchlist analysis - bar chart (runtime minutes)](https://github.com/user-attachments/assets/5ad8b608-3d02-4a5a-bbd0-95c857ad26bb)
+![Watchlist analysis - line chart (runtime minutes)](https://github.com/user-attachments/assets/2e3b430d-1278-4571-9cb1-6968912452bd)
 
-![Watchlist analysis - line chart (runtime minutes)](https://github.com/user-attachments/assets/f31853cf-0b67-40a7-a13d-c9789b9a962a)
+![Watchlist analysis - genre insights](https://github.com/user-attachments/assets/493a44dd-1941-461a-b2b2-395e0e93a2fd)
+
+![Watchlist analysis - favorites insights](https://github.com/user-attachments/assets/5e82c4a4-9f39-4e26-8f4f-fdd3f243bd2e)
+
+### 👤 Profile Page  
+![Profile Page](https://github.com/user-attachments/assets/5856dd5c-6ce1-4b4e-9b98-5795f74d900c)
 
 ### 🧾 Register Page  
 ![Register Page](https://github.com/user-attachments/assets/5c521df7-f9b9-4622-b010-d55c431b2c90)
@@ -98,7 +100,8 @@ All screenshots can also be found in the [`/SystemDemonstration`](./SystemDemons
   - Angular Router  
   - Angular Material  
   - Bootstrap  
-  - RxJS  
+  - RxJS
+  - ng2-charts, chart.js
 
 ### 🐳 Containerization  
 - **Docker** for full-stack orchestration  
