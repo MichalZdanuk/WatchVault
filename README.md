@@ -138,10 +138,13 @@ The main goal was to deliver a **fully functional MVP** quickly while keeping it
   The free plan has a **1,000-request daily limit**, which is mitigated through caching.
 
 - **Caching Strategy:**  
-  Implemented via **Redis** to store responses from the Simkl API.  
-  - Sliding expiration: 30 minutes  
-  - Absolute expiration: 60 minutes  
-  This efficiently reduces redundant requests and external API usage.
+Caching is implemented using **Redis** to store responses from the Simkl API and results of heavy computations like analytics or history display.
+I’ve prepared a few caching profiles depending on the use case:
+  - *Default* - Sliding expiration: *30 minutes*  & Absolute expiration: *30 minutes*: Used for external API calls.
+  - *ShortLived* - Sliding expiration: *5 minutes*  & Absolute expiration: *20 minutes*: Used for displaying watch history.
+  - *Analytics* – Sliding expiration: *1 hour* & Absolute expiration: *12 hours*: Used for analytics and statistical calculations.
+
+This setup helps minimize redundant requests and improves performance by reducing the load from expensive data processing and external API calls.
 
 ---
 
