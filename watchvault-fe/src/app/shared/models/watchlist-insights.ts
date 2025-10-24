@@ -7,4 +7,6 @@ export interface WatchListInsights {
   toWatchGenresCount: Record<string, number>;
   favoriteGenresCount: Record<string, number>;
   averageRuntimePerGenre: Record<string, number>;
+  favoriteRate: number;
+  totalWatchedRuntimeMinutes: number;
 }

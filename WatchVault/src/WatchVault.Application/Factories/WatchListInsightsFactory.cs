@@ -50,4 +50,23 @@ public class WatchListInsightsFactory()
             .SelectMany(i => i.Movie.Genres.Select(g => new { Genre = g, Runtime = i.Movie.RuntimeMinutes!.Value }))
             .GroupBy(x => x.Genre)
             .ToDictionary(g => g.Key, g => (int)Math.Round(g.Average(x => x.Runtime)));
+
+    public double FavoriteRate(IEnumerable<WatchListItem> items)
+    {
+        var totalWatched = items.Count(i => i.WatchStatus == WatchStatus.Watched);
+        if (totalWatched == 0)
+        {
+            return 0;
+        }
+
+        var totalFavorites = items.Count(i => i.IsFavourite);
+        return Math.Round((double)totalFavorites / totalWatched, 3);
+    }
+
+    public int TotalWatchedRuntimeMinutes(IEnumerable<WatchListItem> items)
+    {
+        return items
+            .Where(i => i.WatchStatus == WatchStatus.Watched && i.Movie.RuntimeMinutes.HasValue)
+            .Sum(i => i.Movie.RuntimeMinutes!.Value);
+    }
 }

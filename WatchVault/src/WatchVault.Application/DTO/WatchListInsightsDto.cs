@@ -7,5 +7,7 @@ public record WatchListInsightsDto(
     Dictionary<string, int> WatchedGenresCount,
     Dictionary<string, int> ToWatchGenresCount,
     Dictionary<string, int> FavoriteGenresCount,
-    Dictionary<string, int> AverageRuntimePerGenre
+    Dictionary<string, int> AverageRuntimePerGenre,
+    double FavoriteRate,
+    int TotalWatchedRuntimeMinutes
 );

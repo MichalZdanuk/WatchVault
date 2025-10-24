@@ -22,7 +22,7 @@ public sealed class GetWatchListInsightsQueryHandler(
             if (watchList is null)
             {
                 return new WatchListInsightsDto(0, 0, 0, 0,
-                    new(), new(), new(), new());
+                    new(), new(), new(), new(), 0.0, 0);
             }
 
             var items = watchList.Items;
@@ -35,10 +35,12 @@ public sealed class GetWatchListInsightsQueryHandler(
                 watchListInsightsFactory.WatchedGenresCount(items),
                 watchListInsightsFactory.ToWatchGenresCount(items),
                 watchListInsightsFactory.FavoriteGenresCount(items),
-                watchListInsightsFactory.AverageRuntimePerGenre(items)
+                watchListInsightsFactory.AverageRuntimePerGenre(items),
+                watchListInsightsFactory.FavoriteRate(items),
+                watchListInsightsFactory.TotalWatchedRuntimeMinutes(items)
             );
         }, CacheProfiles.Analytics);
 
-        return result ?? new WatchListInsightsDto(0, 0, 0, 0, new(), new(), new(), new());
+        return result ?? new WatchListInsightsDto(0, 0, 0, 0, new(), new(), new(), new(), 0.0, 0);
     }
 }

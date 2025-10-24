@@ -4,16 +4,16 @@ import { ChartConfiguration, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 
 @Component({
-  selector: 'app-genre-pie-chart',
+  selector: 'app-genre-chart',
   imports: [CommonModule, BaseChartDirective],
-  templateUrl: './genre-pie-chart.html',
-  styleUrl: './genre-pie-chart.css',
+  templateUrl: './genre-chart.html',
+  styleUrl: './genre-chart.css',
 })
-export class GenrePieChart implements OnChanges {
+export class GenreChart implements OnChanges {
   @Input() title: string = '';
   @Input() data: Record<string, number> = {};
+  @Input() chartType: ChartType = 'bar';
 
-  public chartType: ChartType = 'pie';
   public chartData: ChartConfiguration['data'] = { labels: [], datasets: [] };
   public chartOptions: ChartConfiguration['options'] = {
     responsive: true,

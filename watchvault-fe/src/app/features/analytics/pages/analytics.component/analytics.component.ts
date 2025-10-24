@@ -9,10 +9,19 @@ import { LoadingSpinner } from '../../../../shared/components/loading-spinner/lo
 import { ErrorMessage } from '../../../../shared/components/error-message/error-message';
 import { WatchListInsights } from '../../../../shared/models/watchlist-insights';
 import { InsightsGenres } from '../../insights-genres/insights-genres';
+import { FavoritesInsights } from '../../favorites-insights/favorites-insights';
 
 @Component({
   selector: 'app-analytics.component',
-  imports: [CommonModule, AnalyticsChart, InsightsGenres, InfoIcon, LoadingSpinner, ErrorMessage],
+  imports: [
+    CommonModule,
+    AnalyticsChart,
+    InsightsGenres,
+    FavoritesInsights,
+    InfoIcon,
+    LoadingSpinner,
+    ErrorMessage,
+  ],
   templateUrl: './analytics.component.html',
   styleUrl: './analytics.component.css',
 })

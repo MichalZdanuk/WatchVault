@@ -1,18 +1,15 @@
 <div class="genres-grid">
-  <app-genre-pie-chart
+  <app-genre-chart
     [title]="'Watched Genres'"
     [data]="insights.watchedGenresCount"
-  ></app-genre-pie-chart>
+    [chartType]="'pie'"
+  ></app-genre-chart>
 
-  <app-genre-pie-chart
+  <app-genre-chart
     [title]="'To Watch Genres'"
     [data]="insights.toWatchGenresCount"
-  ></app-genre-pie-chart>
-
-  <app-genre-pie-chart
-    [title]="'Favorite Genres'"
-    [data]="insights.favoriteGenresCount"
-  ></app-genre-pie-chart>
+    [chartType]="'pie'"
+  ></app-genre-chart>
 </div>
 
 <div class="runtime-section">

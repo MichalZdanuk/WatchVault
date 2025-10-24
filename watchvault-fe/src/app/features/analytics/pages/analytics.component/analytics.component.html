@@ -70,4 +70,13 @@
 
     <app-insights-genres [insights]="insights"></app-insights-genres>
   </div>
+
+  <div *ngIf="insights && !isLoading && !errorMessage" class="favorites-section mt-5">
+    <h4>Favorites Insights</h4>
+    <p class="hint-text">
+      Discover your favorite genres and how your favorites relate to your watched list.
+    </p>
+
+    <app-favorites-insights [insights]="insights"></app-favorites-insights>
+  </div>
 </div>

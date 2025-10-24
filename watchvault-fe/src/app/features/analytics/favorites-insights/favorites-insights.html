@@ -1,0 +1,28 @@
+<div class="favorites-insights-container">
+  <div class="favorites-card">
+    <h3 class="title">Favorites Summary</h3>
+
+    <div class="favorite-rate">{{ favoriteRatePercent }}</div>
+    <div class="label">Favorite Rate</div>
+
+    <div class="stats-list">
+      <div>
+        <span>{{ insights.totalFavorites }}</span> favorites
+      </div>
+      <div>
+        <span>{{ insights.totalWatched }}</span> watched
+      </div>
+      <div>
+        <span>{{ totalHoursWatched }}</span> hours watched
+      </div>
+    </div>
+  </div>
+
+  <div class="favorites-chart">
+    <app-genre-chart
+      [title]="'Favorite Genres'"
+      [data]="insights.favoriteGenresCount"
+      [chartType]="'doughnut'"
+    ></app-genre-chart>
+  </div>
+</div>

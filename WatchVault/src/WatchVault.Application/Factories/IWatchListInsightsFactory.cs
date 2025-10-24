@@ -11,4 +11,6 @@ public interface IWatchListInsightsFactory
     Dictionary<string, int> ToWatchGenresCount(IEnumerable<WatchListItem> items);
     Dictionary<string, int> FavoriteGenresCount(IEnumerable<WatchListItem> items);
     Dictionary<string, int> AverageRuntimePerGenre(IEnumerable<WatchListItem> items);
+    public double FavoriteRate(IEnumerable<WatchListItem> items);
+    public int TotalWatchedRuntimeMinutes(IEnumerable<WatchListItem> items);
 }
