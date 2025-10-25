@@ -1,12 +1,61 @@
-.main-layout {
+:host {
+  display: flex;
+  flex-direction: column;
   height: 100vh;
+  background: var(--color-bg-main);
+  color: var(--color-text-main);
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background: var(--color-bg-navbar);
+  color: var(--color-text-main);
+  padding: 0.5rem 1rem;
+  gap: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  position: sticky;
+  top: 0;
+}
+
+.topbar .app-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.topbar .navbar-logo {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+}
+
+.main-layout {
+  flex: 1;
+  display: flex;
+  height: 100%;
 }
 
 .sidenav {
-  width: 200px;
+  width: 230px;
   background: var(--color-bg-navbar);
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.4);
 }
 
 .content {
-  padding: 16px;
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+@media (min-width: 768px) {
+  .topbar {
+    display: none;
+  }
+
+  .content {
+    padding: 2rem;
+  }
 }

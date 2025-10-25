@@ -6,27 +6,36 @@
     </mat-toolbar>
 
     <mat-nav-list class="navbar-list">
-      <mat-list-item [routerLink]="'/movies/search'" routerLinkActive="active">
+      <mat-list-item
+        [routerLink]="'/movies/search'"
+        routerLinkActive="active"
+        (click)="onLinkClick()"
+      >
         <mat-icon class="nav-icon">search</mat-icon> <span>Search Movies</span>
       </mat-list-item>
-      <mat-list-item [routerLink]="'/movies/trending'" routerLinkActive="active">
+      <mat-list-item
+        [routerLink]="'/movies/trending'"
+        routerLinkActive="active"
+        (click)="onLinkClick()"
+      >
         <mat-icon class="nav-icon">trending_up</mat-icon> <span>Trending</span>
       </mat-list-item>
-      <mat-list-item [routerLink]="'/watchlist'" routerLinkActive="active">
+      <mat-list-item [routerLink]="'/watchlist'" routerLinkActive="active" (click)="onLinkClick()">
         <mat-icon class="nav-icon">list</mat-icon> <span>Watchlist</span>
       </mat-list-item>
       <mat-list-item
         [routerLink]="'/history'"
         [queryParams]="{ page: 1 }"
         routerLinkActive="active"
+        (click)="onLinkClick()"
       >
         <mat-icon class="nav-icon">history</mat-icon>
         <span>History</span>
       </mat-list-item>
-      <mat-list-item [routerLink]="'/analytics'" routerLinkActive="active">
+      <mat-list-item [routerLink]="'/analytics'" routerLinkActive="active" (click)="onLinkClick()">
         <mat-icon class="nav-icon">line_axis</mat-icon> <span>Analytics</span>
       </mat-list-item>
-      <mat-list-item [routerLink]="'/profile'" routerLinkActive="active">
+      <mat-list-item [routerLink]="'/profile'" routerLinkActive="active" (click)="onLinkClick()">
         <mat-icon class="nav-icon">account_circle</mat-icon> <span>Profile</span>
       </mat-list-item>
     </mat-nav-list>

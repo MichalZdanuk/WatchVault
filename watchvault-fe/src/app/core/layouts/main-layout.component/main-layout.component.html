@@ -1,10 +1,22 @@
+<header class="topbar" *ngIf="isMobile">
+  <button mat-icon-button (click)="toggleSidenav()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <h2 class="app-title">WatchVault</h2>
+  <img src="assets/logo/watchvaultlogo32.png" alt="WatchVault Logo" class="navbar-logo" />
+</header>
+
 <mat-sidenav-container class="main-layout">
-  <!-- Left Navbar -->
-  <mat-sidenav mode="side" opened class="sidenav">
-    <app-navbar></app-navbar>
+  <mat-sidenav
+    #sidenav
+    [mode]="isMobile ? 'over' : 'side'"
+    [opened]="!isMobile"
+    class="sidenav"
+    (backdropClick)="closeOnMobile()"
+  >
+    <app-navbar (navClicked)="closeOnMobile()"></app-navbar>
   </mat-sidenav>
 
-  <!-- Main Content -->
   <mat-sidenav-content class="content">
     <router-outlet></router-outlet>
   </mat-sidenav-content>
