@@ -69,4 +69,20 @@ public class WatchListInsightsFactory()
             .Where(i => i.WatchStatus == WatchStatus.Watched && i.Movie.RuntimeMinutes.HasValue)
             .Sum(i => i.Movie.RuntimeMinutes!.Value);
     }
+
+    public Dictionary<string, int> WatchedDayOfWeekDistribution(IEnumerable<WatchListItem> items)
+    {
+        var watchedCounts = items
+            .Where(i => i.WatchStatus == WatchStatus.Watched && i.WatchedAt.HasValue)
+            .GroupBy(i => i.WatchedAt!.Value.DayOfWeek)
+            .ToDictionary(g => g.Key, g => g.Count());
+
+        var fullWeek = Enum.GetValues<DayOfWeek>()
+            .ToDictionary(
+                day => day.ToString(),
+                day => watchedCounts.TryGetValue(day, out var count) ? count : 0
+            );
+
+        return fullWeek;
+    }
 }
