@@ -1,5 +1,5 @@
 .trending-movie-card {
-  max-width: 275px;
+  max-width: 250px;
   background-color: var(--color-bg-navbar);
   border-radius: 8px;
   box-shadow: 8px 8px 21px -8px var(--color-accent-shadow);
@@ -57,4 +57,25 @@
 .trending-movie-card .rating {
   color: var(--color-accent);
   font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .trending-movie-card {
+    max-width: 90%;
+    margin: 0 auto 1.5rem auto;
+  }
+
+  .trending-movie-card img {
+    height: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  .trending-movie-card {
+    max-width: 100%;
+  }
+
+  .trending-movie-card img {
+    height: 280px;
+  }
 }

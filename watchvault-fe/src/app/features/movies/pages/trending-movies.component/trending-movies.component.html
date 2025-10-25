@@ -6,48 +6,52 @@
     </h1>
 
     <div class="filters-bar">
-      <mat-form-field appearance="fill" class="filter-select">
-        <mat-select [value]="trendingInterval" (selectionChange)="onIntervalChange($event.value)">
-          <mat-option [value]="0">Today</mat-option>
-          <mat-option [value]="1">This Week</mat-option>
-          <mat-option [value]="2">This Month</mat-option>
-        </mat-select>
-      </mat-form-field>
+      <div class="filter">
+        <mat-form-field appearance="fill" class="filter-select">
+          <mat-select [value]="trendingInterval" (selectionChange)="onIntervalChange($event.value)">
+            <mat-option [value]="0">Today</mat-option>
+            <mat-option [value]="1">This Week</mat-option>
+            <mat-option [value]="2">This Month</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
 
-      <mat-form-field appearance="fill" class="filter-select">
-        <mat-select [value]="sortOrder" (selectionChange)="onSortChange($event.value)">
-          <mat-option value="popularity">Popularity</mat-option>
-          <mat-option value="title_asc">Title A–Z</mat-option>
-          <mat-option value="title_desc">Title Z–A</mat-option>
-          <mat-option value="release_date_desc">Newest</mat-option>
-          <mat-option value="release_date_asc">Oldest</mat-option>
-          <mat-option value="imdb_rating_asc">Rating 🔼</mat-option>
-          <mat-option value="imdb_rating_desc">Rating 🔽</mat-option>
-          <mat-option value="runtime_minutes_desc">Longest</mat-option>
-          <mat-option value="runtime_minutes_asc">Shortest</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-  </div>
-
-  <app-loading-spinner
-    *ngIf="isLoading"
-    text="Loading trending movies ..."
-    [size]="3"
-  ></app-loading-spinner>
-
-  <div *ngIf="!isLoading && filteredTrendingMovies.length">
-    <div fxLayout="row wrap" fxLayoutGap="40px grid">
-      <div *ngFor="let movie of filteredTrendingMovies">
-        <app-trending-movie-card [trendingMovie]="movie"></app-trending-movie-card>
+      <div class="filter">
+        <mat-form-field appearance="fill" class="filter-select">
+          <mat-select [value]="sortOrder" (selectionChange)="onSortChange($event.value)">
+            <mat-option value="popularity">Popularity</mat-option>
+            <mat-option value="title_asc">Title A–Z</mat-option>
+            <mat-option value="title_desc">Title Z–A</mat-option>
+            <mat-option value="release_date_desc">Newest</mat-option>
+            <mat-option value="release_date_asc">Oldest</mat-option>
+            <mat-option value="imdb_rating_asc">Rating 🔼</mat-option>
+            <mat-option value="imdb_rating_desc">Rating 🔽</mat-option>
+            <mat-option value="runtime_minutes_desc">Longest</mat-option>
+            <mat-option value="runtime_minutes_asc">Shortest</mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
     </div>
-  </div>
 
-  <app-error-message
-    *ngIf="!isLoading && error"
-    [message]="error"
-    retryText="Failed to browse trending movies. Try again later!"
-    (retry)="reloadTrendingMovies()"
-  ></app-error-message>
+    <app-loading-spinner
+      *ngIf="isLoading"
+      text="Loading trending movies ..."
+      [size]="3"
+    ></app-loading-spinner>
+
+    <div *ngIf="!isLoading && filteredTrendingMovies.length">
+      <div fxLayout="row wrap" fxLayoutGap="30px grid">
+        <div *ngFor="let movie of filteredTrendingMovies">
+          <app-trending-movie-card [trendingMovie]="movie"></app-trending-movie-card>
+        </div>
+      </div>
+    </div>
+
+    <app-error-message
+      *ngIf="!isLoading && error"
+      [message]="error"
+      retryText="Failed to browse trending movies. Try again later!"
+      (retry)="reloadTrendingMovies()"
+    ></app-error-message>
+  </div>
 </div>
