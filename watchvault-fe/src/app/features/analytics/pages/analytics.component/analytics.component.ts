@@ -10,6 +10,7 @@ import { ErrorMessage } from '../../../../shared/components/error-message/error-
 import { WatchListInsights } from '../../../../shared/models/watchlist-insights';
 import { InsightsGenres } from '../../insights-genres/insights-genres';
 import { FavoritesInsights } from '../../favorites-insights/favorites-insights';
+import { WeeklyHabits } from '../../weekly-habits/weekly-habits';
 
 @Component({
   selector: 'app-analytics.component',
@@ -18,6 +19,7 @@ import { FavoritesInsights } from '../../favorites-insights/favorites-insights';
     AnalyticsChart,
     InsightsGenres,
     FavoritesInsights,
+    WeeklyHabits,
     InfoIcon,
     LoadingSpinner,
     ErrorMessage,

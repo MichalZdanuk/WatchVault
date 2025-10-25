@@ -79,4 +79,13 @@
 
     <app-favorites-insights [insights]="insights"></app-favorites-insights>
   </div>
+
+  <div *ngIf="insights && !isLoading && !errorMessage" class="favorites-section mt-5">
+    <h4>Weekly Habits</h4>
+    <p class="hint-text">
+      See which days you’re most likely to hit play. Your weekly movie rhythm revealed.
+    </p>
+
+    <app-weekly-habits [insights]="insights"></app-weekly-habits>
+  </div>
 </div>

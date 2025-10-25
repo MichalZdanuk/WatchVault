@@ -27,7 +27,7 @@ export class GenreChart implements OnChanges {
         display: true,
         text: '',
         color: '#e0e0e0',
-        font: { size: 14 },
+        font: { size: 15 },
       },
     },
   };

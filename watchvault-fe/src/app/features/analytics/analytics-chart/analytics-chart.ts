@@ -24,7 +24,7 @@ export class AnalyticsChart implements OnChanges {
     maintainAspectRatio: false,
     plugins: {
       legend: { display: false },
-      title: { display: true, text: '', color: '#e0e0e0' },
+      title: { display: true, text: '', color: '#e0e0e0', font: { size: 15, weight: 'bold' } },
     },
     scales: {
       x: { ticks: { color: '#ccc' }, grid: { color: 'rgba(255,255,255,0.05)' } },
