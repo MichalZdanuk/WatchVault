@@ -13,3 +13,13 @@
   font-size: 0.9rem;
   color: #aaa;
 }
+
+@media (max-width: 768px) {
+  .d-flex.gap-3 {
+    flex-direction: column;
+  }
+
+  .stat-card {
+    width: 100%;
+  }
+}
