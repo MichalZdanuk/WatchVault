@@ -4,7 +4,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { AuthStateService } from '../../../../core/auth/AuthStateService';
+import { AuthStateService } from '../../../core/auth/auth-state.service';
 
 @Component({
   selector: 'app-navbar',
@@ -16,10 +16,10 @@ import { AuthStateService } from '../../../../core/auth/AuthStateService';
     MatIconModule,
     MatButtonModule,
   ],
-  templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css',
+  templateUrl: './navbar.html',
+  styleUrl: './navbar.css',
 })
-export class NavbarComponent {
+export class Navbar {
   @Output() navClicked = new EventEmitter<void>();
   username: string = '';
 

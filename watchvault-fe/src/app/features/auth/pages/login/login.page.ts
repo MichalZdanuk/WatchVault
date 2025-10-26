@@ -6,7 +6,7 @@ import { Login } from '../../../../shared/models/login-request.model';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AuthStateService } from '../../../../core/auth/AuthStateService';
+import { AuthStateService } from '../../../../core/auth/auth-state.service';
 
 @Component({
   selector: 'app-login.page',

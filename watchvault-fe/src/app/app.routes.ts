@@ -1,22 +1,22 @@
 import { Routes } from '@angular/router';
-import { AuthLayoutComponent } from './core/layouts/auth-layout.component/auth-layout.component';
+import { AuthLayout } from './core/layouts/auth-layout/auth-layout';
 import { LoginPage } from './features/auth/pages/login/login.page';
 import { RegisterPage } from './features/auth/pages/register/register.page';
-import { MainLayoutComponent } from './core/layouts/main-layout.component/main-layout.component';
+import { MainLayout } from './core/layouts/main-layout/main-layout';
 import { MovieSearchPage } from './features/movies/pages/movie-search/movie-search.page';
 import { WatchlistPage } from './features/watchlist/pages/watchlist/watchlist.page';
 import { MovieDetailsPage } from './features/movies/pages/movie-details/movie-details.page';
 import { ProfilePage } from './features/profile/pages/profile/profile.page';
 import { TrendingMoviesPage } from './features/movies/pages/trending-movies/trending-movies.page';
 import { HomePage } from './features/home/pages/home/home.page';
-import { AuthGuard } from './core/auth/AuthGuard';
+import { AuthGuard } from './core/auth/auth.guard';
 import { AnalyticsPage } from './features/analytics/pages/analytics/analytics.page';
 import { HistoryPage } from './features/history/pages/history/history.page';
 
 export const routes: Routes = [
   {
     path: '',
-    component: AuthLayoutComponent,
+    component: AuthLayout,
     children: [
       { path: '', component: HomePage },
       { path: 'login', component: LoginPage },
@@ -25,7 +25,7 @@ export const routes: Routes = [
   },
   {
     path: '',
-    component: MainLayoutComponent,
+    component: MainLayout,
     canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'movies/search', pathMatch: 'full' },

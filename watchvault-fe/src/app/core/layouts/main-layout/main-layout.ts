@@ -1,25 +1,18 @@
 import { Component, ViewChild, HostListener } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
-import { NavbarComponent } from '../../../shared/components/navbar/navbar.component/navbar.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
+import { Navbar } from '../../../shared/components/navbar/navbar';
 
 @Component({
-  selector: 'app-main-layout.component',
-  imports: [
-    CommonModule,
-    RouterOutlet,
-    MatSidenavModule,
-    MatIconModule,
-    MatButtonModule,
-    NavbarComponent,
-  ],
-  templateUrl: './main-layout.component.html',
-  styleUrl: './main-layout.component.css',
+  selector: 'app-main-layout',
+  imports: [CommonModule, RouterOutlet, MatSidenavModule, MatIconModule, MatButtonModule, Navbar],
+  templateUrl: './main-layout.html',
+  styleUrl: './main-layout.css',
 })
-export class MainLayoutComponent {
+export class MainLayout {
   @ViewChild('sidenav') sidenav!: MatSidenav;
   isMobile = false;
 
