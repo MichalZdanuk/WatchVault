@@ -9,7 +9,7 @@ import { ErrorMessage } from '../../../../shared/components/error-message/error-
 import { UserService } from '../../../../core/services/user.service';
 
 @Component({
-  selector: 'app-profile.component',
+  selector: 'app-profile.page',
   imports: [
     CommonModule,
     UserProfileHeader,
@@ -18,10 +18,10 @@ import { UserService } from '../../../../core/services/user.service';
     LoadingSpinner,
     ErrorMessage,
   ],
-  templateUrl: './profile.component.html',
-  styleUrl: './profile.component.css',
+  templateUrl: './profile.page.html',
+  styleUrl: './profile.page.css',
 })
-export class ProfileComponent implements OnInit {
+export class ProfilePage implements OnInit {
   userProfile: UserProfile | null = null;
   isLoading: boolean = true;
   error: string | null = null;

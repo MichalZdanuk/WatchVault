@@ -13,7 +13,7 @@ import { FavoritesInsights } from '../../favorites-insights/favorites-insights';
 import { WeeklyHabits } from '../../weekly-habits/weekly-habits';
 
 @Component({
-  selector: 'app-analytics.component',
+  selector: 'app-analytics.page',
   imports: [
     CommonModule,
     AnalyticsChart,
@@ -24,10 +24,10 @@ import { WeeklyHabits } from '../../weekly-habits/weekly-habits';
     LoadingSpinner,
     ErrorMessage,
   ],
-  templateUrl: './analytics.component.html',
-  styleUrl: './analytics.component.css',
+  templateUrl: './analytics.page.html',
+  styleUrl: './analytics.page.css',
 })
-export class AnalyticsComponent implements OnInit {
+export class AnalyticsPage implements OnInit {
   activeMetric: 'watchedCount' | 'runtimeMinutes' = 'watchedCount';
   chartType: 'bar' | 'line' = 'bar';
 

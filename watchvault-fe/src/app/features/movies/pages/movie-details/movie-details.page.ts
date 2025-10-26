@@ -9,7 +9,7 @@ import { LoadingSpinner } from '../../../../shared/components/loading-spinner/lo
 import { ErrorMessage } from '../../../../shared/components/error-message/error-message';
 
 @Component({
-  selector: 'app-movie-details.component',
+  selector: 'app-movie-details.page',
   imports: [
     CommonModule,
     MovieDetailsCard,
@@ -18,10 +18,10 @@ import { ErrorMessage } from '../../../../shared/components/error-message/error-
     LoadingSpinner,
     ErrorMessage,
   ],
-  templateUrl: './movie-details.component.html',
-  styleUrl: './movie-details.component.css',
+  templateUrl: './movie-details.page.html',
+  styleUrl: './movie-details.page.css',
 })
-export class MovieDetailsComponent implements OnInit {
+export class MovieDetailsPage implements OnInit {
   movieDetails: MovieDetails | null = null;
   isLoading: boolean = true;
   error: string | null = null;

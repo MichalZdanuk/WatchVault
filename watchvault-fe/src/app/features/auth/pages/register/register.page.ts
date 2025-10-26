@@ -8,12 +8,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-register.component',
+  selector: 'app-register.page',
   imports: [RouterLink, CommonModule, ReactiveFormsModule, MatIconModule],
-  templateUrl: './register.component.html',
-  styleUrl: './register.component.css',
+  templateUrl: './register.page.html',
+  styleUrl: './register.page.css',
 })
-export class RegisterComponent implements OnInit {
+export class RegisterPage implements OnInit {
   registerForm: FormGroup = new FormGroup({});
   errorMessage: string = '';
   hidePassword: boolean = true;

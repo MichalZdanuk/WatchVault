@@ -12,7 +12,7 @@ import { ErrorMessage } from '../../../../shared/components/error-message/error-
 import { MatSelectModule } from '@angular/material/select';
 
 @Component({
-  selector: 'app-trending-movies.component',
+  selector: 'app-trending-movies.page',
   imports: [
     MatTooltipModule,
     MatSelectModule,
@@ -23,10 +23,10 @@ import { MatSelectModule } from '@angular/material/select';
     LoadingSpinner,
     ErrorMessage,
   ],
-  templateUrl: './trending-movies.component.html',
-  styleUrl: './trending-movies.component.css',
+  templateUrl: './trending-movies.page.html',
+  styleUrl: './trending-movies.page.css',
 })
-export class TrendingMoviesComponent implements OnInit {
+export class TrendingMoviesPage implements OnInit {
   trendingMovies: TrendingMovie[] = [];
   filteredTrendingMovies: TrendingMovie[] = [];
   isLoading: boolean = true;

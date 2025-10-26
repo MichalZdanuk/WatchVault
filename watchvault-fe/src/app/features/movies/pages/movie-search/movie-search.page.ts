@@ -24,7 +24,7 @@ import {
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-movie-search.component',
+  selector: 'app-movie-search.page',
   imports: [
     CommonModule,
     FlexModule,
@@ -36,10 +36,10 @@ import { MatIconModule } from '@angular/material/icon';
     MatFormFieldModule,
     MatIconModule,
   ],
-  templateUrl: './movie-search.component.html',
-  styleUrl: './movie-search.component.css',
+  templateUrl: './movie-search.page.html',
+  styleUrl: './movie-search.page.css',
 })
-export class MovieSearchComponent {
+export class MovieSearchPage {
   @ViewChild('searchInput', { static: true }) searchInput!: ElementRef;
 
   movies: Movie[] = [];

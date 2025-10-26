@@ -9,12 +9,12 @@ import { ErrorMessage } from '../../../../shared/components/error-message/error-
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-history.component',
+  selector: 'app-history.page',
   imports: [CommonModule, InfoIcon, LoadingSpinner, ErrorMessage, HistoryPanel],
-  templateUrl: './history.component.html',
-  styleUrl: './history.component.css',
+  templateUrl: './history.page.html',
+  styleUrl: './history.page.css',
 })
-export class HistoryComponent implements OnInit {
+export class HistoryPage implements OnInit {
   history: WatchListHistory | null = null;
   pageNumber: number = 1;
   pageSize: number = 20;

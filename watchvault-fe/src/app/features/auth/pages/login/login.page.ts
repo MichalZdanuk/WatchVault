@@ -9,12 +9,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthStateService } from '../../../../core/auth/AuthStateService';
 
 @Component({
-  selector: 'app-login.component',
+  selector: 'app-login.page',
   imports: [ReactiveFormsModule, CommonModule, RouterLink, MatIconModule],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
+  templateUrl: './login.page.html',
+  styleUrl: './login.page.css',
 })
-export class LoginComponent implements OnInit {
+export class LoginPage implements OnInit {
   loginForm: FormGroup = new FormGroup({});
   hidePassword: boolean = true;
 

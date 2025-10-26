@@ -5,9 +5,9 @@ import { KeyFeatures } from '../../key-features/key-features';
 import { Community } from '../../community/community';
 
 @Component({
-  selector: 'app-home.component',
+  selector: 'app-home.page',
   imports: [Hero, Community, KeyFeatures, Footer],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
+  templateUrl: './home.page.html',
+  styleUrl: './home.page.css',
 })
-export class HomeComponent {}
+export class HomePage {}

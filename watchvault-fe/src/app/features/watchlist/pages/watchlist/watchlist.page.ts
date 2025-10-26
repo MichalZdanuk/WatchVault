@@ -8,12 +8,12 @@ import { InfoIcon } from '../../../../shared/components/info-icon/info-icon';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-watchlist.component',
+  selector: 'app-watchlist.page',
   imports: [InfoIcon, WatchlistSummary, WatchlistItems, MatTabsModule, CommonModule],
-  templateUrl: './watchlist.component.html',
-  styleUrl: './watchlist.component.css',
+  templateUrl: './watchlist.page.html',
+  styleUrl: './watchlist.page.css',
 })
-export class WatchlistComponent implements OnInit {
+export class WatchlistPage implements OnInit {
   protected readonly Status = Status;
   selectedTabIndex: number = 0;
 
