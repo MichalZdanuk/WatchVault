@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserProfile } from '../../../../shared/models/user-profile.model';
 import { CommonModule } from '@angular/common';
-import { UserProfileHeader } from '../../user-profile-header/user-profile-header';
-import { UserStatistics } from '../../user-statistics/user-statistics';
-import { UserMoviesList } from '../../user-movies-list/user-movies-list';
+import { UserProfileHeader } from '../../components/user-profile-header/user-profile-header';
+import { UserStatistics } from '../../components/user-statistics/user-statistics';
+import { UserMoviesList } from '../../components/user-movies-list/user-movies-list';
 import { LoadingSpinner } from '../../../../shared/components/loading-spinner/loading-spinner';
 import { ErrorMessage } from '../../../../shared/components/error-message/error-message';
 import { UserService } from '../../../../core/services/user.service';

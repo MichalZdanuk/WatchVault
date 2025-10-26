@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Status } from '../../../../shared/models/status.enum';
-import { WatchlistSummary } from '../../watchlist-summary/watchlist-summary';
-import { WatchlistItems } from '../../watchlist-items/watchlist-items';
+import { WatchlistSummary } from '../../components/watchlist-summary/watchlist-summary';
+import { WatchlistItems } from '../../components/watchlist-items/watchlist-items';
 import { CommonModule } from '@angular/common';
 import { MatTabsModule } from '@angular/material/tabs';
 import { InfoIcon } from '../../../../shared/components/info-icon/info-icon';

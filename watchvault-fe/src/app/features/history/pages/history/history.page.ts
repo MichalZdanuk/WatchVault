@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { InfoIcon } from '../../../../shared/components/info-icon/info-icon';
 import { WatchlistService } from '../../../../core/services/watchlist-service';
-import { HistoryPanel } from '../../history-panel/history-panel';
+import { HistoryPanel } from '../../components/history-panel/history-panel';
 import { WatchListHistory } from '../../../../shared/models/watchlist-history.model';
 import { LoadingSpinner } from '../../../../shared/components/loading-spinner/loading-spinner';
 import { ErrorMessage } from '../../../../shared/components/error-message/error-message';

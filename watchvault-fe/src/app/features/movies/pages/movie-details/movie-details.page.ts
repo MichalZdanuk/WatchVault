@@ -3,7 +3,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { MovieDetails } from '../../../../shared/models/movie-details.model';
 import { MovieService } from '../../../../core/services/movie.service';
 import { CommonModule } from '@angular/common';
-import { MovieDetailsCard } from '../../movie-details-card/movie-details-card';
+import { MovieDetailsCard } from '../../components/movie-details-card/movie-details-card';
 import { MatIconModule } from '@angular/material/icon';
 import { LoadingSpinner } from '../../../../shared/components/loading-spinner/loading-spinner';
 import { ErrorMessage } from '../../../../shared/components/error-message/error-message';

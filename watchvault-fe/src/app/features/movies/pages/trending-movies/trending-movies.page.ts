@@ -3,7 +3,7 @@ import { MovieService } from '../../../../core/services/movie.service';
 import { TrendingMovie } from '../../../../shared/models/trending-movie.model';
 import { TrendingInterval } from '../../../../shared/models/trending-interval.enum';
 import { CommonModule } from '@angular/common';
-import { TrendingMovieCard } from '../../trending-movie-card/trending-movie-card';
+import { TrendingMovieCard } from '../../components/trending-movie-card/trending-movie-card';
 import { FlexModule } from '@angular/flex-layout';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { InfoIcon } from '../../../../shared/components/info-icon/info-icon';

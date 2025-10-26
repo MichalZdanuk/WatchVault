@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { MovieCard } from '../../movie-card/movie-card';
-import { PopularMovieCard } from '../../popular-movie-card/popular-movie-card';
+import { MovieCard } from '../../components/movie-card/movie-card';
+import { PopularMovieCard } from '../../components/popular-movie-card/popular-movie-card';
 import { MovieService } from '../../../../core/services/movie.service';
 import { Movie } from '../../../../shared/models/movie.model';
 import { FlexModule } from '@angular/flex-layout';
