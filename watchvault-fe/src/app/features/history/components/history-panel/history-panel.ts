@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { HistoryItem } from '../history-item/history-item';
 import { CommonModule } from '@angular/common';
-import { WatchListHistory } from '../../../../shared/models/watchlist-history.model';
+import { WatchListHistory } from '../../models/watchlist-history.model';
 
 @Component({
   selector: 'app-history-panel',

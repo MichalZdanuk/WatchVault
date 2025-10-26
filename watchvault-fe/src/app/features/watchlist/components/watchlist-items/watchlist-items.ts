@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { WatchlistService } from '../../../../core/services/watchlist-service';
 import { Status } from '../../../../shared/models/status.enum';
-import { WatchListItem } from '../../../../shared/models/watchlist-item.model';
+import { WatchListItem } from '../../models/watchlist-item.model';
 import { CommonModule } from '@angular/common';
 import { LoadingSpinner } from '../../../../shared/components/loading-spinner/loading-spinner';
 import { ErrorMessage } from '../../../../shared/components/error-message/error-message';
+import { WatchlistService } from '../../../../shared/services/watchlist-service';
 import { WatchlistItemCard } from '../watchlist-item-card/watchlist-item-card';
 
 @Component({

@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { RouterLink } from '@angular/router';
-import { UserRecommendation } from '../../../../shared/models/user-recommendation.model';
+import { UserRecommendation } from '../../models/user-recommendation.model';
 import { InfoIcon } from '../../../../shared/components/info-icon/info-icon';
 
 @Component({

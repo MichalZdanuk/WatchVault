@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Status } from '../../../../shared/models/status.enum';
-import { WatchlistSummary } from '../../components/watchlist-summary/watchlist-summary';
-import { WatchlistItems } from '../../components/watchlist-items/watchlist-items';
 import { CommonModule } from '@angular/common';
 import { MatTabsModule } from '@angular/material/tabs';
 import { InfoIcon } from '../../../../shared/components/info-icon/info-icon';
 import { ActivatedRoute, Router } from '@angular/router';
+import { WatchlistItems } from '../../components/watchlist-items/watchlist-items';
+import { WatchlistSummary } from '../../components/watchlist-summary/watchlist-summary';
 
 @Component({
   selector: 'app-watchlist.page',

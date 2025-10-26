@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { WatchListInsights } from '../../../../shared/models/watchlist-insights.model';
+import { WatchListInsights } from '../../models/watchlist-insights.model';
 import { GenreChart } from '../genre-chart/genre-chart';
 
 @Component({

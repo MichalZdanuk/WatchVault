@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { InfoIcon } from '../../../../shared/components/info-icon/info-icon';
-import { WatchlistService } from '../../../../core/services/watchlist-service';
 import { HistoryPanel } from '../../components/history-panel/history-panel';
-import { WatchListHistory } from '../../../../shared/models/watchlist-history.model';
+import { WatchListHistory } from '../../models/watchlist-history.model';
 import { LoadingSpinner } from '../../../../shared/components/loading-spinner/loading-spinner';
 import { ErrorMessage } from '../../../../shared/components/error-message/error-message';
 import { ActivatedRoute, Router } from '@angular/router';
+import { WatchlistService } from '../../../../shared/services/watchlist-service';
 
 @Component({
   selector: 'app-history.page',
@@ -55,7 +55,6 @@ export class HistoryPage implements OnInit {
   }
 
   onPageChange(newPage: number) {
-    // Update the URL query param, trigger reload via subscription
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: { page: newPage },

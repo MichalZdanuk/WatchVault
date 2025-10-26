@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { WatchListSummary } from '../../../../shared/models/watchlist-summary.model';
-import { WatchlistService } from '../../../../core/services/watchlist-service';
+import { WatchListSummary } from '../../models/watchlist-summary.model';
 import { LoadingSpinner } from '../../../../shared/components/loading-spinner/loading-spinner';
 import { ErrorMessage } from '../../../../shared/components/error-message/error-message';
 import { CommonModule } from '@angular/common';
+import { WatchlistService } from '../../../../shared/services/watchlist-service';
 
 @Component({
   selector: 'app-watchlist-summary',

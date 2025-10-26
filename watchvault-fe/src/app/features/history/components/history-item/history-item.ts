@@ -1,15 +1,15 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { WatchHistoryItem } from '../../../../shared/models/watchlist-history.model';
+import { WatchHistoryItem } from '../../models/watchlist-history.model';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatIcon } from '@angular/material/icon';
-import { WatchlistService } from '../../../../core/services/watchlist-service';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DatePipe } from '@angular/common';
+import { WatchlistService } from '../../../../shared/services/watchlist-service';
 
 @Component({
   selector: 'app-history-item',

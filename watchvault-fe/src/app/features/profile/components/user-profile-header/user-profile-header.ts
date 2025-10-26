@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { UserProfile } from '../../../../shared/models/user-profile.model';
-import { UserService } from '../../../../core/services/user.service';
+import { UserService } from '../../services/user.service';
+import { UserProfile } from '../../models/user-profile.model';
 
 @Component({
   selector: 'app-user-profile-header',

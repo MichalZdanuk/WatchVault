@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../../environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Movie } from '../../shared/models/movie.model';
-import { TrendingInterval } from '../../shared/models/trending-interval.enum';
-import { TrendingMovie } from '../../shared/models/trending-movie.model';
-import { MovieDetails } from '../../shared/models/movie-details.model';
+import { Movie } from '../models/movie.model';
+import { TrendingInterval } from '../models/trending-interval.enum';
+import { TrendingMovie } from '../models/trending-movie.model';
+import { MovieDetails } from '../models/movie-details.model';
 
 @Injectable({
   providedIn: 'root',

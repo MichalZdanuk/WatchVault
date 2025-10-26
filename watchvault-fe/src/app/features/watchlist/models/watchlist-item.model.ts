@@ -1,5 +1,5 @@
 import { SimklMovie } from './simkl-movie.model';
-import { WatchStatus } from './watch-status.enum';
+import { WatchStatus } from '../../../shared/models/watch-status.enum';
 
 export interface WatchListItem {
   id: string;

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { BaseChartDirective } from 'ng2-charts';
-import { WatchListAnalytics } from '../../../../shared/models/watchlist-analytics.model';
+import { WatchListAnalytics } from '../../models/watchlist-analytics.model';
 import { ChartConfiguration } from 'chart.js';
 
 @Component({

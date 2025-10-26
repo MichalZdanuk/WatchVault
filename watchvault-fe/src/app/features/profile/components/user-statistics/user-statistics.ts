@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { UserStats } from '../../../../shared/models/user-profile.model';
+import { UserStats } from '../../models/user-profile.model';
 
 @Component({
   selector: 'app-user-statistics',

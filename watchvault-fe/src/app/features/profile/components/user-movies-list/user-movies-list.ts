@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { MovieSummary } from '../../../../shared/models/movie-summary.model';
+import { MovieSummary } from '../../models/movie-summary.model';
 
 @Component({
   selector: 'app-user-movies-list',

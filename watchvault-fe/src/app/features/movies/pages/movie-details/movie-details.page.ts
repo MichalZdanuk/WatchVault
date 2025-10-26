@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { MovieDetails } from '../../../../shared/models/movie-details.model';
-import { MovieService } from '../../../../core/services/movie.service';
+import { MovieDetails } from '../../models/movie-details.model';
+import { MovieService } from '../../services/movie.service';
 import { CommonModule } from '@angular/common';
 import { MovieDetailsCard } from '../../components/movie-details-card/movie-details-card';
 import { MatIconModule } from '@angular/material/icon';

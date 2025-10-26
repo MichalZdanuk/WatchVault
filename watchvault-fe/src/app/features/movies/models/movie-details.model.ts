@@ -1,4 +1,4 @@
-import { Status } from './status.enum';
+import { Status } from '../../../shared/models/status.enum';
 import { UserRecommendation } from './user-recommendation.model';
 
 export interface MovieDetails {

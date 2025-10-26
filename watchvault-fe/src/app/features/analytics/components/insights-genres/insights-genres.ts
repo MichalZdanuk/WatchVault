@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { WatchListInsights } from '../../../../shared/models/watchlist-insights.model';
+import { WatchListInsights } from '../../models/watchlist-insights.model';
 import { CommonModule } from '@angular/common';
 import { GenreChart } from '../genre-chart/genre-chart';
 import { AverageRuntimeChart } from '../average-runtime-chart/average-runtime-chart';

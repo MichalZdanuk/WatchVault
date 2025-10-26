@@ -3,9 +3,9 @@ import { environment } from '../../../environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Status } from '../../shared/models/status.enum';
 import { Observable } from 'rxjs';
-import { WatchListSummary } from '../../shared/models/watchlist-summary.model';
-import { PagedWatchListItems } from '../../shared/models/paged-watchlist-items.model';
-import { WatchListHistory } from '../../shared/models/watchlist-history.model';
+import { WatchListSummary } from '../../features/watchlist/models/watchlist-summary.model';
+import { PagedWatchListItems } from '../../features/watchlist/models/paged-watchlist-items.model';
+import { WatchListHistory } from '../../features/history/models/watchlist-history.model';
 
 @Injectable({
   providedIn: 'root',
