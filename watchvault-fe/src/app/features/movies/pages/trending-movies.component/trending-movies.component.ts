@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../../../../core/services/movie.service';
-import { TrendingMovie } from '../../../../shared/models/trending-movie';
-import { TrendingInterval } from '../../../../shared/models/trending-interval';
+import { TrendingMovie } from '../../../../shared/models/trending-movie.model';
+import { TrendingInterval } from '../../../../shared/models/trending-interval.enum';
 import { CommonModule } from '@angular/common';
 import { TrendingMovieCard } from '../../trending-movie-card/trending-movie-card';
 import { FlexModule } from '@angular/flex-layout';

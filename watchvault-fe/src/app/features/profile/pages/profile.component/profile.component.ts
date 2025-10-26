@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserProfile } from '../../../../shared/models/user-profile';
+import { UserProfile } from '../../../../shared/models/user-profile.model';
 import { CommonModule } from '@angular/common';
 import { UserProfileHeader } from '../../user-profile-header/user-profile-header';
 import { UserStatistics } from '../../user-statistics/user-statistics';

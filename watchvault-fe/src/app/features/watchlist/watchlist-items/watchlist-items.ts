@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { WatchlistService } from '../../../core/services/watchlist-service';
-import { Status } from '../../../shared/models/status';
-import { WatchListItem } from '../../../shared/models/watchlist-item';
+import { Status } from '../../../shared/models/status.enum';
+import { WatchListItem } from '../../../shared/models/watchlist-item.model';
 import { CommonModule } from '@angular/common';
 import { LoadingSpinner } from '../../../shared/components/loading-spinner/loading-spinner';
 import { ErrorMessage } from '../../../shared/components/error-message/error-message';

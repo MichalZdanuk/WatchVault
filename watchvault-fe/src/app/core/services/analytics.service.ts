@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { StatisticsPeriod } from '../../shared/models/statistics-period';
-import { WatchListAnalytics } from '../../shared/models/watchlist-analytics';
-import { WatchListInsights } from '../../shared/models/watchlist-insights';
+import { StatisticsPeriod } from '../../shared/models/statistics-period.enum';
+import { WatchListAnalytics } from '../../shared/models/watchlist-analytics.model';
+import { WatchListInsights } from '../../shared/models/watchlist-insights.model';
 
 @Injectable({
   providedIn: 'root',

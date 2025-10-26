@@ -33,12 +33,6 @@
       </div>
     </div>
 
-    <app-loading-spinner
-      *ngIf="isLoading"
-      text="Loading trending movies ..."
-      [size]="3"
-    ></app-loading-spinner>
-
     <div *ngIf="!isLoading && filteredTrendingMovies.length">
       <div fxLayout="row wrap" fxLayoutGap="30px grid">
         <div *ngFor="let movie of filteredTrendingMovies">
@@ -46,12 +40,18 @@
         </div>
       </div>
     </div>
-
-    <app-error-message
-      *ngIf="!isLoading && error"
-      [message]="error"
-      retryText="Failed to browse trending movies. Try again later!"
-      (retry)="reloadTrendingMovies()"
-    ></app-error-message>
   </div>
+
+  <app-loading-spinner
+    *ngIf="isLoading"
+    text="Loading trending movies ..."
+    [size]="3"
+  ></app-loading-spinner>
+
+  <app-error-message
+    *ngIf="!isLoading && error"
+    [message]="error"
+    retryText="Failed to browse trending movies. Try again later!"
+    (retry)="reloadTrendingMovies()"
+  ></app-error-message>
 </div>

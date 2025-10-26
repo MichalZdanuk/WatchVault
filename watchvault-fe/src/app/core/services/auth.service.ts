@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Register } from '../../shared/models/register';
+import { Register } from '../../shared/models/register.model';
 import { Observable } from 'rxjs';
-import { LoginResponse } from '../../shared/models/loginResponse';
-import { Login } from '../../shared/models/login';
+import { LoginResponse } from '../../shared/models/login-response.model';
+import { Login } from '../../shared/models/login-request.model';
 
 @Injectable({
   providedIn: 'root',

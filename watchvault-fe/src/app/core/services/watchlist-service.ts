@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Status } from '../../shared/models/status';
+import { Status } from '../../shared/models/status.enum';
 import { Observable } from 'rxjs';
-import { WatchListSummary } from '../../shared/models/watchlist-summary';
-import { PagedWatchListItems } from '../../shared/models/paged-watchlist-items';
-import { WatchListHistoryResponse } from '../../shared/models/watchlist-history-response';
+import { WatchListSummary } from '../../shared/models/watchlist-summary.model';
+import { PagedWatchListItems } from '../../shared/models/paged-watchlist-items.model';
+import { WatchListHistory } from '../../shared/models/watchlist-history.model';
 
 @Injectable({
   providedIn: 'root',
@@ -44,10 +44,10 @@ export class WatchlistService {
   browseWatchListHistory(
     pageNumber: number = 1,
     pageSize: number = 20
-  ): Observable<WatchListHistoryResponse> {
+  ): Observable<WatchListHistory> {
     let params = new HttpParams().set('pageNumber', pageNumber).set('pageSize', pageSize);
 
-    return this.http.get<WatchListHistoryResponse>(`${this.apiUrl}/history`, { params });
+    return this.http.get<WatchListHistory>(`${this.apiUrl}/history`, { params });
   }
 
   updateWatchDate(id: string, date: Date): Observable<void> {

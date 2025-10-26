@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { MovieDetails } from '../../../../shared/models/movie-details';
+import { MovieDetails } from '../../../../shared/models/movie-details.model';
 import { MovieService } from '../../../../core/services/movie.service';
 import { CommonModule } from '@angular/common';
 import { MovieDetailsCard } from '../../movie-details-card/movie-details-card';

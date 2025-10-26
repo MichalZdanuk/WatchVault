@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { HistoryItem } from '../history-item/history-item';
 import { CommonModule } from '@angular/common';
-import { WatchListHistoryResponse } from '../../../shared/models/watchlist-history-response';
+import { WatchListHistory } from '../../../shared/models/watchlist-history.model';
 
 @Component({
   selector: 'app-history-panel',
@@ -10,7 +10,7 @@ import { WatchListHistoryResponse } from '../../../shared/models/watchlist-histo
   styleUrl: './history-panel.css',
 })
 export class HistoryPanel {
-  @Input() history!: WatchListHistoryResponse;
+  @Input() history!: WatchListHistory;
   @Output() pageChange = new EventEmitter<number>();
 
   onPrevPage(): void {

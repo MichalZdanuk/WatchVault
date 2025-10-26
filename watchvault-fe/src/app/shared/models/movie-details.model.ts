@@ -1,5 +1,5 @@
-import { Status } from './status';
-import { UserRecommendation } from './user-recommendation';
+import { Status } from './status.enum';
+import { UserRecommendation } from './user-recommendation.model';
 
 export interface MovieDetails {
   simklId: number;

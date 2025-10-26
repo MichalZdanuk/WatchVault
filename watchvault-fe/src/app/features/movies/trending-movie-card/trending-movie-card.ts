@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { TrendingMovie } from '../../../shared/models/trending-movie';
+import { TrendingMovie } from '../../../shared/models/trending-movie.model';
 import { MatCardModule } from '@angular/material/card';
 import { TruncatePipe } from '../../../shared/pipes/truncate.pipe';
 import { RouterLink } from '@angular/router';

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { UserProfile } from '../../../shared/models/user-profile';
+import { UserProfile } from '../../../shared/models/user-profile.model';
 import { UserService } from '../../../core/services/user.service';
 
 @Component({

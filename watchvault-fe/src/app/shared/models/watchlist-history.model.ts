@@ -1,6 +1,4 @@
-import { Status } from './status';
-
-export interface WatchListHistoryResponse {
+export interface WatchListHistory {
   pageNumber: number;
   pageSize: number;
   totalCount: number;

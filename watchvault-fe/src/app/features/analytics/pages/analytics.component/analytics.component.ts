@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AnalyticsService } from '../../../../core/services/analytics.service';
-import { StatisticsPeriod } from '../../../../shared/models/statistics-period';
-import { WatchListAnalytics } from '../../../../shared/models/watchlist-analytics';
+import { StatisticsPeriod } from '../../../../shared/models/statistics-period.enum';
+import { WatchListAnalytics } from '../../../../shared/models/watchlist-analytics.model';
 import { CommonModule } from '@angular/common';
 import { AnalyticsChart } from '../../analytics-chart/analytics-chart';
 import { InfoIcon } from '../../../../shared/components/info-icon/info-icon';
 import { LoadingSpinner } from '../../../../shared/components/loading-spinner/loading-spinner';
 import { ErrorMessage } from '../../../../shared/components/error-message/error-message';
-import { WatchListInsights } from '../../../../shared/models/watchlist-insights';
+import { WatchListInsights } from '../../../../shared/models/watchlist-insights.model';
 import { InsightsGenres } from '../../insights-genres/insights-genres';
 import { FavoritesInsights } from '../../favorites-insights/favorites-insights';
 import { WeeklyHabits } from '../../weekly-habits/weekly-habits';

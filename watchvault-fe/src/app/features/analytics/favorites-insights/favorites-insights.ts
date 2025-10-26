@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { GenreChart } from '../genre-chart/genre-chart';
-import { WatchListInsights } from '../../../shared/models/watchlist-insights';
+import { WatchListInsights } from '../../../shared/models/watchlist-insights.model';
 
 @Component({
   selector: 'app-favorites-insights',

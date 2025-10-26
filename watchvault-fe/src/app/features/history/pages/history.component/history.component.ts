@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { InfoIcon } from '../../../../shared/components/info-icon/info-icon';
 import { WatchlistService } from '../../../../core/services/watchlist-service';
 import { HistoryPanel } from '../../history-panel/history-panel';
-import { WatchListHistoryResponse } from '../../../../shared/models/watchlist-history-response';
+import { WatchListHistory } from '../../../../shared/models/watchlist-history.model';
 import { LoadingSpinner } from '../../../../shared/components/loading-spinner/loading-spinner';
 import { ErrorMessage } from '../../../../shared/components/error-message/error-message';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -15,7 +15,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './history.component.css',
 })
 export class HistoryComponent implements OnInit {
-  history: WatchListHistoryResponse | null = null;
+  history: WatchListHistory | null = null;
   pageNumber: number = 1;
   pageSize: number = 20;
 

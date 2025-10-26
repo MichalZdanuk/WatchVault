@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { WatchListSummary } from '../../../shared/models/watchlist-summary';
+import { WatchListSummary } from '../../../shared/models/watchlist-summary.model';
 import { WatchlistService } from '../../../core/services/watchlist-service';
 import { LoadingSpinner } from '../../../shared/components/loading-spinner/loading-spinner';
 import { ErrorMessage } from '../../../shared/components/error-message/error-message';

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Status } from '../../../../shared/models/status';
+import { Status } from '../../../../shared/models/status.enum';
 import { WatchlistSummary } from '../../watchlist-summary/watchlist-summary';
 import { WatchlistItems } from '../../watchlist-items/watchlist-items';
 import { CommonModule } from '@angular/common';

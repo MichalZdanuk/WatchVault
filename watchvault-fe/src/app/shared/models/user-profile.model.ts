@@ -1,4 +1,4 @@
-import { MovieSummary } from './movie-summary';
+import { MovieSummary } from './movie-summary.model';
 
 export interface UserProfile {
   id: string;

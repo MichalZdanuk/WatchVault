@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { WatchListItem } from '../../../shared/models/watchlist-item';
+import { WatchListItem } from '../../../shared/models/watchlist-item.model';
 import { CommonModule } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
-import { WatchStatus } from '../../../shared/models/watch-status';
+import { WatchStatus } from '../../../shared/models/watch-status.enum';
 import { RouterLink } from '@angular/router';
 import { WatchlistService } from '../../../core/services/watchlist-service';
 

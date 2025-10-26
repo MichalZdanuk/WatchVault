@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { WatchHistoryItem } from '../../../shared/models/watchlist-history-response';
+import { WatchHistoryItem } from '../../../shared/models/watchlist-history.model';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatIcon } from '@angular/material/icon';

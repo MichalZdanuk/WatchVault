@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { Movie } from '../../../shared/models/movie';
+import { Movie } from '../../../shared/models/movie.model';
 import { MatCardModule } from '@angular/material/card';
 import { RouterLink } from '@angular/router';
 

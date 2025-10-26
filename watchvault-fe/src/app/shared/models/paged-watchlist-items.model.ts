@@ -1,4 +1,4 @@
-import { WatchListItem } from './watchlist-item';
+import { WatchListItem } from './watchlist-item.model';
 
 export interface PagedWatchListItems {
   pageNumber: number;

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { UserProfile } from '../../shared/models/user-profile';
+import { UserProfile } from '../../shared/models/user-profile.model';
 import { environment } from '../../../environments/environment';
 
 @Injectable({

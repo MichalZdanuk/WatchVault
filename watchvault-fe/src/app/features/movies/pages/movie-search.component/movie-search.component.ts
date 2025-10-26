@@ -3,13 +3,13 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MovieCard } from '../../movie-card/movie-card';
 import { PopularMovieCard } from '../../popular-movie-card/popular-movie-card';
 import { MovieService } from '../../../../core/services/movie.service';
-import { Movie } from '../../../../shared/models/movie';
+import { Movie } from '../../../../shared/models/movie.model';
 import { FlexModule } from '@angular/flex-layout';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { InfoIcon } from '../../../../shared/components/info-icon/info-icon';
-import { TrendingMovie } from '../../../../shared/models/trending-movie';
-import { TrendingInterval } from '../../../../shared/models/trending-interval';
+import { TrendingMovie } from '../../../../shared/models/trending-movie.model';
+import { TrendingInterval } from '../../../../shared/models/trending-interval.enum';
 import { LoadingSpinner } from '../../../../shared/components/loading-spinner/loading-spinner';
 import { fromEvent, of, Subscription } from 'rxjs';
 import {
