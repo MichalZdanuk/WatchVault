@@ -49,7 +49,7 @@ public sealed class GetCurrentUserQueryHandler(IUserContext userContext,
             .ToList()
             ?? new List<MovieSummaryDto>();
 
-        var stats = new UserStatsDto(
+        var userOverallStatistics = new UserOverallStatisticsDto(
             watchList.TotalWatched,
             watchList.TotalToWatch,
             watchList.TotalFavourites
@@ -61,7 +61,7 @@ public sealed class GetCurrentUserQueryHandler(IUserContext userContext,
             user.FirstName,
             user.LastName,
             user.Email,
-            stats,
+            userOverallStatistics,
             watchedMovies,
             toWatchMovies
         );

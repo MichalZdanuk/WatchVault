@@ -5,7 +5,7 @@ public record UserProfileDto(
     string FirstName,
     string LastName,
     string Email,
-    UserStatsDto Statistics,
+    UserOverallStatisticsDto UserOverallStatistics,
     List<MovieSummaryDto> Watched,
     List<MovieSummaryDto> ToWatch
 );
@@ -16,7 +16,7 @@ public record MovieSummaryDto(
     string PosterUrl
 );
 
-public record UserStatsDto(
+public record UserOverallStatisticsDto(
     int TotalWatched,
     int TotalToWatch,
     int TotalFavorites

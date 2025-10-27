@@ -1,3 +1,5 @@
+import { MostWatchedDay } from './most-watched-day.model';
+
 export interface WatchListInsights {
   totalWatched: number;
   totalToWatch: number;
@@ -11,11 +13,4 @@ export interface WatchListInsights {
   averageRuntimePerGenre: Record<string, number>;
   watchedDayOfWeekDistribution: Record<string, number>;
   mostWatchedDay: MostWatchedDay;
-}
-
-export interface MostWatchedDay {
-  day: string;
-  label: string;
-  watchedCount: number;
-  watchedPercentage: number;
 }

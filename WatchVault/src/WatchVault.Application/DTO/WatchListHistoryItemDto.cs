@@ -1,5 +1,5 @@
 ﻿namespace WatchVault.Application.DTO;
-public record WatchHistoryItemDto(
+public record WatchListHistoryItemDto(
     Guid Id,
     DateTime WatchedAt,
     bool IsFavourite,

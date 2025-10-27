@@ -1,4 +1,5 @@
 import { MovieSummary } from './movie-summary.model';
+import { UserOverallStatistics } from './user-overall-statistics.model';
 
 export interface UserProfile {
   id: string;
@@ -6,13 +7,7 @@ export interface UserProfile {
   firstName: string;
   lastName: string;
   email: string;
-  statistics: UserStats;
+  userOverallStatistics: UserOverallStatistics;
   watched: MovieSummary[];
   toWatch: MovieSummary[];
-}
-
-export interface UserStats {
-  totalWatched: number;
-  totalToWatch: number;
-  totalFavorites: number;
 }

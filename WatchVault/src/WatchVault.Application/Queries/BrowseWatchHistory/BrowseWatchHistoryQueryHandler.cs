@@ -18,8 +18,8 @@ public sealed class BrowseWatchHistoryQueryHandler(IUserContext userContext,
             var items = await unitOfWork.WatchListRepository
                 .GetWatchlistHistoryAsync(userId, query.PageNumber, query.PageSize);
 
-            var dtos = items.Select(x =>
-                new WatchHistoryItemDto(
+            var watchlistHistoryItemDtos = items.Select(x =>
+                new WatchListHistoryItemDto(
                     x.Id,
                     x.WatchedAt!.Value,
                     x.IsFavourite,
@@ -33,7 +33,7 @@ public sealed class BrowseWatchHistoryQueryHandler(IUserContext userContext,
             var totalCount = await unitOfWork.WatchListRepository
                 .GetWatchlistHistoryCountAsync(userId);
 
-            return new WatchListHistoryDto(query.PageNumber, query.PageSize, totalCount, dtos);
+            return new WatchListHistoryDto(query.PageNumber, query.PageSize, totalCount, watchlistHistoryItemDtos);
         }, CacheProfiles.ShortLived);
 
         await CacheHelper.TrackUserHistoryKeyAsync(cache, userId, cacheKey);

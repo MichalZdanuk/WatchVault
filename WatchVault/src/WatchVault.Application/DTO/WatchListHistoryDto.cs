@@ -3,7 +3,7 @@ public record WatchListHistoryDto(
     int PageNumber,
     int PageSize,
     int TotalCount,
-    IReadOnlyList<WatchHistoryItemDto> Items
+    IReadOnlyList<WatchListHistoryItemDto> Items
 )
 {
     public int TotalPages => (int)Math.Ceiling((double)TotalCount / PageSize);

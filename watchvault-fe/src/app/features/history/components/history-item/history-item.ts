@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { WatchHistoryItem } from '../../models/watchlist-history.model';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatIcon } from '@angular/material/icon';
@@ -10,6 +9,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DatePipe } from '@angular/common';
 import { WatchlistService } from '../../../../shared/services/watchlist-service';
+import { WatchListHistoryItem } from '../../models/watchlist-history-item.model';
 
 @Component({
   selector: 'app-history-item',
@@ -27,7 +27,7 @@ import { WatchlistService } from '../../../../shared/services/watchlist-service'
   styleUrl: './history-item.css',
 })
 export class HistoryItem {
-  @Input() item!: WatchHistoryItem;
+  @Input() item!: WatchListHistoryItem;
   @Output() deleted = new EventEmitter<string>();
   today = new Date();
 

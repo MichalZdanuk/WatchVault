@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { UserStats } from '../../models/user-profile.model';
+import { UserOverallStatistics } from '../../models/user-overall-statistics.model';
 
 @Component({
   selector: 'app-user-statistics',
@@ -9,5 +9,5 @@ import { UserStats } from '../../models/user-profile.model';
   styleUrl: './user-statistics.css',
 })
 export class UserStatistics {
-  @Input() stats!: UserStats;
+  @Input() userOverallStatistics!: UserOverallStatistics;
 }
