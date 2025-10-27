@@ -13,7 +13,7 @@ public record MovieDetailsDto(
     double? ImdbRating,
     string Director,
     string Overview,
-    Status? Status,
+    WatchStatus? WatchStatus,
     List<string> Genres,
     List<UserRecommendationDto> UserRecommendations
 );

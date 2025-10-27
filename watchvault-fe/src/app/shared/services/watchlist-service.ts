@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Status } from '../../shared/models/status.enum';
 import { Observable } from 'rxjs';
 import { WatchListSummary } from '../../features/watchlist/models/watchlist-summary.model';
 import { PagedWatchListItems } from '../../features/watchlist/models/paged-watchlist-items.model';
 import { WatchListHistory } from '../../features/history/models/watchlist-history.model';
+import { WatchStatus } from '../models/watch-status.enum';
 
 @Injectable({
   providedIn: 'root',
@@ -15,8 +15,11 @@ export class WatchlistService {
 
   constructor(private http: HttpClient) {}
 
-  addWatchListItem(simklId: number, status: Status): Observable<void> {
-    return this.http.post<void>(`${this.apiUrl}/add`, { simklId: simklId, watchStatus: status });
+  addWatchListItem(simklId: number, watchStatus: WatchStatus): Observable<void> {
+    return this.http.post<void>(`${this.apiUrl}/add`, {
+      simklId: simklId,
+      watchStatus: watchStatus,
+    });
   }
 
   getWatchListSummary(): Observable<WatchListSummary> {
@@ -24,14 +27,14 @@ export class WatchlistService {
   }
 
   browseWatchListItems(
-    status: Status | null,
+    watchStatus: WatchStatus | null,
     pageNumber: number = 1,
     pageSize: number = 10
   ): Observable<PagedWatchListItems> {
     let params = new HttpParams().set('pageNumber', pageNumber).set('pageSize', pageSize);
 
-    if (status !== null && status !== undefined) {
-      params = params.set('status', status);
+    if (watchStatus !== null && watchStatus !== undefined) {
+      params = params.set('watchStatus', watchStatus);
     }
 
     return this.http.get<PagedWatchListItems>(`${this.apiUrl}/items`, { params });

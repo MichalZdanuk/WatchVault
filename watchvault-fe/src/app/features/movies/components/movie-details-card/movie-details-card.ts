@@ -5,8 +5,8 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MovieRecommendations } from '../movie-recommendations/movie-recommendations';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { Status } from '../../../../shared/models/status.enum';
 import { WatchlistService } from '../../../../shared/services/watchlist-service';
+import { WatchStatus } from '../../../../shared/models/watch-status.enum';
 
 @Component({
   selector: 'app-movie-details-card',
@@ -17,14 +17,14 @@ import { WatchlistService } from '../../../../shared/services/watchlist-service'
 export class MovieDetailsCard {
   @Input() movieDetails!: MovieDetails;
 
-  protected readonly Status = Status;
+  protected readonly WatchStatus = WatchStatus;
 
   constructor(private watchlistService: WatchlistService, private snackBar: MatSnackBar) {}
 
   addToWatchlist(simklId: number): void {
-    this.watchlistService.addWatchListItem(simklId, Status.ToWatch).subscribe({
+    this.watchlistService.addWatchListItem(simklId, WatchStatus.ToWatch).subscribe({
       next: () => {
-        this.movieDetails.status = Status.ToWatch;
+        this.movieDetails.watchStatus = WatchStatus.ToWatch;
       },
       error: () => {
         this.showSnackBarError('Failed to add to watch');
@@ -40,9 +40,9 @@ export class MovieDetailsCard {
   }
 
   markWatched(simklId: number): void {
-    this.watchlistService.addWatchListItem(simklId, Status.Watched).subscribe({
+    this.watchlistService.addWatchListItem(simklId, WatchStatus.Watched).subscribe({
       next: () => {
-        this.movieDetails.status = Status.Watched;
+        this.movieDetails.watchStatus = WatchStatus.Watched;
       },
       error: () => {
         this.showSnackBarError('Failed to mark as watched');

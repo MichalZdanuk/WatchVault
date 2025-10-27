@@ -19,15 +19,15 @@ public sealed class BrowseWatchListItemsQueryHandler(IUserContext userContext,
 
         var items = watchList.Items.AsQueryable();
 
-        if (query.Status.HasValue)
+        if (query.WatchStatus.HasValue)
         {
-            items = items.Where(i => i.WatchStatus == query.Status.Value.ConvertToDomainWatchStatus()).AsQueryable();
+            items = items.Where(i => i.WatchStatus == query.WatchStatus.Value.ConvertToDomainWatchStatus()).AsQueryable();
         }
 
-        items = query.Status switch
+        items = query.WatchStatus switch
         {
-            Status.Watched => items.OrderByDescending(i => i.WatchedAt ?? i.UpdateDate),
-            Status.ToWatch => items.OrderByDescending(i => i.AddedToWatchAt ?? i.UpdateDate),
+            WatchStatus.Watched => items.OrderByDescending(i => i.WatchedAt ?? i.UpdateDate),
+            WatchStatus.ToWatch => items.OrderByDescending(i => i.AddedToWatchAt ?? i.UpdateDate),
             _ => items.OrderByDescending(i => i.UpdateDate)
         };
 
@@ -41,7 +41,7 @@ public sealed class BrowseWatchListItemsQueryHandler(IUserContext userContext,
             .Take(query.PageSize)
             .Select(item => new WatchListItemDto(
                 item.Id,
-                item.WatchStatus,
+                item.WatchStatus.ConvertToApplicationWatchStatus(),
                 item.AddedToWatchAt,
                 item.WatchedAt,
                 item.IsFavourite,

@@ -41,8 +41,8 @@ public sealed class AddMovieCommandHandler(
 
         _ = command.WatchStatus switch
         {
-            Enums.Status.Watched => Do(() => watchList.AddWatched(movie)),
-            Enums.Status.ToWatch => Do(() => watchList.AddToWatch(movie)),
+            Enums.WatchStatus.Watched => Do(() => watchList.AddWatched(movie)),
+            Enums.WatchStatus.ToWatch => Do(() => watchList.AddToWatch(movie)),
             _ => throw new ArgumentException("Invalid watch status")
         };
 

@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Status } from '../../../../shared/models/status.enum';
 import { WatchListItem } from '../../models/watchlist-item.model';
 import { CommonModule } from '@angular/common';
 import { LoadingSpinner } from '../../../../shared/components/loading-spinner/loading-spinner';
 import { ErrorMessage } from '../../../../shared/components/error-message/error-message';
 import { WatchlistService } from '../../../../shared/services/watchlist-service';
 import { WatchlistItemCard } from '../watchlist-item-card/watchlist-item-card';
+import { WatchStatus } from '../../../../shared/models/watch-status.enum';
 
 @Component({
   selector: 'app-watchlist-items',
@@ -14,7 +14,7 @@ import { WatchlistItemCard } from '../watchlist-item-card/watchlist-item-card';
   styleUrl: './watchlist-items.css',
 })
 export class WatchlistItems implements OnInit {
-  @Input() status!: Status;
+  @Input() watchStatus!: WatchStatus;
 
   items: WatchListItem[] = [];
   isLoading: boolean = true;
@@ -34,7 +34,7 @@ export class WatchlistItems implements OnInit {
     this.error = null;
 
     this.watchListService
-      .browseWatchListItems(this.status, this.pageNumber, this.pageSize)
+      .browseWatchListItems(this.watchStatus, this.pageNumber, this.pageSize)
       .subscribe({
         next: (paged) => {
           this.items = paged.items;

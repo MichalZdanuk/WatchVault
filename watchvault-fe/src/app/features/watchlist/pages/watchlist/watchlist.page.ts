@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Status } from '../../../../shared/models/status.enum';
 import { CommonModule } from '@angular/common';
 import { MatTabsModule } from '@angular/material/tabs';
 import { InfoIcon } from '../../../../shared/components/info-icon/info-icon';
 import { ActivatedRoute, Router } from '@angular/router';
 import { WatchlistItems } from '../../components/watchlist-items/watchlist-items';
 import { WatchlistSummary } from '../../components/watchlist-summary/watchlist-summary';
+import { WatchStatus } from '../../../../shared/models/watch-status.enum';
 
 @Component({
   selector: 'app-watchlist.page',
@@ -14,7 +14,7 @@ import { WatchlistSummary } from '../../components/watchlist-summary/watchlist-s
   styleUrl: './watchlist.page.css',
 })
 export class WatchlistPage implements OnInit {
-  protected readonly Status = Status;
+  protected readonly WatchStatus = WatchStatus;
   selectedTabIndex: number = 0;
 
   constructor(private route: ActivatedRoute, private router: Router) {}

@@ -1,29 +1,27 @@
-﻿using WatchVault.Domain.Enums;
-
-namespace WatchVault.Application.Enums;
+﻿namespace WatchVault.Application.Enums;
 public static class Extensions
 {
-    public static WatchStatus ConvertToDomainWatchStatus(this Status status)
+    public static Domain.Enums.WatchStatus ConvertToDomainWatchStatus(this WatchStatus status)
     {
-        if (status == Status.ToWatch)
+        if (status == WatchStatus.ToWatch)
+        {
+            return Domain.Enums.WatchStatus.ToWatch;
+        }
+        else
+        {
+            return Domain.Enums.WatchStatus.Watched;
+        }
+    }
+
+    public static WatchStatus ConvertToApplicationWatchStatus(this Domain.Enums.WatchStatus watchStatus)
+    {
+        if (watchStatus == Domain.Enums.WatchStatus.ToWatch)
         {
             return WatchStatus.ToWatch;
         }
         else
         {
             return WatchStatus.Watched;
-        }
-    }
-
-    public static Status ConvertToApplicationWatchStatus(this WatchStatus watchStatus)
-    {
-        if (watchStatus == WatchStatus.ToWatch)
-        {
-            return Status.ToWatch;
-        }
-        else
-        {
-            return Status.Watched;
         }
     }
 }

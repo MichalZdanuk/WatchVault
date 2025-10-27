@@ -1,4 +1,4 @@
-import { Status } from '../../../shared/models/status.enum';
+import { WatchStatus } from '../../../shared/models/watch-status.enum';
 import { UserRecommendation } from './user-recommendation.model';
 
 export interface MovieDetails {
@@ -13,7 +13,7 @@ export interface MovieDetails {
   imdbRating: number | null;
   director: string;
   overview: string;
-  status: Status | null;
+  watchStatus: WatchStatus | null;
   genres: string[];
   userRecommendations: UserRecommendation[];
 }

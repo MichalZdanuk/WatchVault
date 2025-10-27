@@ -42,9 +42,9 @@ public static class WatchListEndpoints
         .Produces(StatusCodes.Status500InternalServerError)
         .WithTags("Watchlist");
 
-        watchList.MapGet("/items", async ([FromQuery] Status? status, [FromQuery] int pageNumber, [FromQuery] int pageSize, IMediator mediator) =>
+        watchList.MapGet("/items", async ([FromQuery] WatchStatus? watchStatus, [FromQuery] int pageNumber, [FromQuery] int pageSize, IMediator mediator) =>
         {
-            var result = await mediator.Send(new BrowseWatchListItemsQuery(status, pageNumber, pageSize));
+            var result = await mediator.Send(new BrowseWatchListItemsQuery(watchStatus, pageNumber, pageSize));
 
             return Results.Ok(result);
         })

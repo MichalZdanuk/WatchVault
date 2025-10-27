@@ -3,7 +3,6 @@ using WatchVault.Application.Enums;
 using WatchVault.Application.Exceptions;
 using WatchVault.Application.Repositories;
 using WatchVault.Application.Services;
-using WatchVault.Domain.Enums;
 
 namespace WatchVault.Application.Queries.GetMovieDetails;
 public class GetMovieDetailsQueryHandler(ISimklApiConnector simkl,
@@ -37,23 +36,9 @@ public class GetMovieDetailsQueryHandler(ISimklApiConnector simkl,
             raw.ImdbRating,
             raw.Director,
             raw.Overview,
-            RetrieveStatus(status),
+            status.HasValue ? status.Value.ConvertToApplicationWatchStatus() : null,
             raw.Genres.ToList(),
             raw.UserRecommendations.Select(x => new UserRecommendationDto(x.Title, x.Year, x.Poster, x.SimklId)).ToList()
         );
-    }
-
-    private Status? RetrieveStatus(WatchStatus? watchStatus)
-    {
-        if (watchStatus == WatchStatus.ToWatch)
-        {
-            return Status.ToWatch;
-        }
-        else if (watchStatus == WatchStatus.Watched)
-        {
-            return Status.Watched;
-        }
-
-        return null;
     }
 }
